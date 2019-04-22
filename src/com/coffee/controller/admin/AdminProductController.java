@@ -21,14 +21,11 @@ import com.coffee.model.service.ProductService;
 @RestController
 @RequestMapping("/rest/admin")
 public class AdminProductController {
-	@Autowired
-	private ProductService productService;
 	// DefaultAnnotaionHandlerMapping에 의해 아래의 요청 매핑이 동작가능하다
 	@RequestMapping(value="/products", method=RequestMethod.GET)
    public List selectAll() {
       System.out.println("목록을 원하는군");
-      List<Product> productList = productService.selectAll();
-      return productList;
+      return null;
    }
 	@RequestMapping(value = "/products/{product_id}", method = RequestMethod.GET, produces = "application/json")
 	public String select(@PathVariable("product_id") int product_id) {

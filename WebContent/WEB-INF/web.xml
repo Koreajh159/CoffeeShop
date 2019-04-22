@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>CoffeeShop</display-name>
 	<listener>
-		<listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

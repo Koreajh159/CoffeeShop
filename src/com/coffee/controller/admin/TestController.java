@@ -22,7 +22,6 @@ public class TestController {
 	private ProductService productService;
 	@Autowired
 	private CategoryService categoryService;
-	
 	@RequestMapping(value="/test/product/list",method=RequestMethod.GET)
 	public ModelAndView selectAll() {
 		List<Product> productList = productService.selectAll();
