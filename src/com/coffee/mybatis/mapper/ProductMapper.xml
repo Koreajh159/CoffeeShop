@@ -29,7 +29,7 @@
 	</select>
 	
 	<!-- 관리자 페이지 상품 상세정보 -->
-	<select id="select" parameterType="int" resultMap="ProductMap">
+	<select id="select" parameterType="Product" resultMap="ProductMap">
 		<include refid="sql_select"/> where product_id = #{product_id}
 	</select>
 	

@@ -40,16 +40,4 @@
 	</servlet>
 	
 	<!-- Platform 상관없이 데이터 교환을 가능하게 하는 웹서비스로 지도 서비스를 제공해주자 그것도 REST하게!! -->
-	<servlet-mapping>
-		<servlet-name>restServlet</servlet-name>
-		<url-pattern>/rest</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>restServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>WEB-INF/rest-context.xml</param-value>
-		</init-param>
-	</servlet>
 </web-app>

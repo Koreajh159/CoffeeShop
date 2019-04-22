@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,43 +48,14 @@ input[type=button]:hover {
 <script>
    $(function() {
       $($("input[type='button']")[0]).click(function() {
-         searchMountain();
+         regist();
+         
       });
       $($("input[type='button']")[1]).click(function() {
-         regist();
+          getList();
       });
    });
 
-   function searchMountain() {
-
-      $.ajax({
-         url : "/admin/mountain/list",
-         type : "get",
-         data : {
-            name : $($("form").find("input[name='name']")).val()
-         },
-         success : function(result) {
-            var json = JSON.parse(result);
-
-            var obj = json[0];
-            if (json.length < 1) {
-               alert("검색 결과가 없습니다");
-            } else if (json.length == 1) {
-               obj = json[0];
-               //alert(obj.detail);
-               setData(obj);
-            } else {
-               var n = prompt(json.length + "건 발견!\n원하시는 산을 번호로 선택하세요[0~"
-                     + (json.length - 1) + "]");
-               obj = json[n];
-               setData(obj);
-
-            }
-
-         }
-
-      });
-   }
 
    //산의 주소와 상세정보 채워넣기
    function setData(obj) {
@@ -97,7 +67,7 @@ input[type=button]:hover {
    function regist() {
       $("form").attr({
          method : "post",
-         action : "/admin/mountain/regist"
+         action : "/admin/members"
       });
       $("form").submit();
    }
@@ -110,7 +80,8 @@ input[type=button]:hover {
    <div class="container">
       <form enctype="multipart/form-data">
          <input type="text" id="fname" name="name" placeholder="산 이름"
-            style="width: 85%"> <input type="button" value="공공데이터 검색">
+            style="width: 85%"> 
+           
 
          <input type="text" id="lname" name="addr" placeholder="주소">
 
@@ -118,17 +89,16 @@ input[type=button]:hover {
             style="height: 200px"></textarea>
 
          <input type="file" name="myFile" /> 
+         
          <input type="text" name="lati" placeholder="위도" > 
          <input type="text" name="longi" placeholder="경도" > 
+         
          <select name="marker">
             <option value="">마커 선택</option>
             <option value="p1.png">마커1</option>
-            <option value="p2.png">마커2</option>
-            <option value="p3.png">마커3</option>
-            <option value="p4.png">마커4</option>
-            <option value="p5.png">마커5</option>
          </select> 
-         <input type="button" value="등록"> <input type="button" value="목록">
+         <input type="button" value="등록">
+          <input type="button" value="목록">
       </form>
    </div>
 
