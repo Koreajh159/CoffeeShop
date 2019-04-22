@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Grade">
+	<!-- select 중복 추출 -->
+	<sql id="sql_select">
+		select grade_id, grade_name from grade
+	</sql>
+
+	<!-- grade 생성 -->
+	<insert id="insert" parameterType="Grade">
+		insert into grade(grade_id, grade_name)
+		values(seq_grade.nextval, #{grade_name})
+	</insert>
+
+	<!-- Member를 구분할 때 사용되는 grade를 추출하기 위한 select 문-->
+	<select id="select" parameterType="int" resultType="Grade">
+		<include refid="sql_select"/> where grade_id = #{grade_id}
+	</select>
+</mapper>

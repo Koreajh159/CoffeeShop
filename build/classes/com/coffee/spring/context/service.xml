@@ -13,12 +13,15 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
 	</context:component-scan>
 
-	<jee:jndi-lookup jndi-name="jdbc/project/oracle" id="dataSource" resource-ref="true"/>
+	<jee:jndi-lookup jndi-name="jdbc/myoracle" id="dataSource" resource-ref="true"/>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 	p:dataSource-ref="dataSource"/>
 	
 	<!-- 여기는 mybatis 설정 즉 database가 구축이 완료가 되면 주석 해제 -->
+	
+	
+ 
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" 
 	p:dataSource-ref="dataSource"
 	p:configLocation="classpath:com/coffee/mybatis/config/mybatis-config.xml"/>
@@ -26,6 +29,6 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
 	</bean>
-
+	 
 	 
 </beans>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Item">
+	<resultMap type="Item" id="ItemMap">
+		<id column="item_id" property="item_id"/>
+		<association column="member_id" property="member" javaType="Member" select="Member.select"></association>
+		<association column="coupon_id" property="coupon" javaType="Coupon" select="Coupon.select"></association>
+	</resultMap>
+</mapper>

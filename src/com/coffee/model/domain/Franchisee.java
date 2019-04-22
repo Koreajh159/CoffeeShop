@@ -6,6 +6,13 @@ public class Franchisee {
 	private String addr;
 	private int lati;
 	private int longi;
+	private int checked;
+	public int getChecked() {
+		return checked;
+	}
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
 	private Member member;
 	public int getFranchisee_id() {
 		return franchisee_id;

@@ -10,6 +10,12 @@ public class Product {
 	public int getProduct_id() {
 		return product_id;
 	}
+	public int getCost() {
+		return cost;
+	}
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
