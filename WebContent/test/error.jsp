@@ -10,5 +10,7 @@
 <%=err.getMessage() %><br>
 이용에 불편을 드려 죄송합니다.<br>
  잠시 후 다시 이용해주세요<br>
+ 
+ 
 </body>
 </html>
