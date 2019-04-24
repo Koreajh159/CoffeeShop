@@ -7,6 +7,7 @@ public class Product {
 	private String filename;
 	private int price;
 	private int cost;
+	private String detail;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -43,4 +44,11 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	
 }

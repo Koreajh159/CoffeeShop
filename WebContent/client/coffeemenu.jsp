@@ -1,37 +1,108 @@
+<%@page import="com.coffee.model.domain.Category"%>
+<%@page import="com.coffee.model.domain.Product"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	List<Product> menuList = (List<Product>)request.getAttribute("menuList");
+	List<Category> categoryList = (List<Category>)request.getAttribute("categoryList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="/inc/css-head.jsp"%>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function getCategory(category_id){
+	if(category_id==0){
+		$.ajax({
+			url:"/client/menu/all",
+			type:"get",
+			success:function(result){
+				renderList(result);
+			}
+		});
+	}else{
+		$.ajax({
+			url:"/client/menu/category_id",
+			type:"get",
+			data: {
+				"category_id" : category_id
+			},
+			success : function(result){
+				renderList(result);
+			}
+		});
+	}
+}
+function renderList(jsonArray){
+	$("#menuList").html("");
+	var str = "";
+	for(var i = 0 ; i < jsonArray.length;i++){
+		var json = jsonArray[i];
+		str+="<div class='col-lg-4'>";
+		str+="<div class='single-menu'>";
+		str+="<div class='col-lg-11 title-div justify-content-between d-flex'>";
+		str+="<h4>"+json.name+"</h4>"
+		str+="<p class='price float-right'>"+json.price+"원	</p>"
+		str+="</div>";
+		str+="<div class='menu-img col-lg-4'>";
+		str+="<img src='/img/"+json.filename+"' width='100p%' height='162px'>";
+		str+="</div>";
+		str+="<div class='menu-content col-lg-7'>";
+		str+="<p class='menu-detail'>";
+		str+=json.detail;
+		str+="</p>";
+		str+="</div>";
+		str+="</div>";
+		str+="</div>";
+	}
+	$("#menuList").append(str);
+}
+</script>
 </head>
 <body>
 <%@ include file="/inc/header.jsp" %>
 <!-- Start menu Area -->
 			<section class="menu-area section-gap" id="coffee">
 				<div class="container">
+					
 					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-10">
-							<div class="title text-center">
-								<h1 class="mb-10">What kind of Coffee we serve for you</h1>
-								<p>Who are in extremely love with eco friendly system.</p>
+						<div class="menu-content pb-60 col-lg-12">
+							<div class="side-category title text-center">
+								<a href="javascript:getCategory(0)" class="side-menu-btn primary-border circle">ALL</a>
+							<%for(int i = 0; i<categoryList.size();i++){ %>
+								<a href="javascript:getCategory(<%=i+1 %>)" class="side-menu-btn primary-border circle"><%= categoryList.get(i).getCategory_name()%></a>
+							<%} %>
 							</div>
 						</div>
 					</div>						
-					<div class="row">
+					<div class="row" id="menuList">
+					
+						<%for(int i = 0 ; i<menuList.size();i++){ %>
+						<%Product product = menuList.get(i); %>
 						<div class="col-lg-4">
 							<div class="single-menu">
-								<div class="title-div justify-content-between d-flex">
-									<h4>Cappuccino</h4>
+								<div class="col-lg-11 title-div justify-content-between d-flex">
+									<h4><%=product.getName() %></h4>
 									<p class="price float-right">
-										$49
+										<%=product.getPrice() %>원
 									</p>
 								</div>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advance.
-								</p>								
+								<div class="menu-img col-lg-4">
+									<img src="/img/<%=product.getFilename()%>" width="100p%" height="162px">
+								</div>
+								
+								<div class="menu-content col-lg-7">
+									<p class="menu-detail">
+										<%=product.getDetail() %>
+									</p>	
+								</div>	
+													
 							</div>
-						</div>															
+						</div>
+						<%} %>
+																					
 					</div>
 				</div>	
 			</section>

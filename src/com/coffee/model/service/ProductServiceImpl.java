@@ -32,6 +32,12 @@ public class ProductServiceImpl implements ProductService{
 	public Product select(int product_id) {
 		return productDAO.select(product_id);
 	}
+	
+	@Override
+	public List selectByCategory(int category_id) {
+		// TODO Auto-generated method stub
+		return productDAO.selectByCategory(category_id);
+	}
 
 	@Override
 	public void update(Product product) throws EditFailException{
@@ -48,5 +54,7 @@ public class ProductServiceImpl implements ProductService{
 			throw new DeleteFailException("삭제 실패");
 		}
 	}
+
+
 
 }

@@ -14,13 +14,13 @@
 	
 	<!-- sql select -->
 	<sql id="sql_select">
-		select product_id, name, filename, price, cost, category_id from product
+		select product_id, name, filename, price, cost, category_id, detail from product
 	</sql>
 	
 	<!-- 관리자 페이지 상품 추가 -->
 	<insert id="insert" parameterType="Product">
-		insert into product(product_id, name, filename, price, cost, category_id)
-		values(seq_product.nextval, #{name},#{filename},#{price},#{cost},#{category.category_id})
+		insert into product(product_id, name, filename, price, cost, category_id, detail)
+		values(seq_product.nextval, #{name},#{filename},#{price},#{cost},#{category.category_id}, #{detail})
 	</insert>
 	
 	<!-- 관리자 페이지 상품 목록 + pointmall 페이지 및 메뉴 페이지에서 불러오기-->
@@ -33,9 +33,13 @@
 		<include refid="sql_select"/> where product_id = #{product_id}
 	</select>
 	
+	<select id="selectByCategory" parameterType="int" resultMap="ProductMap">
+		<include refid="sql_select"/> where category_id=#{category_id}
+	</select>
+	
 	<!-- 관리자 페이지 상품 수정 -->
 	<update id="update" parameterType="Product">
-		update product set name = #{name}, filename = #{filename}, price = #{price}, cost = #{cost}, category_id = #{category.category_id}
+		update product set name = #{name}, filename = #{filename}, price = #{price}, cost = #{cost}, category_id = #{category.category_id}, detail=#{detail}
 		where product_id = #{product_id}
 	</update>
 	

@@ -71,7 +71,7 @@ public class TestController {
 		return "redirect:/test/product/list";
 	}
 	
-	@RequestMapping
+	@RequestMapping(value="/test/product/delete", method=RequestMethod.GET)
 	public String delete(int product_id) {
 		productService.delete(product_id);
 		return "redirect:/test/product/list";
