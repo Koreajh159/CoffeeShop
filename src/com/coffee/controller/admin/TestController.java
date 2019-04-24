@@ -22,6 +22,7 @@ public class TestController {
 	private ProductService productService;
 	@Autowired
 	private CategoryService categoryService;
+	
 	@RequestMapping(value="/test/product/list",method=RequestMethod.GET)
 	public ModelAndView selectAll() {
 		List<Product> productList = productService.selectAll();
@@ -40,7 +41,7 @@ public class TestController {
 	}
 	
 	@RequestMapping(value="/test/product/regist", method=RequestMethod.POST)
-	public String regist(Product product, int category_id) {
+	public String regist(Product product, Integer category_id) {
 		System.out.println("category_id : " + category_id);
 		Category category = new Category();
 		category.setCategory_id(category_id);
