@@ -35,6 +35,12 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return productDAO.select(product_id);
 	}
+	
+	@Override
+	public List selectByCategory(int category_id) {
+		// TODO Auto-generated method stub
+		return productDAO.selectByCategory(category_id);
+	}
 
 	@Override
 	public int update(Product product) {
@@ -47,5 +53,7 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return productDAO.delete(product_id);
 	}
+
+
 
 }

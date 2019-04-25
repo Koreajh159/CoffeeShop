@@ -17,6 +17,7 @@
 	1) DefaultAnnotationHandlerMapping / 단 beannameurlhandlermapping은 default에서 제외된다.
 	2) annotationMethodHandlerAdapter가 등록됨...
 	- json 컨버터를 포함해서 총 7가지 이상의 유용한 컨버터가 등록되어 있다.. -->
+
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter"> 
