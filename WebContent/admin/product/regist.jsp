@@ -189,6 +189,14 @@ input[type=submit]:hover {
         <input type="text" id="cost" name="cost" placeholder="상품 포인트" >
       </div>
     </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Product detail</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="d" name="detail" placeholder="상품 세부사항" >
+      </div>
+    </div>
     
     
     <div class="row">

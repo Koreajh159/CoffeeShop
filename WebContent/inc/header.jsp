@@ -24,7 +24,7 @@
 					<li class="menu-active"><a href="#home">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="/client/menu/getPage">Coffee</a></li>
-					<li><a href="/client/point/all">PointMall</a></li>
+					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li><a href="#blog">Blog</a></li>
 					<li class="menu-has-children"><a href="">Pages</a>
 						<ul>

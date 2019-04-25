@@ -16,7 +16,7 @@
 function getCategory(category_id){
 	if(category_id==0){
 		$.ajax({
-			url:"/client/menu/all",
+			url:"/client/menu/",
 			type:"get",
 			success:function(result){
 				renderList(result);
@@ -24,11 +24,8 @@ function getCategory(category_id){
 		});
 	}else{
 		$.ajax({
-			url:"/client/menu/category_id",
+			url:"/client/menu/"+category_id,
 			type:"get",
-			data: {
-				"category_id" : category_id
-			},
 			success : function(result){
 				renderList(result);
 			}
@@ -38,8 +35,14 @@ function getCategory(category_id){
 function renderList(jsonArray){
 	$("#menuList").html("");
 	var str = "";
+	var currcategory=0;
 	for(var i = 0 ; i < jsonArray.length;i++){
 		var json = jsonArray[i];
+		if(json.category.category_id!=currcategory){
+			str+="<h3 class='col-lg-12 category-index'>"+json.category.category_name+"</h3>";
+			str+="<hr class='col-lg-12'>";
+			currcategory++;
+		}
 		str+="<div class='col-lg-4'>";
 		str+="<div class='single-menu'>";
 		str+="<div class='col-lg-11 title-div justify-content-between d-flex'>";
@@ -79,8 +82,14 @@ function renderList(jsonArray){
 					</div>						
 					<div class="row" id="menuList">
 					
+						<%int currcategory=0; %>
 						<%for(int i = 0 ; i<menuList.size();i++){ %>
 						<%Product product = menuList.get(i); %>
+						<%if(product.getCategory().getCategory_id()!=currcategory){ %>
+							<h3 class="col-lg-12 category-index"><%=product.getCategory().getCategory_name() %></h3>
+							<hr class="col-lg-12">
+							<%currcategory++; %>
+						<%} %>
 						<div class="col-lg-4">
 							<div class="single-menu">
 								<div class="col-lg-11 title-div justify-content-between d-flex">
