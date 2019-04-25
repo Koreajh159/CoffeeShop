@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AnnotationAdminSessionAspect {
    // xml이 없기 때문에 위치(pointCut), 때(advice)를 자바 코드에서 지정해야 한다.
 
-   @Pointcut("execution(public * com.coffee.controller..*(..))")
+   @Pointcut("execution(public * com.coffee.controller.admin..*(..))")
    public void checkMember() {} // 아이디 역할
    
    //아래의 배열에 들어있는 요청 URL에 대해서는 세션 체크를 피해가자!!
