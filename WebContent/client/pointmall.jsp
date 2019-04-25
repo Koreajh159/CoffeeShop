@@ -122,7 +122,7 @@ function addCart(){
 										<div class="qnt_btn" onClick="sum_qnt()"><span>+</span></div>
 									</div>
 									<div class="icon-div">
-										<a href="javascript:addCart()"><img src="/img/cart.png" width="20%" align="right"/></a>
+										<a href="javascript:addCart()"><img src="/img/cart.png" width="25%" align="right"/></a>
 									</div>
 								</div>	
 							</div>
