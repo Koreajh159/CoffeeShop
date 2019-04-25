@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/top_navi.css">
 <style>
 body {
    font-family: Arial, Helvetica, sans-serif;
@@ -25,16 +26,20 @@ input[type=text], select, textarea {
 }
 
 input[type=button] {
-   background-color: #4CAF50;
-   color: white;
-   padding: 12px 20px;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
+ background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 12px;
+  font-size: 14px;
+  width: 50%;
+  
 }
 
-input[type=button]:hover {
-   background-color: #45a049;
+input[type=button]:hover{
+background-color: #777;
 }
 
 .container {
@@ -48,58 +53,102 @@ input[type=button]:hover {
 <script>
    $(function() {
       $($("input[type='button']")[0]).click(function() {
-         regist();
-         
+          getList();         
       });
       $($("input[type='button']")[1]).click(function() {
-          getList();
+         regist();
       });
    });
 
 
-   //산의 주소와 상세정보 채워넣기
-   function setData(obj) {
-      $($("form").find("input[name='addr']")).val(obj.addr);
-      $($("form").find("textarea[name='detail']")).text(obj.detail);
-
-   }
 
    function regist() {
       $("form").attr({
          method : "post",
-         action : "/admin/members"
+         action : "/admin/member/regist"
       });
       $("form").submit();
    }
+
+   function getList(){
+	   location.href="/admin/member/list";
+	}
 </script>
 </head>
 <body>
-
-   <h3>상품 등록</h3>
+<%@include file="/inc/top_navi.jsp" %>
+   <h3>멤버 등록</h3>
 
    <div class="container">
-      <form enctype="multipart/form-data">
-         <input type="text" id="fname" name="name" placeholder="산 이름"
-            style="width: 85%"> 
-           
+      <form >
 
-         <input type="text" id="lname" name="addr" placeholder="주소">
-
-         <textarea id="subject" name="detail" placeholder="상세정보"
-            style="height: 200px"></textarea>
-
-         <input type="file" name="myFile" /> 
-         
-         <input type="text" name="lati" placeholder="위도" > 
-         <input type="text" name="longi" placeholder="경도" > 
-         
-         <select name="marker">
-            <option value="">마커 선택</option>
-            <option value="p1.png">마커1</option>
-         </select> 
-         <input type="button" value="등록">
-          <input type="button" value="목록">
-      </form>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">아이디</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="id" > 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">비밀번호</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="pass"> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">전화번호</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="phone"> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">이름</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="name" > 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">나이</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="age"> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">포인트</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="point"> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">회원등급</label>
+      </div>
+      <div class="col-75">
+			<input type="text" name="grade_id" > 
+			
+      </div>
+    </div>
+    
+   
+    <div class="row"><hr></div>
+    
+    <div class="row">
+      <input type="button" value="목록">
+      <input type="button" value="등록">
+    
+    </div>
+  </form>
    </div>
 
 </body>

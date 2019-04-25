@@ -66,7 +66,7 @@ body, html {
 	<button class="tablink"
 		onclick="openPage('About', this, 'orange','white')">About</button>
 	<div id="Member" class="tabcontent">
-		<%@ include file="/admin/member/list.jsp"%>
+		
 	</div>
 	<div id="Product" class="tabcontent">
 		<%@ include file="/admin/product/list.jsp"%>
