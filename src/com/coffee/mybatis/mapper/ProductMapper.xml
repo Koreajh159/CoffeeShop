@@ -14,7 +14,7 @@
 	
 	<!-- sql select -->
 	<sql id="sql_select">
-		select product_id, name, filename, price, cost, category_id, detail from product
+		select product_id, name, filename, price, cost, category_id, detail, isOnPoint from product
 	</sql>
 	
 	<!-- 관리자 페이지 상품 추가 -->
@@ -25,18 +25,30 @@
 	
 	<!-- 관리자 페이지 상품 목록 + pointmall 페이지 및 메뉴 페이지에서 불러오기-->
 	<select id="selectAll" resultMap="ProductMap">
-		<include refid="sql_select"/> order by product_id desc
+		<include refid="sql_select"/> order by category_id
 	</select>
 	
-	<!-- 관리자 페이지 상품 상세정보 -->
+	<!-- 페이지 상품 상세정보 -->
 	<select id="select" parameterType="Product" resultMap="ProductMap">
 		<include refid="sql_select"/> where product_id = #{product_id}
 	</select>
 	
+	
+	<!-- 카테고리별 메뉴 출력 -->
 	<select id="selectByCategory" parameterType="int" resultMap="ProductMap">
 		<include refid="sql_select"/> where category_id=#{category_id}
 	</select>
 	
+	<!--포인트몰 페이지 상품 출력  -->
+	<select id="ptSelect" resultMap="ProductMap">
+		<include refid="sql_select"/> where isOnPoint=1 order by category_id
+	</select>
+	
+	<!-- 포인트몰 페이지 카테고리별 상품 출력 -->
+	<select id="ptSelectByCat" parameterType="int" resultMap="ProductMap">
+		<include refid="sql_select"/> where isOnPoint=1 and category_id=#{category_id}
+	</select>
+			
 	<!-- 관리자 페이지 상품 수정 -->
 	<update id="update" parameterType="Product">
 		update product set name = #{name}, filename = #{filename}, price = #{price}, cost = #{cost}, category_id = #{category.category_id}, detail=#{detail}
