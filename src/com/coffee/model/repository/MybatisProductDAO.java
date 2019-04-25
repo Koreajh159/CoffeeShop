@@ -49,4 +49,16 @@ public class MybatisProductDAO implements ProductDAO {
 		return sessionTemplate.selectList("Product.selectByCategory", category_id);
 	}
 
+	@Override
+	public List selectPtAll() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("Product.ptSelect");
+	}
+
+	@Override
+	public List selectPtByCategory(int category_id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("Product.ptSelectByCat", category_id);
+	}
+
 }

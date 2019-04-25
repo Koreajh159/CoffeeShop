@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,7 @@ public class ClientController {
 	@Autowired
 	CategoryService cat_service;
 	@RequestMapping(value="/client/menu/getPage", method=RequestMethod.GET)
-	public ModelAndView getPage() {
+	public ModelAndView getMenuPage() {
 		List menuList = pro_service.selectAll();
 		List categoryList=cat_service.selectAll();
 		ModelAndView mav = new ModelAndView("/client/coffeemenu");
@@ -27,19 +28,13 @@ public class ClientController {
 		mav.addObject("categoryList", categoryList);
 		return mav;
 	}
-	@RequestMapping(value="/client/menu/all", method=RequestMethod.GET)
-	@ResponseBody
-	public List getAllMenu() {
-		List menuList = pro_service.selectAll();
-		return menuList;
+	@RequestMapping(value="/client/point/getPage", method=RequestMethod.GET)
+	public ModelAndView getPointPage() {
+		List ptMenuList=pro_service.selectPtAll();
+		List categoryList=cat_service.selectAll();
+		ModelAndView mav = new ModelAndView("/client/pointmall");
+		mav.addObject("ptMenuList", ptMenuList);
+		mav.addObject("categoryList", categoryList);
+		return mav;
 	}
-	
-	@RequestMapping(value="/client/menu/category_id", method=RequestMethod.GET)
-	@ResponseBody
-	public List getCategoryMenu(int category_id) {
-		System.out.println(category_id);
-		List menuList = pro_service.selectByCategory(category_id);
-		return menuList;
-	}
-
 }
