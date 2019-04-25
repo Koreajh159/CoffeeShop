@@ -16,6 +16,7 @@
 	<sql id="sql_select">
 		select product_id, name, filename, price, cost, category_id, detail, isOnPoint from product
 	</sql>
+
 	
 	<!-- 관리자 페이지 상품 추가 -->
 	<insert id="insert" parameterType="Product">

@@ -12,7 +12,7 @@
 	<!-- category 추가 생성 -->
 	<insert id="insert" parameterType="Category">
 		insert into category(category_id, category_name)
-		values(seq_category_id,#{category_name})
+		values(seq_category.nextval,#{category_name})
 	</insert>
 
 
@@ -21,7 +21,7 @@
 		<include refid="sql_select" /> where category_id = #{category_id}
 	</select>
 
-	<select id="selectAll"	resultType="Category">
+	<select id="selectAll" resultType="Category">
 		<include refid="sql_select"/>
 	</select>
 </mapper>

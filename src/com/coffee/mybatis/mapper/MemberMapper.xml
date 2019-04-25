@@ -27,7 +27,7 @@
 	
 	<!-- Login select 문 -->
 	<select id="login" parameterType="Member" resultMap="MemberMap">
-		<include refid="sql_select"/> where id = #{id} and pass = #{pass}
+		<include refid="sql_select"/> where id = #{id} and pass = #{pass} and grade_id=3
 	</select>
 	
 	<!-- Find ID select 문 이름, 핸드폰 번호로 찾을 수 있음 이건 아이디만 보면 되기 때문에 sql문 사용 안함-->
@@ -37,7 +37,7 @@
 	
 	<!-- Find Password select 이름, 핸드폰번호, 아이디를 통해 찾음, 비밀번호만 보면 되기 때문에 sql문 사용 안함 -->
 	<select id="findPass" parameterType="Member" resultMap="MemberMap">
-	 	select pass from member where name = #{name} and phone = #{phone} and id = #{id}
+	 	select pass from member where name = #{name} and phone = #{phone} and id = #{id} 
 	</select>
 	
 	<!-- 관리자 페이지에서 회원 목록을 불러오는 selectAll -->
@@ -52,7 +52,7 @@
 	
 	<!-- 상세정보에서 회원정보 수정을 위한 update -->
 	<update id="update" parameterType="Member">
-		update member set id = #{id}, pass = #{pass}, phone = #{phone}, age = #{age}, point = #{point}, grade_id = #{grade.grade_id}
+		update member set id = #{id}, pass = #{pass}, phone = #{phone}, name=#{name}, age = #{age}, point = #{point}, grade_id = #{grade.grade_id}
 		where member_id = #{member_id}
 	</update>
 	

@@ -1,15 +1,16 @@
+<%@page import="com.coffee.model.domain.Product"%>
 <%@page import="com.coffee.model.domain.Category"%>
 <%@page import="java.util.List"%>
-<%@page import="com.coffee.model.domain.Product"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
-Product product=(Product)request.getAttribute("product");
-List<Category> categoryList = (List)request.getAttribute("categoryList");
-Category cate = new Category();
+   Product product=(Product)request.getAttribute("product");
+   List<Category> categoryList = (List)request.getAttribute("categoryList");
+   Category cate = new Category();
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css" />
 <style>
@@ -44,20 +45,6 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-.button {
-  background-color: #555;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 14px;
-  width: 150px;
-}
-.button:hover {
-  background-color: #777;
-}
-
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -74,12 +61,6 @@ input[type=submit]:hover {
   float: left;
   width: 75%;
   margin-top: 6px;
-}
-
-.col-bt{
-   float:right;
-   width:450px;
-   margin-top: 20px;
 }
 
 /* Clear floats after the columns */
@@ -104,28 +85,28 @@ input[type=submit]:hover {
 
    var sel_file;
 
-   $(document).ready(function() {
+   
+
+   $(document).ready(function(){
       $("#input_img").on("change", handleImgFileSelect);
    });
 
    $(function() {
+      
       $($("input[type='button']")[0]).click(function() {
-         edit();
+         regist();
       });
       $($("input[type='button']")[1]).click(function() {
-         del();
-      });
-      $($("input[type='button']")[2]).click(function() {
-         location.href="/admin/product/list";
+         getList();
       });
    });
 
-   function handleImgFileSelect(e) {
+   function handleImgFileSelect(e){
       var files = e.target.files;
       var filesArr = Array.prototype.slice.call(files);
 
-      filesArr.forEach(function(f) {
-         if (!f.type.match("image.*")) {
+      filesArr.forEach(function(f){
+         if(!f.type.match("image.*")){
             alert("이미지만 가능합니다");
             return;
          }
@@ -133,44 +114,33 @@ input[type=submit]:hover {
          sel_file = f;
 
          var reader = new FileReader();
-         reader.onload = function(e) {
+         reader.onload = function(e){
             $("#img").attr("src", e.target.result);
          }
+         
          reader.readAsDataURL(f);
       });
    }
 
-   function edit() {
-      if (!confirm("수정하시겠어요?")) {
+   function regist() {
+      if (!confirm("등록하시겠어요?")) {
          return;
       }
-      $("form").attr({
-
-         "method" : "post",
-         "action" : "/admin/product/edit"
+       form1.action="/admin/product/regist";
+         form1.method="post";
+         form1.submit();
+      /* $("form").attr({
+         method : "post",
+         action : "/admin/product/regist"
       });
-      $("form").submit();
+      $("form").submit(); */
 
    }
 
-   function del() {
-      if (!confirm("삭제하시겠어요?")) {
-         return;
-      }
-
-      $("form").attr({
-
-         "method" : "post",
-         "action" : "/admin/product/delete"
-      });
-      $("form").submit();
-      
-
-   }
-
+   //비동기 목록 요청
    function getList() {
       $.ajax({
-         url : "/admin/products",
+         url : "/admin/product/list",
          type : "get",
          success : function(result) {
             // renderList(JSON.parse(result));
@@ -180,27 +150,27 @@ input[type=submit]:hover {
 
          }
       });
-      location.href = "/admin/product/list.jsp";
-   }
-</script>
 
+      location.href = "/admin/product/list.jsp";
+
+   }
+
+</script>
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
 
-<h2>Product Detail</h2>
+<h2>Product Regist</h2>
 
 
 <div class="container">
   <form name="form1" enctype="multipart/form-data">
-  <input type="hidden" id="product_id" name="product_id" value="<%=product.getProduct_id() %>">
-  <input type="hidden" id="category_id" name="category_id" value="<%=product.getCategory().getCategory_id() %>">
     <div class="row">
       <div class="col-25">
         <label for="fname">Product Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="name" name="name" placeholder="상품 이름" value="<%=product.getName() %>">
+        <input type="text" id="name" name="name" placeholder="상품 이름" >
       </div>
     </div>
      <div class="row">
@@ -208,7 +178,7 @@ input[type=submit]:hover {
         <label for="fname">Product Price</label>
       </div>
       <div class="col-75">
-        <input type="text" id="price" name="price" placeholder="상품 가격" value="<%=product.getPrice() %>">
+        <input type="text" id="price" name="price" placeholder="상품 가격" >
       </div>
     </div>
     <div class="row">
@@ -216,7 +186,7 @@ input[type=submit]:hover {
         <label for="fname">Product Cost</label>
       </div>
       <div class="col-75">
-        <input type="text" id="cost" name="cost" placeholder="상품 포인트" value="<%=product.getCost() %>">
+        <input type="text" id="cost" name="cost" placeholder="상품 포인트" >
       </div>
     </div>
     
@@ -229,7 +199,7 @@ input[type=submit]:hover {
         <select id="category_id" name="category_id">
       <%for(int i = 0; i < categoryList.size(); i++) {%>
       <%Category category = categoryList.get(i); %>
-         <option value=<%=category.getCategory_id()%>  <%if(product.getCategory().getCategory_id()==category.getCategory_id()){%> selected="selected" <%}%>><%=category.getCategory_name() %></option>
+         <option value=<%=category.getCategory_id()%>><%=category.getCategory_name() %></option>
       <%} %>
         </select>
       </div>
@@ -238,23 +208,20 @@ input[type=submit]:hover {
     <form name ="file_form" action="UploadService">
       <div class="col-25">
         <label for="image">Product Image</label>
-        <input type="file" id="input_img" name="myFile" value="사진 찾기" src="/data/<%=product.getFilename() %>">
+        <input type="file" id="input_img" name="myFile" value="사진 찾기">
       </div>
       
       <div class="col-75">
-      
-         <img class="sticky" width="150px" height="200px" id="img" src="/data/<%=product.getFilename() %>">
-         <input type="text" id="filename" name="filename" value=<%=product.getFilename() %> >
+         <img class="sticky" width="150px" height="200px" id="img">
       </div>
       </form>
-    <div class="col-bt">
-      <input class="button" type="button" value="수정"><!--
-      --><input class="button" type="button" value="삭제"><!--
-      --><input class="button" type="button" value="목록">
-      
     </div>
-    </div>
-  </form>
+         <div class="row">
+            <input type="button" value="등록"> 
+            <input type="button" value="목록">
+
+         </div>
+      </form>
 </div>
 
 </body>

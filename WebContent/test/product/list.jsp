@@ -5,7 +5,7 @@
 <%! Pager pager = new Pager(); %>
 <%
 	List<Product> productList = (List)request.getAttribute("productList");
-	pager.init(request, productList, 10, 10);
+
 %>
 <!DOCTYPE html>
 <html>

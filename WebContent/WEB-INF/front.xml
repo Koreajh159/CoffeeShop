@@ -37,4 +37,17 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/"
 	p:suffix=".jsp"/>
+	
+	   <!-- 파일 업로드를 위한 빈 설정 -->
+   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   <property name="maxUploadSize" value="10240000"></property>
+   </bean>
+   
+	
+	<aop:aspectj-autoproxy />
+    
+    <!-- Annotation기반 Aspect빈 등록 -->
+    <bean id="annotationAdminSessionAspect" class="com.coffee.aop.AnnotationAdminSessionAspect" />
+    
+    
 </beans>
