@@ -13,13 +13,10 @@
 	</resultMap>
 	
 	<!-- sql select -->
-<<<<<<< HEAD
-	<sql id="sql_select">select product_id, name, filename, price, cost, category_id from product</sql>
-=======
 	<sql id="sql_select">
 		select product_id, name, filename, price, cost, category_id, detail from product
 	</sql>
->>>>>>> 2dea7c34e2e21c78ef6119056daf24aec9602343
+
 	
 	<!-- 관리자 페이지 상품 추가 -->
 	<insert id="insert" parameterType="Product">

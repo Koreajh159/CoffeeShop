@@ -42,14 +42,11 @@ public class MybatisProductDAO implements ProductDAO {
 		// TODO Auto-generated method stub
 		return sessionTemplate.delete("Product.delete", product_id);
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	public List selectByCategory(int category_id) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("Product.selectByCategory", category_id);
+		return sessionTemplate.selectList("Product.selectByCategory", category_id);
 	}
 
->>>>>>> 2dea7c34e2e21c78ef6119056daf24aec9602343
 }
