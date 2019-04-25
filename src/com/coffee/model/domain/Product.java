@@ -1,10 +1,13 @@
 package com.coffee.model.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 	private int product_id;
 	private Category category;
 	private String name;
 	private String filename;
+	private MultipartFile myFile;
 	private int price;
 	private int cost;
 	private String detail;
