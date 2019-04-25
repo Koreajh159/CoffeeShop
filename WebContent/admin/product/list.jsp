@@ -2,12 +2,12 @@
 <%@page import="java.util.List"%>
 <%@page import="com.coffee.model.domain.Product"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%!Pager pager = new Pager(); %>
 <%
-   Pager pager = new Pager();
+   
    List<Product> productList = (List)request.getAttribute("productList");
    pager.init(request, productList.size());
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +25,6 @@
   text-align: left;
   padding: 16px;
   color:black;
-}
-
-.search{
-	padding: 14px 16px;
-  font-size: 14px;
 }
 
 .button {
@@ -112,10 +107,10 @@
         </td>
    </tr>
   <tr class="product_tr">
-     <td colspan="5" class="product_td" style="text-align:right">
-        <input type="text"   name="name" class="search" placeholder="상품 이름 검색"> 
-        <input class ="button" type="button" value="검색">
+     <td colspan="4" class="product_td">
         <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">
+        <input type="text"   name="name"          placeholder="상품 이름 검색"> 
+        <input class ="button" type="button" value="검색">
      </td>
   </tr>
 </table>
