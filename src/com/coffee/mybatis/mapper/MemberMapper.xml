@@ -61,11 +61,4 @@
 		delete from member where member_id = #{member_id}
 	</delete>
 	
-	<update id="changepass" parameterType="Member">
-		update member set pass = #{pass} where id = #{id} and name = #{name} and phone = #{phone}
-	</update>
-	
-	<select id="checkinfo" parameterType="Member" resultMap="MemberMap">
-		select id from member where id = #{id}
-	</select>
 </mapper>

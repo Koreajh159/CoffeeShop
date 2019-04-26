@@ -14,6 +14,5 @@ public interface MemberDAO {
 	public Member logIn(Member member);
 	public Member findId(Member member);
 	public Member findPass(Member member);
-	public Member checkInfo(Member member);
-	public int changePass(Member member);
+	public boolean checkInfo(Member member);
 }
