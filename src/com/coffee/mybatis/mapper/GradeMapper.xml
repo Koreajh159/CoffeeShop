@@ -18,4 +18,8 @@
 	<select id="select" parameterType="int" resultType="Grade">
 		<include refid="sql_select"/> where grade_id = #{grade_id}
 	</select>
+	
+	<select id="selectAll" resultType="Grade">
+		<include refid="sql_select"/> where grade_id = 1 or grade_id = 2 order by grade_id asc
+	</select>
 </mapper>

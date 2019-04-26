@@ -1,5 +1,7 @@
 package com.coffee.model.service;
 
-public interface GradeService {
+import java.util.List;
 
+public interface GradeService {
+	public List selectAll();
 }

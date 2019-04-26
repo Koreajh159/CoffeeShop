@@ -62,25 +62,31 @@ public class MemberServiceImpl implements MemberService{
    public Member logIn(Member member) {
       return memberDAO.logIn(member);
    }
-
    @Override
-   public Member findId(Member member) {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	public Member findId(Member member) {
+		// TODO Auto-generated method stub
+		return memberDAO.findId(member);
+	}
 
-   @Override
-   public Member findPass(Member member) {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	@Override
+	public Member findPass(Member member) {
+		// TODO Auto-generated method stub
+		return memberDAO.findPass(member);
+	}
 
-   @Override
-   public boolean checkInfo(Member member) {
-      // TODO Auto-generated method stub
-      return false;
-   }
+	@Override
+	public Member checkInfo(Member member) {
+		return memberDAO.checkInfo(member);
+	}
 
-
-   
+	@Override
+	public void changePass(Member member) throws EditFailException{
+		// TODO Auto-generated method stub
+		System.out.println("service까지옴...");
+		int result =  memberDAO.changePass(member);
+		if(result == 0) {
+			throw new EditFailException("비밀번호 변경 실패...");
+		}
+	}
+ 
 }

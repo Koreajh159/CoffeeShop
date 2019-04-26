@@ -1,5 +1,7 @@
 package com.coffee.model.repository;
 
-public interface GradeDAO {
+import java.util.List;
 
+public interface GradeDAO {
+	public List selectAll();
 }
