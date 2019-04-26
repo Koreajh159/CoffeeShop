@@ -8,4 +8,7 @@
 		<association column="member_id" property="member" javaType="Member" select="Member.select"></association>
 		<association column="coupon_id" property="coupon" javaType="Coupon" select="Coupon.select"></association>
 	</resultMap>
+	<insert id="addCart" parameterType="Item">
+		insert into item(item_id, member_id, coupon_id) values(seq_item.nextval, #{member.member_id}, #{coupon.coupon_id})
+	</insert>
 </mapper>
