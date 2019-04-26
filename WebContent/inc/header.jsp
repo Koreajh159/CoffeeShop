@@ -4,11 +4,9 @@
 		<div class="container">
 			<div class="row justify-content-end">
 				<div class="col-lg-8 col-sm-4 col-8 header-top-right no-padding">
-					<ul>
-						<li>Mon-Fri: 8am to 2pm</li>
-						<li>Sat-Sun: 11am to 4pm</li>
-						<li><a href="tel:(012) 6985 236 7512">(012) 6985 236 7512</a>
-						</li>
+					<ul>					
+						<li><a href="/login.jsp">Login</li>
+						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
 				</div>
 			</div>
