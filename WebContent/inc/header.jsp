@@ -1,21 +1,21 @@
 <%@page import="com.coffee.model.domain.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	Member member = (Member)session.getAttribute("client");
+	Member client = (Member)session.getAttribute("client");
 %>
 <header id="header" id="home">
 	<div class="header-top">
 		<div class="container">
 			<div class="row justify-content-end">
 				<div class="col-lg-8 col-sm-4 col-8 header-top-right no-padding">
-					<%if(member == null) {%>
+					<%if(client == null) {%>
 					<ul>					
 						<li><a href="/client/member/login.jsp">Login</li>
 						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
 					<%}else{ %>
 						<ul>					
-							<li><%=member.getId()%>님 반갑습니다.</li>
+							<li><%=client.getId()%>님 반갑습니다.</li>
 							<li><a href="javascript:logout()">Logout</a></li>
 						</ul>
 					<%} %>

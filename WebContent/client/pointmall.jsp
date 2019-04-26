@@ -51,7 +51,7 @@ function renderList(jsonArray){
 		str+="<p class='price float-right'>"+json.cost+" P	</p>"
 		str+="</div>";
 		str+="<div class='menu-img col-lg-4'>";
-		str+="<img src='/img/"+json.filename+"' width='100p%' height='162px'>";
+		str+="<img src='/data/"+json.filename+"' width='100p%' height='162px'>";
 		str+="</div>";
 		str+="<div class='menu-content col-lg-7'>";
 		str+="<p class='menu-detail'>";
@@ -79,10 +79,7 @@ function addCoupon(ea, result){
 		type:"post",
 		data:{
 			"product_id":result.product_id,
-			"name":result.name,
-			"filename":result.filename,
-			"category_id":result.category_id,
-			
+			"ea":ea
 		},
 		success:function(result){
 		}
@@ -124,7 +121,7 @@ function addCoupon(ea, result){
 									</p>
 								</div>
 								<div class="menu-img col-lg-5" align="left">
-									<img src="/img/<%=product.getFilename()%>" width="100%" height="162px">
+									<img src="/data/<%=product.getFilename()%>" width="100%" height="162px">
 								</div>
 								
 								<div class="menu-content">

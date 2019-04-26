@@ -50,7 +50,7 @@ function renderList(jsonArray){
 		str+="<p class='price float-right'>"+json.price+"원	</p>"
 		str+="</div>";
 		str+="<div class='menu-img col-lg-4'>";
-		str+="<img src='/img/"+json.filename+"' width='100p%' height='162px'>";
+		str+="<img src='/data/"+json.filename+"' width='100p%' height='162px'>";
 		str+="</div>";
 		str+="<div class='menu-content col-lg-7'>";
 		str+="<p class='menu-detail'>";
@@ -99,7 +99,7 @@ function renderList(jsonArray){
 									</p>
 								</div>
 								<div class="menu-img col-lg-4">
-									<img src="/img/<%=product.getFilename()%>" width="100p%" height="162px">
+									<img src="/data/<%=product.getFilename()%>" width="100p%" height="162px">
 								</div>
 								
 								<div class="menu-content col-lg-7">
