@@ -12,6 +12,7 @@
 <%@ include file="/inc/css-head.jsp"%>
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
 function getCategory(category_id){
 	if(category_id==0){
@@ -62,14 +63,30 @@ function renderList(jsonArray){
 	}
 	$("#menuList").append(str);
 }
-function sub_qnt(){
-	
+function getProduct(i, product_id){
+	var ea = $($("span[name='ea']")[i]).text();
+	$.ajax({
+		url:"/client/point/getProduct/"+product_id,
+		type:"get",
+		success:function(result){
+			addCoupon(ea, result);
+		}
+	});
 }
-function sum_qnt(){
-	
-}
-function addCart(){
-	
+function addCoupon(ea, result){
+	$.ajax({
+		url:"/client/coupon/add",
+		type:"post",
+		data:{
+			"product_id":result.product_id,
+			"name":result.name,
+			"filename":result.filename,
+			"category_id":result.category_id,
+			
+		},
+		success:function(result){
+		}
+	});
 }
 </script>
 </head>
@@ -115,14 +132,16 @@ function addCart(){
 										<%=product.getDetail() %>
 									</p>
 								</div>
-								<div class="product">	
-									<div class="product_quantity">
-										<div class="qnt_btn" onClick="sub_qnt()"><span>-</span></div>
-										<span class="product_num" id="product_qnt">1</span>
-										<div class="qnt_btn" onClick="sum_qnt()"><span>+</span></div>
+								<div class="bottom-line">
+									<div class="product">	
+										<div class="product_quantity">
+											<div class="qnt_btn sub_qnt"><span>-</span></div>
+											<span class="product_num" name="ea">1</span>
+											<div class="qnt_btn sum_qnt"><span>+</span></div>
+										</div>
 									</div>
 									<div class="icon-div">
-										<a href="javascript:addCart()"><img src="/img/cart.png" width="25%" align="right"/></a>
+										<a href="javascript:addCoupon(<%=i%>, <%=product.getProduct_id()%>)"><img src="/img/cart.png" width="25%" align="right"/></a>
 									</div>
 								</div>	
 							</div>
@@ -133,5 +152,6 @@ function addCart(){
 				</div>	
 			</section>
 			<!-- End menu Area -->
+<script src="${pageContext.request.contextPath}/js/qnt.js"></script>
 </body>
 </html>
