@@ -1,13 +1,24 @@
+<%@page import="com.coffee.model.domain.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	Member member = (Member)session.getAttribute("client");
+%>
 <header id="header" id="home">
 	<div class="header-top">
 		<div class="container">
 			<div class="row justify-content-end">
 				<div class="col-lg-8 col-sm-4 col-8 header-top-right no-padding">
+					<%if(member == null) {%>
 					<ul>					
-						<li><a href="/login.jsp">Login</li>
+						<li><a href="/client/member/login.jsp">Login</li>
 						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
+					<%}else{ %>
+						<ul>					
+							<li><%=member.getId()%>님 반갑습니다.</li>
+							<li><a href="javascript:logout()">Logout</a></li>
+						</ul>
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -35,7 +46,13 @@
 		</div>
 	</div>
 </header>
-
+<script>
+	function logout(){
+		if(confirm("로그아웃 하시겠습니까?")){
+			location.href="/ctest/member/logout";
+		}
+	}
+</script>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!-- #header -->
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-2.2.4.min.js"></script>

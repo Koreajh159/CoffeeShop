@@ -73,7 +73,6 @@ public class MybatisMemberDAO implements MemberDAO {
 		// TODO Auto-generated method stub
 		System.out.println("dao±îÁö ¿È..");
 		return sessionTemplate.update("Member.changepass", member);
-	
 	}
 
 }
