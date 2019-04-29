@@ -16,12 +16,13 @@ public class ClientCouponController {
 	private CouponService couponService;
 	
 	@RequestMapping(value="/client/coupon/add", method=RequestMethod.POST)
-	public void addNewCoupon(int product_id, int ea) {
+	public Coupon addNewCoupon(int product_id, int ea) {
 		Product product = new Product();
 		product.setProduct_id(product_id);
 		Coupon coupon = new Coupon();
 		coupon.setProduct(product);
 		coupon.setEa(ea);
-		couponService.intsert(coupon);
+		couponService.insert(coupon);
+		return coupon;
 	}
 }

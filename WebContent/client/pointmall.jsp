@@ -42,7 +42,7 @@ function renderList(jsonArray){
 		if(json.category.category_id!=currcategory){
 			str+="<h3 class='col-lg-12 category-index'>"+json.category.category_name+"</h3>";
 			str+="<hr class='col-lg-12'>";
-			currcategory++;
+			currcategory=json.category.category_id;
 		}
 		str+="<div class='col-lg-4'>";
 		str+="<div class='single-menu'>";
@@ -58,30 +58,36 @@ function renderList(jsonArray){
 		str+=json.detail;
 		str+="</p>";
 		str+="</div>";
+		str+="<div class='bottom-line'>";
+		str+="<div class='product'>";
+		str+="<div class='product_quantity'>";
+		str+="<div class='qnt_btn sub_qnt'><span>-</span></div>";
+		str+="<span class='product_num' name='ea'>1</span>";
+		str+="<div class='qnt_btn sum_qnt'><span>+</span></div>";
+		str+="</div>";
+		str+="</div>";
+		str+="<div class='icon-div'>";
+		str+="<a href='javascript:addCoupon("+i+", "+json.product_id+")'><img src='/img/cart.png' width='25%' align='right'/></a>";
+		str+="</div>";
+		str+="</div>";
 		str+="</div>";
 		str+="</div>";
 	}
 	$("#menuList").append(str);
+	initQty();
 }
-function getProduct(i, product_id){
+function addCoupon(i, product_id){
+	console.log(product_id);
 	var ea = $($("span[name='ea']")[i]).text();
-	$.ajax({
-		url:"/client/point/getProduct/"+product_id,
-		type:"get",
-		success:function(result){
-			addCoupon(ea, result);
-		}
-	});
-}
-function addCoupon(ea, result){
 	$.ajax({
 		url:"/client/coupon/add",
 		type:"post",
 		data:{
-			"product_id":result.product_id,
+			"product_id":product_id,
 			"ea":ea
 		},
 		success:function(result){
+			addItem(result);
 		}
 	});
 }
@@ -110,7 +116,7 @@ function addCoupon(ea, result){
 						<%if(product.getCategory().getCategory_id()!=currcategory){ %>
 							<h3 class="col-lg-12 category-index"><%=product.getCategory().getCategory_name() %></h3>
 							<hr class="col-lg-12">
-							<%currcategory++; %>
+							<%currcategory=product.getCategory().getCategory_id(); %>
 						<%} %>
 						<div class="col-lg-4">
 							<div class="single-menu">

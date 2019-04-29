@@ -17,6 +17,7 @@
 						<ul>					
 							<li><%=client.getId()%>님 반갑습니다.</li>
 							<li><a href="javascript:logout()">Logout</a></li>
+							<li><a href="/client/"><img src="/img/cart2.png"/ width="30px"></a></li>
 						</ul>
 					<%} %>
 				</div>
