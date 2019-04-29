@@ -33,8 +33,8 @@
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="#home">Home</a></li>
 					<li><a href="#about">About</a></li>
-					<li><a href="#coffee">Coffee</a></li>
-					<li><a href="#review">Review</a></li>
+					<li><a href="/client/menu/getPage">CoffeeMenu</a></li>
+					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li class="menu-has-children"><a href="">Franchisee</a>
 						<ul>
 							<li><a href="/client/franchisee/goRegist">Regist</a></li>
