@@ -87,7 +87,6 @@ function addCoupon(i, product_id){
 			"ea":ea
 		},
 		success:function(result){
-			addItem(result);
 		}
 	});
 }
