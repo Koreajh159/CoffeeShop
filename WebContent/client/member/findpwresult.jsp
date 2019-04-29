@@ -89,7 +89,7 @@
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a id="bt-change" class="genric-btn primary-border circle">Change</a>
-				<a href="/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
+				<a href="/client/member/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
 			</div>
 		</div>
 </body>

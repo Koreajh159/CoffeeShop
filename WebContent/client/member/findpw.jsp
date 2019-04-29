@@ -1,4 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	String id = "";
+	id = request.getParameter("id");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +33,12 @@
 <script>
 	$(function(){
 		$("#bt-find").click(function(){
-			findID();
+			findpw();
 		});
 	})
-	function findID(){
+	function findpw(){
 		$("form").attr({
-			"action" : "/ctest/member/findid",
+			"action" : "/ctest/member/findpw",
 			"method" : "post"
 		});
 		
@@ -46,13 +50,22 @@
 <body>
 	<section class="menu-area section-gap" id="coffee">
 		<div class="section-top-border">
-		<div class="row" style="flex: 0 0 66.66667%;max-width: 66.66667%;">
+			<div class="row" style="flex: 0 0 66.66667%;max-width: 66.66667%;">
 				<%@ include file="/inc/findmenu.jsp" %>
-		</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-77 col-md-8">
-					<h2 class="mb-30">Find ID</h2>
+					<h2 class="mb-30">Find Password</h2>
 					<form>
+					<%if(id == null) {%>
+						<div class="mt-10">
+							<input type="text" name="id" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'" required class="single-input">
+						</div>
+					<%}else{ %>
+						<div class="mt-10">
+							<input type="text" name="id" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'" required class="single-input" value="<%=id%>">
+						</div>
+					<%} %>
 						<div class="mt-10">
 							<input type="text" name="phone" placeholder="PhoneNumber" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PhoneNumber'" required class="single-input">
 						</div>
@@ -64,7 +77,7 @@
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a id="bt-find" class="genric-btn primary-border circle">Find</a>
-				<a href="/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
+				<a href="/client/member/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
 			</div>
 		</div>
 </body>

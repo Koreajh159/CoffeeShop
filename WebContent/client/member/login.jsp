@@ -64,12 +64,12 @@
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a id="bt-login" class="genric-btn primary-border circle">Login</a>
-				<a href="/index.jsp" class="genric-btn primary-border circle">Cancel</a>
+				<a href="/client/member/index.jsp" class="genric-btn primary-border circle">Cancel</a>
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a href="/ctest/member/goRegist" class="genric-btn3 primary-border circle">Regist</a>
-				<a href="/findid.jsp" class="genric-btn3 primary-border circle">FindID</a>
-				<a href="/findpw.jsp" class="genric-btn3 primary-border circle">FindPW</a>
+				<a href="/client/member/findid.jsp" class="genric-btn3 primary-border circle">FindID</a>
+				<a href="/client/member/findpw.jsp" class="genric-btn3 primary-border circle">FindPW</a>
 			</div>
 		</div>
 </body>

@@ -49,8 +49,8 @@
 				</div>
 			</div>
 			<div class="col-lg-77 col-md-8">
-				<a href="/findpw.jsp?id=<%=id %>" class="genric-btn primary-border circle">Go to FindPW</a>
-				<a href="/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
+				<a href="/client/member/findpw.jsp?id=<%=id %>" class="genric-btn primary-border circle">Go to FindPW</a>
+				<a href="/client/member/login.jsp" class="genric-btn primary-border circle">Go to Login</a>
 			</div>
 		</div>
 </body>

@@ -2,6 +2,8 @@ package com.coffee.controller.client;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,16 @@ public class ClientMemberController {
 	@Autowired
 	private GradeService gradeService;
 	
+	@RequestMapping(value="/ctest/member/logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request){
+		request.getSession().invalidate();
+		return "index";
+	}
+	
 	@RequestMapping(value="/ctest/member/goRegist", method=RequestMethod.GET)
 	public ModelAndView goRegist() {
 		List<Grade> gradeList = gradeService.selectAll();
-		ModelAndView mav = new ModelAndView("regist");
+		ModelAndView mav = new ModelAndView("client/member/regist");
 		mav.addObject("gradeList", gradeList);
 		return mav;
 	}
@@ -38,11 +46,12 @@ public class ClientMemberController {
 		grade.setGrade_id(grade_id);
 		member.setGrade(grade);
 		memberService.insert(member);
-		return "redirect:/index.jsp";
+		return "index";
 	}
 	
 	@RequestMapping(value="/ctest/member/login", method=RequestMethod.POST)
-	public String login(Member member) {
+	public String login(HttpServletRequest request,Member member) {
+		request.getSession().setAttribute("client", member);
 		memberService.logIn(member);
 		return "index";
 	}
@@ -50,14 +59,14 @@ public class ClientMemberController {
 	@RequestMapping(value="/ctest/member/findid", method=RequestMethod.POST)
 	public ModelAndView findid(Member member) {
 		Member m = memberService.findId(member);
-		ModelAndView mav = new ModelAndView("findidresult");
+		ModelAndView mav = new ModelAndView("client/member/findidresult");
 		mav.addObject("id", m.getId());
 		return mav;
 	}
 	
 	@RequestMapping(value="/ctest/member/findpw", method=RequestMethod.POST)
 	public ModelAndView findpw(Member member) {
-		ModelAndView mav = new ModelAndView("findpwresult");
+		ModelAndView mav = new ModelAndView("client/member/findpwresult");
 		mav.addObject("member", member);
 		return mav;
 	}
@@ -85,8 +94,6 @@ public class ClientMemberController {
 		}
 		return json.toString();
 	}
-	
-	
 	
 	@ExceptionHandler(EditFailException.class)
 	public String editFail(EditFailException e) {

@@ -2861,21 +2861,27 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .product_quantity{
 	display:inline-block;
+	width:100%;
 	border: 1px solid rgb(182, 136, 52);
 	margin:0px;
-	width: 35%;
 	text-align:center;
+}
+.product{
+	display:inline-block;
+	width:35%;
+	margin:0px;
 }
 .product_num{
 	width: 50%;
 	margin : 0px;	
+	font-weight:700;
 	display:inline-block;
 }
 .qnt_btn{
 	background-color: rgb(182, 136, 52);
 	display:inline-block;
 	margin : 0px;
-	width:21.7%;
+	width:21.6%;
 	color:#fff;
 }
 .qnt_btn:hover{

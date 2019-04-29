@@ -127,7 +127,7 @@
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a id="bt-regist" class="genric-btn primary-border circle">Regist</a>
-				<a href="/index.jsp" class="genric-btn primary-border circle">Cancel</a>
+				<a href="/client/member/index.jsp" class="genric-btn primary-border circle">Cancel</a>
 			</div>
 		</div>
 </body>
