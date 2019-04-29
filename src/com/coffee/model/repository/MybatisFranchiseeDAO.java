@@ -23,9 +23,8 @@ public class MybatisFranchiseeDAO implements FranchiseeDAO{
 	}
 	public int update(Franchisee franchisee) {
 		return sqlSessionTemplate.update("Franchisee.update", franchisee);
-		
 	}
-	
-
-	
+	public int insert(Franchisee franchisee) {
+		return sqlSessionTemplate.insert("Franchisee.insert", franchisee);
+	}
 }

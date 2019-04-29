@@ -7,13 +7,21 @@ public class Franchisee {
 	private int lati;
 	private int longi;
 	private int checked;
+	private String message;
+	private Member member;
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public int getChecked() {
 		return checked;
 	}
 	public void setChecked(int checked) {
 		this.checked = checked;
 	}
-	private Member member;
 	public int getFranchisee_id() {
 		return franchisee_id;
 	}

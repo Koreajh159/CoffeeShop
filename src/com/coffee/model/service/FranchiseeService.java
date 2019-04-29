@@ -9,4 +9,5 @@ public interface FranchiseeService {
 	public Franchisee select(int franchisee_id);
 	public void delete(int franchisee_id);
 	public void update(Franchisee franchisee);
+	public void insert(Franchisee franchisee);
 }

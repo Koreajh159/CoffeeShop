@@ -58,12 +58,11 @@
 		}
 	}
 	function regist(){
-		alert("등록하시겠습니까?");
-		/*$("form").attr({
+		$("form").attr({
 			"method" : "post",
-			"action" : "#"
+			"action" : "/client/franchisee/regist"
 		});
-		$("form").submit();*/
+		$("form").submit();
 	}
 </script>
 </head>
@@ -75,8 +74,10 @@
 				<div class="col-lg-77 col-md-8">
 					<h2 class="mb-30">Franchisee Regist</h2>
 					<form>
+						<input type="hidden" name="member_id" value="<%=client.getMember_id() %>">
 						<div class="mt-10">
-							<input type="text" name="name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input">
+							<input type="text" name="name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input"
+							value="<%=client.getName()%>">
 						</div>
 						<div class="col-lg-3 col-md-4 mt-sm-30">
 							<div class="single-element-widget">

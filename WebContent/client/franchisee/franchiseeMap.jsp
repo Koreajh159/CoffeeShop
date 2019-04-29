@@ -1,4 +1,11 @@
+<%@page import="com.coffee.common.board.Pager"%>
+<%@page import="com.coffee.model.domain.Franchisee"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");
+	Pager pager = new Pager();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,12 +82,14 @@ tr:nth-child(even) {
 								    <th width="20%">점포명</th>
 								    <th width="49%">주소</th>
 								  </tr>
-								  <%for(int i = 0; i < 5; i++) {%>
+								  <%int num =	42;%>
+								  <%for(int i = 0; i < franchiseeList.size(); i++) {%>
+								  <%Franchisee franchisee = franchiseeList.get(i); %>
 								  <tr>
-								    <td>Jill</td>
-								    <td>Smith</td>
-								    <td>50</td>
-								    <td>50</td>
+								    <td><%=num-- %></td>
+								    <td><%=franchisee.getAddr() %></td>
+								    <td><%=franchisee.getAddr() %></td>
+								    <td><%=franchisee.getMessage() %></td>
 								  </tr>
 								  <%} %>
 								  <tr>

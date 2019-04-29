@@ -21,12 +21,12 @@
 	
 	<!-- Franchisee 신청서 작성 후 신청 -->
 	<insert id="insert" parameterType="Franchisee">
-		insert into franchisee(franchisee_id, name, addr, member_id)
+		insert into franchisee(franchisee_id, name, addr, message, member_id)
 		values(seq_franchisee.nextval, #{name},#{addr},#{message},#{member.member_id})
 	</insert>
 	
 	<!-- 관리자 페이지 franchisee 신청목록 -->
-	<select id="selectAll">
+	<select id="selectAll" resultMap="FranchiseeMap">
 		<include refid="sql_select"/>
 	</select>
 	
@@ -44,7 +44,4 @@
 	<delete id="delete" parameterType="int">
 		delete from franchisee where franchisee_id = #{franchisee_id}
 	</delete>
-	
-	
-	
 </mapper>

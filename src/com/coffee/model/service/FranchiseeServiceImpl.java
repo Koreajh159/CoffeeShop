@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.coffee.common.exception.RegistFailException;
 import com.coffee.model.domain.Franchisee;
 import com.coffee.model.repository.FranchiseeDAO;
 @Service
@@ -29,6 +30,14 @@ public class FranchiseeServiceImpl implements FranchiseeService{
 		int result = franchiseeDAO.update(franchisee);
 		if(result == 0) {
 			System.out.println("시발..");
+		}
+	}
+
+	@Override
+	public void insert(Franchisee franchisee) throws RegistFailException{
+		int result = franchiseeDAO.insert(franchisee);
+		if(result == 0) {
+			throw new RegistFailException("등록 실패");
 		}
 	}
 
