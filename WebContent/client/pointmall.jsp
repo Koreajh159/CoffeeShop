@@ -87,6 +87,8 @@ function addCoupon(i, product_id){
 			"ea":ea
 		},
 		success:function(result){
+			var json = JSON.parse(result);
+			alert(json.msg);
 		}
 	});
 }

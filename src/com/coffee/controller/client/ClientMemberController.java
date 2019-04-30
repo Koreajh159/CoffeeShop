@@ -51,8 +51,10 @@ public class ClientMemberController {
 	
 	@RequestMapping(value="/ctest/member/login", method=RequestMethod.POST)
 	public String login(HttpServletRequest request,Member member) {
-		request.getSession().setAttribute("client", member);
-		memberService.logIn(member);
+		System.out.println(member.getId()+", "+member.getPass());
+		Member mem = memberService.logIn(member);
+		System.out.println(mem.getId());
+		request.getSession().setAttribute("client", mem);
 		return "index";
 	}
 	

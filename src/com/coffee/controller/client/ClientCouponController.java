@@ -19,15 +19,22 @@ public class ClientCouponController {
 	private CouponService couponService;
 	
 	@RequestMapping(value="/client/coupon/add", method=RequestMethod.POST)
-	public Coupon addNewCoupon(int product_id, int ea, HttpServletRequest request) {
+	public String addNewCoupon(int product_id, int ea, HttpServletRequest request) {
 		Product product = new Product();
 		product.setProduct_id(product_id);
 		Coupon coupon = new Coupon();
 		coupon.setProduct(product);
 		coupon.setEa(ea);
 		Item item = new Item();
-		item.setMember((Member)request.getSession().getAttribute("client"));
-		couponService.insert(coupon, item);
-		return coupon;
+		
+
+		Member member = (Member)request.getSession().getAttribute("client");
+		if(member!=null) {
+			item.setMember(member);
+			couponService.insert(coupon, item);
+		}else {
+			return "{\"resultCode\":404, \"msg\":\"로그인 필요\"}";
+		}
+		return "{\"resultCode\":1, \"msg\":\"등록 성공\"}";
 	}
 }

@@ -1,10 +1,15 @@
+<%@page import="com.coffee.model.domain.Coupon"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	List<Coupon> couponList = (List<Coupon>)request.getAttribute("couponList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="/inc/css-head.jsp"%>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>Inventory Page</title>
 <style>
 .mb-30{
 	color : #b68834;
@@ -28,24 +33,9 @@
 	width:30%;
 	text-align: center;
 }
-.input-border{
-	border : 1px solid rgb(182, 136, 52);
-}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	$(function(){
-		$("#bt-login").click(function(){
-			login();
-		});
-	})
-	function login(){
-		$("form").attr({
-			"action" : "/ctest/member/login",
-			"method" : "post"
-		});
-		$("form").submit();
-	}
 </script>
 </head>
 <%@ include file="/inc/header.jsp"%>
@@ -54,13 +44,11 @@
 		<div class="section-top-border">
 			<div class="row">
 				<div class="col-lg-77 col-md-8">
-					<h2 class="mb-30">Login</h2>
+					<h2 class="mb-30">보유 쿠폰</h2>
 					<form>
 						<div class="mt-10">
-							<input type="text" name="id" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'" required class="single-input input-border">
-						</div>
-						<div class="mt-10">
-							<input type="password" name="pass" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input input-border">
+							<%for(int i = 0 ; i<couponList.size();i++){ %>
+							<%} %>
 						</div>
 					</form>
 				</div>
