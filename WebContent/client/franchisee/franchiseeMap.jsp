@@ -211,7 +211,7 @@ tr:nth-child(even) {
 <script>
 	function myMap(jsonLati, jsonLongi) {
 		mapProp= {
-	 	 center:new google.maps.LatLng(lati, longi),
+	 	 center:new google.maps.LatLng(37.528776, 126.934279),
 	 	 zoom:12,
 		};
 		map= new google.maps.Map(document.getElementById("googleMap"),mapProp);
