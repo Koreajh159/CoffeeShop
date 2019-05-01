@@ -67,7 +67,7 @@ function renderList(jsonArray){
 		str+="</div>";
 		str+="</div>";
 		str+="<div class='icon-div'>";
-		str+="<a href='javascript:addCoupon("+i+", "+json.product_id+")'><img src='/img/cart.png' width='25%' align='right'/></a>";
+		str+="<a href='javascript:checkUserPt("+i+", "+json.product_id+")'><img src='/img/cart.png' width='25%' align='right'/></a>";
 		str+="</div>";
 		str+="</div>";
 		str+="</div>";
@@ -76,9 +76,32 @@ function renderList(jsonArray){
 	$("#menuList").append(str);
 	initQty();
 }
-function addCoupon(i, product_id){
-	console.log(product_id);
+function checkUserPt(i, product_id){
 	var ea = $($("span[name='ea']")[i]).text();
+	$.ajax({
+		url:"/client/product/"+product_id,
+		type:"post",
+		data:{"ea":ea},
+		success:function(result){
+			var json = JSON.parse(result);
+			console.log(json.resultCode);	
+			if(json.resultCode!=404){
+				if(json.resultCode){
+					addCoupon(ea, product_id);
+				}else{
+					alert("포인트가 부족합니다.");
+				}
+			}else{
+				loginerror(json);
+			}
+		}
+	});
+}
+function loginerror(json){
+	location.href=json.msg+".jsp";
+}
+function addCoupon(ea, product_id){
+	console.log(product_id);
 	$.ajax({
 		url:"/client/coupon/add",
 		type:"post",
@@ -145,7 +168,7 @@ function addCoupon(i, product_id){
 										</div>
 									</div>
 									<div class="icon-div">
-										<a href="javascript:addCoupon(<%=i%>, <%=product.getProduct_id()%>)"><img src="/img/cart.png" width="25%" align="right"/></a>
+										<a href="javascript:checkUserPt(<%=i%>, <%=product.getProduct_id()%>)"><img src="/img/cart.png" width="25%" align="right"/></a>
 									</div>
 								</div>	
 							</div>
