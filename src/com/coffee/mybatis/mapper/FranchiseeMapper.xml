@@ -5,24 +5,25 @@
 <mapper namespace="Franchisee">
 	<resultMap type="Franchisee" id="FranchiseeMap">
 		<id column="franchisee_id" property="franchisee_id"/>
-		<result column="name" property="name"/>
+		<result column="f_name" property="f_name"/>
 		<result column="addr" property="addr"/>
 		<result column="lati" property="lati"/>
 		<result column="longi" property="longi"/>
 		<result column="checked" property="checked"/>
 		<result column="message" property="message"/>
+		<result column="local" property="local"/>
 		<association column="member_id" property="member" javaType="Member" select="Member.select"></association>
 	</resultMap>
 	
 	<!-- sql select -->
 	<sql id="sql_select">
-		select franchisee_id, name, addr, lati, longi, checked, message, member_id from franchisee
+		select franchisee_id, f_name, addr, lati, longi, checked, message, local, member_id from franchisee
 	</sql>
 	
 	<!-- Franchisee 신청서 작성 후 신청 -->
 	<insert id="insert" parameterType="Franchisee">
-		insert into franchisee(franchisee_id, name, addr, message, member_id)
-		values(seq_franchisee.nextval, #{name},#{addr},#{message},#{member.member_id})
+		insert into franchisee(franchisee_id, addr, message, member_id)
+		values(seq_franchisee.nextval, #{addr},#{message},#{member.member_id})
 	</insert>
 	
 	<!-- 관리자 페이지 franchisee 신청목록 -->
@@ -37,11 +38,15 @@
 	
 	<!-- 관리자 페이지 franchisee 승인 즉 check column 수정 -->
 	<update id="update" parameterType="Franchisee">
-		update franchisee set name=#{name}, addr=#{addr}, lati=#{lati}, longi=#{longi}, message=#{message}, checked = #{checked} where franchisee_id = #{franchisee_id}
+		update franchisee set f_name=#{f_name}, addr=#{addr}, lati=#{lati}, longi=#{longi}, message=#{message}, local=#{local}, checked = #{checked} where franchisee_id = #{franchisee_id}
 	</update>
 	
 	<!-- 관리자 페이지 franchisee 거절 즉 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete from franchisee where franchisee_id = #{franchisee_id}
 	</delete>
+	
+	<select id="search" parameterType="Franchisee" resultMap="FranchiseeMap">
+		<include refid="sql_select"/> where local = #{local} or f_name = '%' || #{f_name} || '%'
+	</select>
 </mapper>

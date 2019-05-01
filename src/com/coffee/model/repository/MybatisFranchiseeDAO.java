@@ -27,4 +27,7 @@ public class MybatisFranchiseeDAO implements FranchiseeDAO{
 	public int insert(Franchisee franchisee) {
 		return sqlSessionTemplate.insert("Franchisee.insert", franchisee);
 	}
+	public List search(Franchisee franchisee) {
+		return sqlSessionTemplate.selectList("Franchisee.search", franchisee);
+	}
 }

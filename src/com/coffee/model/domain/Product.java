@@ -3,6 +3,7 @@ package com.coffee.model.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Product {
+
 	private int product_id;
 	private Category category;
 	private String name;
@@ -14,12 +15,6 @@ public class Product {
 	private boolean isOnPoint;
 	public int getProduct_id() {
 		return product_id;
-	}
-	public int getCost() {
-		return cost;
-	}
-	public void setCost(int cost) {
-		this.cost = cost;
 	}
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
@@ -42,11 +37,23 @@ public class Product {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+	public MultipartFile getMyFile() {
+		return myFile;
+	}
+	public void setMyFile(MultipartFile myFile) {
+		this.myFile = myFile;
+	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getCost() {
+		return cost;
+	}
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 	public String getDetail() {
 		return detail;
@@ -67,4 +74,6 @@ public class Product {
 		this.myFile = myFile;
 	}
 	
+	
+
 }

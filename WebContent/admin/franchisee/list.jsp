@@ -42,15 +42,9 @@
 
 
    function getDetail(franchisee_id){// 여기에 member 넣어야함
-	   location.href="/detail?franchisee_id="+franchisee_id;
+	   location.href="/admin/franchisee/detail?franchisee_id="+franchisee_id;
    }
-   
-
-   function regist(){
-      location.href="/admin/member/regist.jsp";
-   }
-
-   </script>
+</script>
 
 </head>
 <body>
@@ -60,11 +54,11 @@
 
 <table class="member_table">
   <tr class="member_tr">
-    <th class="member_th"> No.</th>
-    <th class="member_th">ID</th>
-    <th class="member_th">NAME</th>
-    <th class="member_th">PHONE</th>
-    <th class="member_th">GRADE ID</th>
+    <th class="member_th">No.</th>
+    <th class="member_th">점주명</th>
+    <th class="member_th">지역</th>
+    <th class="member_th">주소</th>
+    <th class="member_th">승인여부</th>
   </tr>
     <%int num=pager.getNum(); %>
   <%int curPos=pager.getCurPos(); %>
@@ -72,12 +66,15 @@
 	<%Franchisee franchisee = franchiseeList.get(i); %>
   <tr class="member_tr" onClick="getDetail(<%=franchisee.getFranchisee_id()%>)"> <!-- i대신 member 넣어야함 -->
     <td class="member_td"><%=num--%></td>
-    <td class="member_td"><%=franchisee.getFranchisee_id() %></td>
-    <td class="member_td"><%=franchisee.getName() %></td>
-    <td class="member_td"><%=franchisee.getLati() %></td>
-    <td class="member_td"><%=franchisee.getLongi()%></td>
+    <td class="member_td"><%=franchisee.getMember().getName()%></td>
+    <td class="member_td"><%=franchisee.getF_name() %></td>
+    <td class="member_td"><%=franchisee.getAddr()%></td>
+    <%if(franchisee.getChecked() == 0){%>
+    	<td class="member_td">거부</td>
+    <%} else{ %>
+    	<td class="member_td">승인</td>
+    <%} %>	
   </tr>
-
   <%} %>
   <tr>
   		<td colspan="5" style="text-align:center">
@@ -85,11 +82,8 @@
   		<%if(i>pager.getTotalPage())break; %>
   		[<%=i %>]
   		<%} %>
-  		</td>
+  </td>
   </tr>
-
 </table>
-<input type="button" value="등록"> 
-
 </body>
 </html>

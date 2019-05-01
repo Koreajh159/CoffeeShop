@@ -10,4 +10,5 @@ public interface FranchiseeDAO {
 	public int delete(int franchisee_id);
 	public int update(Franchisee franchisee);
 	public int insert(Franchisee franchisee);
+	public List search(Franchisee franchisee);
 }

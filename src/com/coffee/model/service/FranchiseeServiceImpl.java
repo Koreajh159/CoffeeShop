@@ -12,8 +12,6 @@ import com.coffee.model.repository.FranchiseeDAO;
 public class FranchiseeServiceImpl implements FranchiseeService{
 	@Autowired
 	private FranchiseeDAO franchiseeDAO;
-	
-	
 	public List selectAll() {
 		return franchiseeDAO.selectAll();
 	}
@@ -39,6 +37,11 @@ public class FranchiseeServiceImpl implements FranchiseeService{
 		if(result == 0) {
 			throw new RegistFailException("등록 실패");
 		}
+	}
+
+	@Override
+	public List search(Franchisee franchisee) {
+		return franchiseeDAO.search(franchisee);
 	}
 
 }
