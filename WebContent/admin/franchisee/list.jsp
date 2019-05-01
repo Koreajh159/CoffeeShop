@@ -1,5 +1,5 @@
-<%@page import="com.coffee.model.domain.Franchisee"%>
 <%@page import="com.coffee.common.board.Pager"%>
+<%@page import="com.coffee.model.domain.Franchisee"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!Pager pager=new Pager();%>

@@ -6,8 +6,6 @@
 <%
 	List<Member> memberList = (List)request.getAttribute("memberList");
 	pager.init(request, memberList.size());
-	
-	
 %>
 <!DOCTYPE html>
 <html>

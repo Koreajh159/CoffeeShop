@@ -50,6 +50,12 @@ public class ClientFranchiseeController {
 		List franchiseeSearchList = franchiseeService.search(franchisee);
 		return franchiseeSearchList;
 	}
+	@RequestMapping(value="/client/franchisee/selectAll")
+	@ResponseBody
+	public List searchAll(Franchisee franchisee) {
+		List franchiseeList = franchiseeService.selectAll();
+		return franchiseeList;
+	}
 	@ExceptionHandler(RegistFailException.class)
 	public ModelAndView registFail(RegistFailException e) {
 		ModelAndView mav = new ModelAndView("index");
