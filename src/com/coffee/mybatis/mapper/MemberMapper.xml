@@ -27,7 +27,7 @@
 	
 	<!-- Login select 문 -->
 	<select id="login" parameterType="Member" resultMap="MemberMap">
-		<include refid="sql_select"/> where id = #{id} and pass = #{pass} and grade_id=3
+		<include refid="sql_select"/> where id = #{id} and pass = #{pass}
 	</select>
 	
 	<!-- Find ID select 문 이름, 핸드폰 번호로 찾을 수 있음 이건 아이디만 보면 되기 때문에 sql문 사용 안함-->
