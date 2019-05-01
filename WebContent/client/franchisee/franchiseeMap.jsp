@@ -2,9 +2,10 @@
 <%@page import="com.coffee.model.domain.Franchisee"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%! Pager pager = new Pager(); %>
 <%
 	List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");
-	Pager pager = new Pager();
+	pager.init(request, franchiseeList.size());
 %>
 <!DOCTYPE html>
 <html>
@@ -65,11 +66,23 @@ tr:nth-child(even) {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+	var map;
+	var mapProp;
 	$(function(){
+		selectAll();
 		$("#bt-search").click(function(){
 			localSearch();
-		})
+		});
 	});
+	function selectAll(){
+		$.ajax({
+			url : "/client/franchisee/selectAll",
+			type: "get",
+			success:function(result){
+				mapMarker(result);
+			}
+		});
+	}
 	function localSearch(){
 		$.ajax({
 			url : "/client/franchisee/search",
@@ -80,6 +93,7 @@ tr:nth-child(even) {
 			},
 			success:function(result){
 				renderList(result);
+				mapMarker(result);
 			}
 		});
 	}
@@ -107,6 +121,27 @@ tr:nth-child(even) {
 		str += "</tr>";
 		$("#franchiseeList").append(str);
 	}
+	function mapMarker(jsonArray){
+		myMap();
+		for(var i = 0; i < jsonArray.length; i++){
+			var json = jsonArray[i];
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(json.lati, json.longi),
+			});
+			marker.setMap(map);		
+			placeMarker(map, marker, json);
+		}
+	}
+	function placeMarker(map, marker, json) {
+		var infowindow = new google.maps.InfoWindow({
+		    content:"<b>" + json.f_name + "</b><hr> 주소 :" + json.addr 
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+			  map.setCenter(marker.getPosition());
+			  infowindow.open(map,marker);
+		});
+		
+	}
 		
 </script>
 </head>
@@ -127,9 +162,11 @@ tr:nth-child(even) {
 								    <th width="20%">점포명</th>
 								    <th width="49%">주소</th>
 								  </tr>
-								  <%int num =	42;%>
+								  <%int num =	pager.getNum();%>
+								  <%int curPos = pager.getCurPos(); %>
 								  <%for(int i = 0; i < franchiseeList.size(); i++) {%>
 								  <%Franchisee franchisee = franchiseeList.get(i); %>
+								  <%if(num < 1) break; %>
 								  <tr>
 								    <td><%=num-- %></td>
 								    <td><%=franchisee.getLocal() %></td>
@@ -138,7 +175,12 @@ tr:nth-child(even) {
 								  </tr>
 								  <%} %>
 								  <tr>
-								  	<td colspan=5>[1]</td>
+								  	<td colspan=5>
+										<%for(int i = pager.getFirstPage(); i < pager.getLastPage(); i++){ %>
+										<%if(i>pager.getTotalPage())break; %>
+											<a href="/client/franchisee/list?currentPage=<%=i%>">[<%=i %>]</a>
+										<%} %>
+									</td>
 								  </tr>
 							</table>
 						</div>
@@ -167,26 +209,12 @@ tr:nth-child(even) {
 		</div>
 </body>
 <script>
-	var map;
-	var mapProp;
-	function myMap() {
+	function myMap(jsonLati, jsonLongi) {
 		mapProp= {
-	 	 center:new google.maps.LatLng(37.514455, 126.975298),
-	 	 zoom:10,
+	 	 center:new google.maps.LatLng(37.528776, 126.934279),
+	 	 zoom:12,
 		};
 		map= new google.maps.Map(document.getElementById("googleMap"),mapProp);
-		new google.maps.Marker({
-			position: new google.maps.LatLng(37.570957, 126.992340),
-			animation:google.maps.Animation.BOUNCE
-		}).setMap(map);
-		new google.maps.Marker({
-			position: new google.maps.LatLng(37.570957, 126.992350),
-			animation:google.maps.Animation.BOUNCE
-		}).setMap(map);
-		new google.maps.Marker({
-			position: new google.maps.LatLng(37.570957, 126.992360),
-			animation:google.maps.Animation.BOUNCE
-		}).setMap(map);
 	}
 	</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7h6wQQQLLXC7QjvP7nuwXtWrSgBGWdpQ&callback=myMap"></script>

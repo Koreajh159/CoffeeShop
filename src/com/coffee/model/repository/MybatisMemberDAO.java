@@ -36,7 +36,7 @@ public class MybatisMemberDAO implements MemberDAO {
    @Override
    public int updatePoint(Member member) {
       // TODO Auto-generated method stub
-      return 0;
+      return sessionTemplate.update("Member.updatePoint", member);
    }
 
    @Override

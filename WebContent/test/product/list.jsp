@@ -1,8 +1,8 @@
-<%@page import="com.coffee.common.board.Pager"%>
+<%@page import="com.coffee.common.board.MyPager"%>
 <%@page import="com.coffee.model.domain.Product"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%! Pager pager = new Pager(); %>
+<%!MyPager pager = new MyPager();%>
 <%
 	List<Product> productList = (List)request.getAttribute("productList");
 

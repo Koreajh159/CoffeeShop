@@ -67,7 +67,4 @@ public class Product {
 	public void setOnPoint(boolean isOnPoint) {
 		this.isOnPoint = isOnPoint;
 	}
-
-	
-
 }

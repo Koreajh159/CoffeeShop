@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.coffee.model.domain.Product"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%!Pager pager = new Pager(); %>
+<%!Pager pager = new Pager();%>
 <%
    
    List<Product> productList = (List)request.getAttribute("productList");
