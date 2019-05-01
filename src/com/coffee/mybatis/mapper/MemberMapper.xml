@@ -55,6 +55,9 @@
 		update member set id = #{id}, pass = #{pass}, phone = #{phone}, name=#{name}, age = #{age}, point = #{point}, grade_id = #{grade.grade_id}
 		where member_id = #{member_id}
 	</update>
+	<update id="updatePoint" parameterType="Member">
+		update member set point=#{point} where member_id=#{member_id}
+	</update>
 	
 	<!-- 상세정보에서 회원정보 삭제를 위한 delete -->
 	<delete id="delete" parameterType="int">

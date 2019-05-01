@@ -48,6 +48,6 @@
     
     <!-- Annotation기반 Aspect빈 등록 -->
     <bean id="annotationAdminSessionAspect" class="com.coffee.aop.AnnotationAdminSessionAspect" />
-    
+    <bean id="annotationClientSessionAspect" class="com.coffee.aop.AnnotationClientSessionAspect"/>
     
 </beans>

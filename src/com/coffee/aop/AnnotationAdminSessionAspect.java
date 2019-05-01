@@ -39,8 +39,7 @@ public class AnnotationAdminSessionAspect {
             	if(requestURL.endsWith(exceptList[i])) {
             		count++; //제외 명단 발견
             	}
-            }
-            
+            }    
          }
       }
       
