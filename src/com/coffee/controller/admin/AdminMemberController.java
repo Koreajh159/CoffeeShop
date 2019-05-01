@@ -49,8 +49,8 @@ public class AdminMemberController {
 	   ModelAndView mav =null;
 
 	   if(admin!=null) {
-		   mav= new ModelAndView("admin/login/login_ok");
-		   mav.addObject("admin", admin);
+		   mav= new ModelAndView("redirect:/admin/member/list");
+		   request.getSession().setAttribute("admin",admin);
 	   }else {
 		   mav=new ModelAndView("admin/login/error2");
 	   }

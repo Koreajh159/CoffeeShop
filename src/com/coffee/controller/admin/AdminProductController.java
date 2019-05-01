@@ -77,6 +77,7 @@ public class AdminProductController {
       category.setCategory_id(category_id);
       product.setCategory(category);
 
+      
       System.out.println("ÆÄÀÏ : " + product.getMyFile());
 
       MultipartFile myFile = product.getMyFile();
