@@ -1,8 +1,7 @@
 <%@page import="com.coffee.model.domain.Board"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-int member_id = (Integer)request.getAttribute("member_id");
-//int member_id=2;
+
 %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +38,7 @@ input[type=button]:hover {
   background-color: #777;
 }
 
-.container {
+.wrapper {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -56,6 +55,15 @@ input[type=button]:hover {
 }
 #cmsg{
 	width:75%;
+}
+
+.col-lg-77{
+	margin:auto;
+	margin-top : 30px;
+	text-align: center;
+}
+.row{
+	margin:auto;
 }
 </style>
 
@@ -84,13 +92,15 @@ function regist() {
 
 </head>
 <body>
-<%-- <%@ include file="/inc/header.jsp" %> --%>
+ <%@ include file="/inc/header.jsp" %> 
 
 
 
-<div class="container" style="text-align:center">
+<section class="menu-area section-gap" id="coffee" >
+<div class="row" >
+		<div class="col-lg-77 col-md-8" >
   <form >
-    <input type="hidden" name="member_id" value="<%=member_id%>">
+    <input type="hidden" name="member_id" value="<%=client.getMember_id()%>">
     <input type="hidden" name="rank" value="1">
     <input type="hidden" name="depth" value="1"> 
     <input type="text"  name="title" placeholder="TITLE">  
@@ -100,6 +110,8 @@ function regist() {
     <input type="button" id = "bt-regist" value="등록" >
 
   </form>
-  
+  </div>
+  </div>
+  </section>
 </body>
 </html>

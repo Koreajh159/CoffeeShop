@@ -41,10 +41,10 @@
 							<li><a href="/client/franchisee/list">Search</a></li>
 						</ul>
 					</li>
-					<li class="menu-has-children"><a href="">Pages</a>
+					<li class="menu-has-children"><a href="">Q&A</a>
 						<ul>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="/client/board/goRegist">Regist</a></li>
+							<li><a href="/client/board/list">Search</a></li>
 						</ul></li>
 				</ul>
 			</nav>

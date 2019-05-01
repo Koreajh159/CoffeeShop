@@ -52,14 +52,13 @@ public class ClientBoardController {
    }
    
    //등록으로 가기
-   @RequestMapping(value="/board/regist",method=RequestMethod.GET)
-   public ModelAndView goRegist(int member_id) {
-
-	   ModelAndView mav=new ModelAndView("client/board/regist");
-	   mav.addObject("member_id",member_id);
-	   
-	   return mav;
-   }
+	
+	  @RequestMapping(value="/board/goRegist",method=RequestMethod.GET) 
+	  public ModelAndView goRegist() {
+	  ModelAndView mav=new ModelAndView("client/board/regist");
+	  
+	 return mav; }
+	 
    
    //등록하기
    @RequestMapping(value="/board/doRegist",method=RequestMethod.POST)

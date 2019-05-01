@@ -39,7 +39,7 @@ input[type=button]:hover {
   background-color: #777;
 }
 
-.container {
+.wrapper {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -56,6 +56,15 @@ input[type=button]:hover {
 }
 #cmsg{
 	width:75%;
+}
+
+.col-lg-77{
+	margin:auto;
+	margin-top : 30px;
+	text-align: center;
+}
+.row{
+	margin:auto;
 }
 </style>
 
@@ -114,14 +123,16 @@ function reply(){
 
 </head>
 <body>
-<%-- <%@ include file="/inc/header.jsp" %> --%>
+<%@ include file="/inc/header.jsp" %> 
 
 
-
-<div class="container" style="text-align:center">
+<section class="menu-area section-gap" id="coffee" >
+<div class="row" >
+		<div class="col-lg-77 col-md-8" >
   <form >
     <input type="hidden" name="board_id" value="<%=board.getBoard_id()%>">
     <input type="hidden" name="member_id" value="<%=board.getMember().getMember_id()%>">
+    <input type="hidden" name="reply_id" value="<%=client.getMember_id()%>">
     <input type="hidden" name="team" value="<%=board.getTeam()%>">
     <input type="hidden" name="rank" value="<%=board.getRank()%>">
     <input type="hidden" name="depth" value="<%=board.getDepth()%>">
@@ -133,10 +144,12 @@ function reply(){
     <input type="button" id = "bt-list" value="목록보기" >
     <input type="button" id = "bt-edit" value="수정하기" >
     <input type="button" id = "bt-delete" value="삭제하기" >
-    <%if(member_id==3){ %>
+    <%if(client.getGrade().getGrade_id()==3&&board.getRank()==1){ %>
     <input type="button" id = "bt-reply" value="답글달기" >
     <%} %>
   </form>
-  
+ </div> 
+ </div>
+ </section>
 </body>
 </html>
