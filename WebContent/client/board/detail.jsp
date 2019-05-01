@@ -114,7 +114,7 @@ function reply(){
 
 </head>
 <body>
-<%-- <%@ include file="/inc/header.jsp" %> --%>
+<%@ include file="/inc/header.jsp" %>
 
 
 
@@ -133,7 +133,7 @@ function reply(){
     <input type="button" id = "bt-list" value="목록보기" >
     <input type="button" id = "bt-edit" value="수정하기" >
     <input type="button" id = "bt-delete" value="삭제하기" >
-    <%if(member_id==3){ %>
+    <%if(client.getGrade().getGrade_id() == 3){ %>
     <input type="button" id = "bt-reply" value="답글달기" >
     <%} %>
   </form>

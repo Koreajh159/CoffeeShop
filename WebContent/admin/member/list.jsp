@@ -11,10 +11,6 @@
 	Member admin=(Member)session.getAttribute("admin");
 	List<Member> memberList = (List)request.getAttribute("memberList");
 	pager.init(request, memberList.size());
-<<<<<<< HEAD
-=======
-	
->>>>>>> 11db073c142e2a062b7e33feb90a459c9c308bc6
 %>
 <!DOCTYPE html>
 <html>
