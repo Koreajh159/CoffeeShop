@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!MyPager pager = new MyPager();%>
+
 <%
 	List<Product> productList = (List)request.getAttribute("productList");
 
