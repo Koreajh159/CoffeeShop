@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coffee.model.domain.Product;
 import com.coffee.model.service.ProductService;
 
 @RestController
@@ -38,8 +39,8 @@ public class ClientProductController {
 		List ptMenuList = pro_service.selectPtByCategory(category_id);
 		return ptMenuList;
 	}
-	@RequestMapping(value="/client/point/addcart/{product_id}", method=RequestMethod.POST)
-	public void addItem(@PathVariable("product_id") int product_id) {
-		
+	@RequestMapping(value="/client/point/getProduct/{product_id}", method=RequestMethod.GET)
+	public Product getProduct(@PathVariable("product_id") int product_id) { 
+		return pro_service.select(product_id);
 	}
 }

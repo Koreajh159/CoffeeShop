@@ -18,8 +18,10 @@
 	<!-- insert문 pointmall에서 쿠폰 추가를 누르면 insert문을 통해 구매목록에 들어간다.-->
 	<insert id="insert" parameterType="Coupon">
 		insert into coupon(coupon_id, regdate, ea, product_id)
-		values(seq_coupon.nextval, #{regdate}, #{ea}, #{product.product_id})
+		values(seq_coupon.nextval, default, #{ea}, #{product.product_id})
+		<selectKey resultType="int" keyProperty="coupon_id">
+  			select seq_coupon.currval as coupon_id from dual
+ 	 	</selectKey>
 	</insert>
-	
 
 </mapper>

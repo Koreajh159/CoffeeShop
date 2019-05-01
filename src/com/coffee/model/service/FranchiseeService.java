@@ -1,5 +1,14 @@
 package com.coffee.model.service;
 
-public interface FranchiseeService {
+import java.util.List;
 
+import com.coffee.model.domain.Franchisee;
+
+public interface FranchiseeService {
+	public List selectAll();
+	public Franchisee select(int franchisee_id);
+	public void delete(int franchisee_id);
+	public void update(Franchisee franchisee);
+	public void insert(Franchisee franchisee);
+	public List search(Franchisee franchisee);
 }

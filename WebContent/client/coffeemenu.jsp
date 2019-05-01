@@ -41,7 +41,9 @@ function renderList(jsonArray){
 		if(json.category.category_id!=currcategory){
 			str+="<h3 class='col-lg-12 category-index'>"+json.category.category_name+"</h3>";
 			str+="<hr class='col-lg-12'>";
-			currcategory++;
+			currcategory=json.category.category_id;
+			console.log(currcategory);
+			console.log(json.category.category_id);
 		}
 		str+="<div class='col-lg-4'>";
 		str+="<div class='single-menu'>";
@@ -88,7 +90,7 @@ function renderList(jsonArray){
 						<%if(product.getCategory().getCategory_id()!=currcategory){ %>
 							<h3 class="col-lg-12 category-index"><%=product.getCategory().getCategory_name() %></h3>
 							<hr class="col-lg-12">
-							<%currcategory++; %>
+							<%currcategory=product.getCategory().getCategory_id(); %>
 						<%} %>
 						<div class="col-lg-4">
 							<div class="single-menu">

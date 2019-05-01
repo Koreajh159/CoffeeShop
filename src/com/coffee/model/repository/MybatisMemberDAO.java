@@ -51,22 +51,28 @@ public class MybatisMemberDAO implements MemberDAO {
    }
 
    @Override
-   public Member findId(Member member) {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	public Member findId(Member member) {
+		// TODO Auto-generated method stub
+		return sessionTemplate.selectOne("Member.findId", member);
+	}
 
-   @Override
-   public Member findPass(Member member) {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	@Override
+	public Member findPass(Member member) {
+		// TODO Auto-generated method stub
+		return sessionTemplate.selectOne("Member.findPass", member);
+	}
 
-   @Override
-   public boolean checkInfo(Member member) {
-      // TODO Auto-generated method stub
-      return false;
-   }
+	@Override
+	public Member checkInfo(Member member) {
+		// TODO Auto-generated method stub
+		return sessionTemplate.selectOne("Member.checkinfo", member);
+	}
 
+	@Override
+	public int changePass(Member member) {
+		// TODO Auto-generated method stub
+		System.out.println("dao±îÁö ¿È..");
+		return sessionTemplate.update("Member.changepass", member);
+	}
 
 }

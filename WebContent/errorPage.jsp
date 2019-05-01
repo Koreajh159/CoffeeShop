@@ -2,10 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/inc/css-head.jsp"%>
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="/inc/header.jsp" %>
+<%
+	RuntimeException err = (RuntimeException)request.getAttribute("err");
+	err.getMessage();
+%>
 </body>
 </html>

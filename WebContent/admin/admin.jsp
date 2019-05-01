@@ -72,7 +72,7 @@ body, html {
 		<%@ include file="/admin/product/list.jsp"%>
 	</div>
 	<div id="Franchisee" class="tabcontent">
-		<%@ include file="/admin/franchisee/franchisee.jsp"%>
+		<%@ include file="/admin/franchisee/list.jsp"%>
 	</div>
 	<div id="About" class="tabcontent">
 		<h3>About</h3>

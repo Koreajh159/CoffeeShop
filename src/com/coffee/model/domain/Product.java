@@ -67,6 +67,12 @@ public class Product {
 	public void setOnPoint(boolean isOnPoint) {
 		this.isOnPoint = isOnPoint;
 	}
+	public MultipartFile getMyFile() {
+		return myFile;
+	}
+	public void setMyFile(MultipartFile myFile) {
+		this.myFile = myFile;
+	}
 	
 	
 

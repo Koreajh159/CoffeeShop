@@ -1,15 +1,25 @@
+<%@page import="com.coffee.model.domain.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	Member client = (Member)session.getAttribute("client");
+%>
 <header id="header" id="home">
 	<div class="header-top">
 		<div class="container">
 			<div class="row justify-content-end">
 				<div class="col-lg-8 col-sm-4 col-8 header-top-right no-padding">
-					<ul>
-						<li>Mon-Fri: 8am to 2pm</li>
-						<li>Sat-Sun: 11am to 4pm</li>
-						<li><a href="tel:(012) 6985 236 7512">(012) 6985 236 7512</a>
-						</li>
+					<%if(client == null) {%>
+					<ul>					
+						<li><a href="/client/member/login.jsp">Login</li>
+						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
+					<%}else{ %>
+						<ul>					
+							<li><%=client.getId()%>님 반갑습니다.</li>
+							<li><a href="javascript:logout()">Logout</a></li>
+							<li><a href="/client/"><img src="/img/cart2.png"/ width="30px"></a></li>
+						</ul>
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -17,19 +27,24 @@
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="${pageContext.request.contextPath}/client/"><img src="${pageContext.request.contextPath}/img/logo.png" alt="" title="" /></a>
+				<a href="/index.jsp"><img src="${pageContext.request.contextPath}/img/logo.png" alt="" title="" /></a>
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="#home">Home</a></li>
 					<li><a href="#about">About</a></li>
-					<li><a href="/client/menu/getPage">Coffee</a></li>
+					<li><a href="/client/menu/getPage">CoffeeMenu</a></li>
 					<li><a href="/client/point/getPage">PointMall</a></li>
-					<li><a href="#blog">Blog</a></li>
+					<li class="menu-has-children"><a href="">Franchisee</a>
+						<ul>
+							<li><a href="/client/franchisee/goRegist">Regist</a></li>
+							<li><a href="/client/franchisee/list">Search</a></li>
+						</ul>
+					</li>
 					<li class="menu-has-children"><a href="">Pages</a>
 						<ul>
 							<li><a href="generic.html">Generic</a></li>
-							<li><a href="${pageContext.request.contextPath}/backup/elements.html">Elements</a></li>
+							<li><a href="elements.html">Elements</a></li>
 						</ul></li>
 				</ul>
 			</nav>
@@ -37,17 +52,20 @@
 		</div>
 	</div>
 </header>
-
-<%@ page contentType="text/html; charset=UTF-8"%>
 <!-- #header -->
+<script>
+	function logout(){
+		if(confirm("로그아웃 하시겠습니까?")){
+			location.href="/ctest/member/logout";
+		}
+	}
+</script>
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-2.2.4.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/js/vendor/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 <script src="${pageContext.request.contextPath}/js/easing.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/hoverIntent.js"></script>
 <script src="${pageContext.request.contextPath}/js/superfish.min.js"></script>

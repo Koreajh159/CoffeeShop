@@ -835,7 +835,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 0;
 }
 
-.genric-btn {
+.genric-btn, .genric-btn2 {
   display: inline-block;
   outline: none;
   line-height: 40px;
@@ -850,6 +850,48 @@ h1, h2, h3, h4, h5, h6 {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
+.genric-btn3 {
+  display: inline-block;
+  outline: none;
+  line-height: 40px;
+  padding: 0 30px;
+  font-size: .8em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.genric-btn3.circle {
+  border-radius: 20px;
+}
+
+.genric-btn3.primary-border {
+  color: #b68834;
+  border: 1px solid #b68834;
+  background: #fff;
+}
+
+.genric-btn3.primary-border:hover {
+  color: #fff;
+  background: #b68834;
+  border: 1px solid transparent;
+}
+
+.genric-btn2.primary-border {
+  color: #b68834;
+  background: #fff;
+}
+
+.genric-btn2.primary-border:hover {
+  color: #fff;
+  background: #b68834;
+}
+
 
 .side-menu-btn {
   display: inline-block;
@@ -1801,7 +1843,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .default-select {
-  height: 40px;
+  height: 100%;
+  width: 100%;
 }
 
 .default-select .nice-select {
@@ -2819,21 +2862,29 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .product_quantity{
 	display:inline-block;
-	border: 1px solid rgb(182, 136, 52);
+	width:100%;
 	margin:0px;
-	width: 35%;
 	text-align:center;
+}
+.product{
+	display:inline-block;
+	width:35%;
+	margin:0px;
 }
 .product_num{
 	width: 50%;
-	margin : 0px;	
+	margin-left : 0px;
+	margin-right: 0px;	
+	border: 1px solid rgb(182, 136, 52);
+	font-weight:700;
 	display:inline-block;
 }
 .qnt_btn{
 	background-color: rgb(182, 136, 52);
+	border: 1px solid rgb(182, 136, 52);
 	display:inline-block;
 	margin : 0px;
-	width:21.7%;
+	width:21.6%;
 	color:#fff;
 }
 .qnt_btn:hover{
