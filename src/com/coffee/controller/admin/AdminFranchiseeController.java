@@ -18,7 +18,7 @@ import com.coffee.model.service.FranchiseeService;
 public class AdminFranchiseeController {
 	@Autowired
 	private FranchiseeService franchiseeService;
-	@RequestMapping(value="/franchisee",method=RequestMethod.GET)
+	@RequestMapping(value="/admin/franchisee/list",method=RequestMethod.GET)
 	public ModelAndView selectAll() {
 		System.out.println("¤¾¤·");
 		List franchiseeList=franchiseeService.selectAll();
@@ -27,7 +27,7 @@ public class AdminFranchiseeController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/detail",method=RequestMethod.GET)
+	@RequestMapping(value="/admin/franchisee/detail",method=RequestMethod.GET)
 	public ModelAndView select(@RequestParam int franchisee_id) {
 		System.out.println("µðÅ×ÀÏ");
 		Franchisee franchisee = franchiseeService.select(franchisee_id);
@@ -36,20 +36,22 @@ public class AdminFranchiseeController {
 		return mav;
 	}
 
-	@RequestMapping(value="/delete/{franchisee_id}", method=RequestMethod.GET)
-	public String delete(@PathVariable("franchisee_id") int franchisee_id) {
+	@RequestMapping(value="/admin/franchisee/delete/{franchisee_id}", method=RequestMethod.GET)
+	public ModelAndView delete(@PathVariable("franchisee_id") int franchisee_id) {
 		System.out.println("»èÁ¦µÊ");
 		franchiseeService.delete(franchisee_id);
-		return null;
+		ModelAndView mav = new ModelAndView("redirect:/admin/franchise/list");
+		return mav;
 	}
-	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String update(Franchisee franchisee, int member_id) {
+	@RequestMapping(value="/admin/franchisee/update", method=RequestMethod.POST)
+	public ModelAndView update(Franchisee franchisee, int member_id) {
 		System.out.println("¼öÁ¤µÊ");
 		Member member = new Member();
 		member.setMember_id(member_id);
 		franchisee.setMember(member); 
 		franchiseeService.update(franchisee);
-		return "redirect:/franchisee";
+		ModelAndView mav = new ModelAndView("redirect:/admin/franchisee/list");
+		return mav;
 	}
 	
 }

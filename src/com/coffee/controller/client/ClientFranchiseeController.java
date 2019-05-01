@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.coffee.common.exception.RegistFailException;
@@ -42,6 +43,12 @@ public class ClientFranchiseeController {
 		ModelAndView mav = new ModelAndView("client/franchisee/franchiseeMap");
 		mav.addObject("franchiseeList", franchiseeList);
 		return mav;
+	}
+	@RequestMapping(value="/client/franchisee/search",method=RequestMethod.GET)
+	@ResponseBody
+	public List search(Franchisee franchisee) {
+		List franchiseeSearchList = franchiseeService.search(franchisee);
+		return franchiseeSearchList;
 	}
 	@ExceptionHandler(RegistFailException.class)
 	public ModelAndView registFail(RegistFailException e) {

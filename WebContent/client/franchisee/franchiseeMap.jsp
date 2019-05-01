@@ -64,6 +64,51 @@ tr:nth-child(even) {
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#bt-search").click(function(){
+			localSearch();
+		})
+	});
+	function localSearch(){
+		$.ajax({
+			url : "/client/franchisee/search",
+			type: "get",
+			data:{
+				local : $($("form").find("select[name='local']")).val(),
+				f_name : $($("form").find("input[name='f_name']")).val()
+			},
+			success:function(result){
+				renderList(result);
+			}
+		});
+	}
+	function renderList(jsonArray){
+		$("#franchiseeList").html("");
+		var str = "";
+		str += "<table>";
+		str += "<tr>";
+		str += "<th width='10%'>No.</th>";
+		str += "<th width='20%'>지역</th>";
+		str += "<th width='20%'>점포명</th>";
+		str += "<th width='49%'>주소</th>";
+		str += "</tr>";
+		for(var i = 0 ; i < jsonArray.length; i++){
+			var json = jsonArray[i];
+			str += "<tr>";
+			str += "<td>"+i+"</td>";
+			str += "<td>"+json.local+"</td>";
+			str += "<td>"+json.f_name+"</td>";
+			str += "<td>"+json.addr+"</td>";
+			str += "</tr>";		
+		}
+		str += "<tr>";
+		str += "<td colspan=5>[1]</td>"
+		str += "</tr>";
+		$("#franchiseeList").append(str);
+	}
+		
+</script>
 </head>
 <%@ include file="/inc/header.jsp"%>
 <body>
@@ -74,7 +119,7 @@ tr:nth-child(even) {
 					<h2 class="mb-30">Franchisee Search</h2>
 					<form>
 						<div class="mt-10" id="googleMap" style="width:100%;height:500px;"></div>
-						<div class="mt-10" style="overflow:hidden">
+						<div class="mt-10" style="overflow:hidden" id="franchiseeList">
 							<table>
 								  <tr>
 								    <th width="10%">No.</th>
@@ -87,9 +132,9 @@ tr:nth-child(even) {
 								  <%Franchisee franchisee = franchiseeList.get(i); %>
 								  <tr>
 								    <td><%=num-- %></td>
+								    <td><%=franchisee.getLocal() %></td>
+								    <td><%=franchisee.getF_name() %></td>
 								    <td><%=franchisee.getAddr() %></td>
-								    <td><%=franchisee.getAddr() %></td>
-								    <td><%=franchisee.getMessage() %></td>
 								  </tr>
 								  <%} %>
 								  <tr>
@@ -98,8 +143,23 @@ tr:nth-child(even) {
 							</table>
 						</div>
 						<div class="mt-10">
-							<input type="text" name="name" placeholder="가게명..." onfocus="this.placeholder = ''" onblur="this.placeholder = '가게명...'" required class="single-input" style="width:70%;float:left" />
-							<a id="bt-check" class="genric-btn2 primary-border" style="width : 30%" >Search</a>
+							<div class="default-select" id="default-select" style="width:15%;float:left;">
+								<select name = "local">
+									<option value="">지역 분류</option>
+									<option value="경기">경기</option>
+									<option value="서울">서울</option>
+									<option value="강원">강원</option>
+									<option value="충남">충남</option>
+									<option value="충북">충북</option>
+									<option value="전남">전남</option>
+									<option value="전북">전북</option>
+									<option value="경남">경남</option>
+									<option value="경북">경북</option>	
+									<option value="제주">제주</option>
+								</select>
+							</div>
+							<input type="text" name="f_name" placeholder="가게명..." onfocus="this.placeholder = ''" onblur="this.placeholder = '가게명...'" required class="single-input" style="width:65%;float:left" />
+							<a id="bt-search" class="genric-btn2 primary-border" style="width : 20%;" >Search</a>
 						</div>
 					</form>
 				</div>
