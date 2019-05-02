@@ -23,5 +23,4 @@
   			select seq_coupon.currval as coupon_id from dual
  	 	</selectKey>
 	</insert>
-
 </mapper>

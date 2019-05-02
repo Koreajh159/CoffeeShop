@@ -30,5 +30,4 @@ public class MybatisCouponDAO implements CouponDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }

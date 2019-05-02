@@ -38,19 +38,22 @@ public class CouponServiceImpl implements CouponService{
 				return null;
 			}
 		});*/
+		
 		int result1 = couponDAO.insert(coupon);
 		item.setCoupon(coupon);
 		int result2 = itemDAO.insert(item);
-		int result3 = 0;
-		if(member.getPoint()>=coupon.getEa()*coupon.getProduct().getCost()) {
-			member.setPoint(coupon.getEa()*coupon.getProduct().getCost());
-			result3 = memberDAO.updatePoint(member);
-		}
+		System.out.println("현재 멤버의 포인트"+member.getPoint());
+		System.out.println(coupon.getProduct().getCost());
+		int remainPoint = member.getPoint()-(coupon.getEa()*coupon.getProduct().getCost());
+		member.setPoint(remainPoint);
+		System.out.println(member.getPoint());
+		int result3 = memberDAO.updatePoint(member);
+		
 		if(result1==0 || result2==0 || result3==0) {
 			throw new RegistFailException("등록 실패");
 		}
 	}
-
+	
 	@Override
 	public void delete(int coupon_id) {
 		// TODO Auto-generated method stub
@@ -61,6 +64,13 @@ public class CouponServiceImpl implements CouponService{
 	public void update(Coupon coupon) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean isInMyItemList(Coupon coupon) {
+		// TODO Auto-generated method stub
+		boolean isIn = false;
+		return isIn;
 	}
 
 }

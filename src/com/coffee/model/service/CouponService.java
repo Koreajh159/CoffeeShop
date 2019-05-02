@@ -10,4 +10,5 @@ public interface CouponService {
 	public void insert(Coupon coupon, Item item, Member member);
 	public void delete(int coupon_id);
 	public void update(Coupon coupon);
+	public boolean isInMyItemList(Coupon coupon);
 }
