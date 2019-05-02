@@ -141,11 +141,21 @@ function reply(){
     <input type="text"  name="date" value = "<%=board.getDate()%>">    
     <textarea name="content" style="height:200px"><%=board.getContent()%></textarea> <!-- /textarea를 엔터쳐서 내리면 안되 무조건 한줄!! -->
 
+    <%if(client.getGrade().getGrade_id()==3&&board.getRank()==1){ %>
     <input type="button" id = "bt-list" value="목록보기" >
     <input type="button" id = "bt-edit" value="수정하기" >
     <input type="button" id = "bt-delete" value="삭제하기" >
-    <%if(client.getGrade().getGrade_id()==3&&board.getRank()==1){ %>
     <input type="button" id = "bt-reply" value="답글달기" >
+    <%}else if(client.getGrade().getGrade_id()==3&&board.getRank()>1){ %>
+    <input type="button" id = "bt-list" value="목록보기" >
+    <input type="button" id = "bt-edit" value="수정하기" >
+    <input type="button" id = "bt-delete" value="삭제하기" >
+    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()==1) {%>
+    <input type="button" id = "bt-list" value="목록보기" >
+    <input type="button" id = "bt-edit" value="수정하기" >
+    <input type="button" id = "bt-delete" value="삭제하기" >
+    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()>1) {%>
+    <input type="button" id = "bt-list" value="목록보기" >
     <%} %>
   </form>
  </div> 

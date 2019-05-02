@@ -53,6 +53,9 @@ public class ClientMemberController {
 	public String login(HttpServletRequest request,Member member) {
 		Member m = memberService.logIn(member);
 		request.getSession().setAttribute("client", m);
+		if(m.getGrade().getGrade_id()==3) {
+			   request.getSession().setAttribute("admin",m);
+		}
 		return "index";
 	}
 	

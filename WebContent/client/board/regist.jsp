@@ -102,7 +102,7 @@ function regist() {
   <form >
     <input type="hidden" name="member_id" value="<%=client.getMember_id()%>">
     <input type="hidden" name="rank" value="1">
-    <input type="hidden" name="depth" value="1"> 
+    <input type="hidden" name="depth" value="0"> 
     <input type="text"  name="title" placeholder="TITLE">  
     <textarea name="content" style="height:200px" placeholder="CONTENT.."></textarea>
 

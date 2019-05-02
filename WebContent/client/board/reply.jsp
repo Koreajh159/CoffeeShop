@@ -104,7 +104,7 @@ function reply() {
     <input type="hidden" name="ask_id" value="<%=board.getMember().getMember_id()%>">
     <input type="hidden" name="rank" value="<%=board.getRank()+1%>">
     <input type="hidden" name="team" value="<%=board.getTeam()%>">
-    <input type="hidden" name="depth" value="<%=board.getDepth()+1%>"> 
+    <input type="hidden" name="depth" value="<%=board.getMember().getMember_id()%>"> 
     <input type="text"  name="title" value="└▶[RE] <%=board.getTitle()%>">  
     <textarea name="content" style="height:200px" placeholder="답글 내용.."></textarea>
 

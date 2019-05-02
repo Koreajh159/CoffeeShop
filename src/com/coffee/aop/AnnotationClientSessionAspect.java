@@ -9,7 +9,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.web.servlet.ModelAndView;
 
 
-
 @Aspect
 public class AnnotationClientSessionAspect {
    // xml이 없기 때문에 위치(pointCut), 때(advice)를 자바 코드에서 지정해야 한다.
