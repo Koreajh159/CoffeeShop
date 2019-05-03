@@ -36,11 +36,11 @@
 }
 
 .board_tr:nth-child(even) {
-  background-color: #ddd;
-  color:white;
+  color: #fff;
+  background-color: #b68834;
   
 }
-input[type=button] {
+/* input[type=button] {
   background-color: #555;
   color: white;
   padding: 12px 20px;
@@ -52,7 +52,7 @@ input[type=button] {
 
 input[type=button]:hover {
   background-color: #777;
-}
+}*/
 .col-lg-77{
 	margin:auto;
 	margin-top : 30px;
@@ -60,7 +60,7 @@ input[type=button]:hover {
 }
 .row{
 	margin:auto;
-}
+} 
 
 </style>
 <script
@@ -135,7 +135,8 @@ input[type=button]:hover {
 		  		<%} %>
 		</div>
 <div class="col-lg-77 col-md-8" style="text-align:right">
-<input type="button" value="등록" onClick="regist()"> 
+<!-- <a id="bt-search" class="genric-btn2 primary-border" style="width : 20%;" >등록</a> -->
+<input type="button" class="genric-btn2 primary-border"  value="등록" onClick="regist() "> 
 </div>
 </section>
 <!-- </div> -->
