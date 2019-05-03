@@ -42,7 +42,7 @@ h4{
 	margin-top :5px;
 }
 .genric-btn{
-	width:45%;
+	width:24%;
 	text-align: center;
 }
 .d-flex3 {
@@ -131,23 +131,25 @@ function reply(){
 			    <h4 class="mb-20">Content</h4>
 			    <div class="mt-10">
 			    	<textarea name="content" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required><%=board.getContent()%></textarea> <!-- /textarea를 엔터쳐서 내리면 안되 무조건 한줄!! -->
+				</div>
+				<div class="col-lg-77 col-md-8">
+					<%if(client.getGrade().getGrade_id()==3&&board.getRank()==1){ %>
+					<a id="bt-list" class="genric-btn primary-border circle">목록보기</a>
+					<a id="bt-edit" class="genric-btn primary-border circle">수정하기</a>
+					<a id="bt-delete" class="genric-btn primary-border circle">삭제하기</a>
+					<a id="bt-reply" class="genric-btn primary-border circle">답글달기</a>
+				    <%}else if(client.getGrade().getGrade_id()==3&&board.getRank()>1){ %>
+				    <a id="bt-list" class="genric-btn primary-border circle">목록보기</a>
+					<a id="bt-edit" class="genric-btn primary-border circle">수정하기</a>
+					<a id="bt-delete" class="genric-btn primary-border circle">삭제하기</a>
+				    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()==1) {%>
+				    <a id="bt-list" class="genric-btn primary-border circle">목록보기</a>
+					<a id="bt-edit" class="genric-btn primary-border circle">수정하기</a>
+					<a id="bt-delete" class="genric-btn primary-border circle">삭제하기</a>
+				    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()>1) {%>
+				    <a id="bt-list" class="genric-btn primary-border circle">목록보기</a>
+					<%} %>
 				</div>		
-			    <%if(client.getGrade().getGrade_id()==3&&board.getRank()==1){ %>
-			    <input type="button" id = "bt-list" value="목록보기" >
-			    <input type="button" id = "bt-edit" value="수정하기" >
-			    <input type="button" id = "bt-delete" value="삭제하기" >
-			    <input type="button" id = "bt-reply" value="답글달기" >
-			    <%}else if(client.getGrade().getGrade_id()==3&&board.getRank()>1){ %>
-			    <input type="button" id = "bt-list" value="목록보기" >
-			    <input type="button" id = "bt-edit" value="수정하기" >
-			    <input type="button" id = "bt-delete" value="삭제하기" >
-			    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()==1) {%>
-			    <input type="button" id = "bt-list" value="목록보기" >
-			    <input type="button" id = "bt-edit" value="수정하기" >
-			    <input type="button" id = "bt-delete" value="삭제하기" >
-			    <%}else if(client.getGrade().getGrade_id()<3&&board.getRank()>1) {%>
-			    <input type="button" id = "bt-list" value="목록보기" >
-				    <%} %>
 		 	</form>
 		 </div> 
 	</div>
