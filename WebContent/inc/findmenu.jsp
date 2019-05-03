@@ -32,8 +32,8 @@ body, html {
 </style>
 </head>
 <body>
-<button class="tablink" onclick="location.href='/findid.jsp'">Find ID</button>
-<button class="tablink" onclick="location.href='/findpw.jsp'">Find Password</button>
+<button class="tablink" onclick="location.href='/client/member/findid.jsp'">Find ID</button>
+<button class="tablink" onclick="location.href='/client/member/findpw.jsp'">Find Password</button>
 <script>
 </script>
 </body>

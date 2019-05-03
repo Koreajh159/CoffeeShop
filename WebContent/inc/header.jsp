@@ -11,14 +11,24 @@
 					<%if(client == null) {%>
 					<ul>					
 						<li><a href="/client/member/login.jsp">Login</li>
-						<li><a href="/ctest/member/goRegist">Regist</a></li>
+						<li><a href="/client/franchisee/goRegist">Regist</a></li>
 					</ul>
 					<%}else{ %>
-						<ul>					
-							<li><%=client.getId()%>님 반갑습니다.</li>
-							<li><a href="javascript:logout()">Logout</a></li>
-							<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
-						</ul>
+						<%if(client.getGrade().getGrade_id()==3) {%>
+							<ul>
+								<li><%=client.getId()%>님 반갑습니다.</li>
+								<li>Point : <%=client.getPoint() %>점</li>					
+								<li><a href="javascript:logout()">Logout</a></li>
+								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
+							</ul>
+						<%}else{%>
+							<ul>
+								<li><%=client.getId()%>님 반갑습니다.</li>
+								<li><a href=""></a></li>					
+								<li><a href="javascript:logout()">Logout</a></li>
+								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
+							</ul>
+						<%} %>
 					<%} %>
 				</div>
 			</div>

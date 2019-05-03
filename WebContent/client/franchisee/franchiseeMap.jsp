@@ -1,3 +1,4 @@
+<%@page import="org.json.simple.JSONArray"%>
 <%@page import="com.coffee.common.board.Pager"%>
 <%@page import="com.coffee.model.domain.Franchisee"%>
 <%@page import="java.util.List"%>
@@ -110,7 +111,7 @@ tr:nth-child(even) {
 		for(var i = 0 ; i < jsonArray.length; i++){
 			var json = jsonArray[i];
 			str += "<tr>";
-			str += "<td>"+i+"</td>";
+			str += "<td>"+(jsonArray.length - i)+"</td>";
 			str += "<td>"+json.local+"</td>";
 			str += "<td>"+json.f_name+"</td>";
 			str += "<td>"+json.addr+"</td>";
@@ -164,7 +165,7 @@ tr:nth-child(even) {
 								  </tr>
 								  <%int num =	pager.getNum();%>
 								  <%int curPos = pager.getCurPos(); %>
-								  <%for(int i = 0; i < franchiseeList.size(); i++) {%>
+								  <%for(int i = 0; i < pager.getPageSize(); i++) {%>
 								  <%Franchisee franchisee = franchiseeList.get(i); %>
 								  <%if(num < 1) break; %>
 								  <tr>

@@ -47,6 +47,6 @@
 	</delete>
 	
 	<select id="search" parameterType="Franchisee" resultMap="FranchiseeMap">
-		<include refid="sql_select"/> where local = #{local} and f_name like '%'||#{f_name}||'%'
+		<include refid="sql_select"/> where local like '%'||#{local}||'%' and f_name like '%'||#{f_name}||'%'
 	</select>
 </mapper>

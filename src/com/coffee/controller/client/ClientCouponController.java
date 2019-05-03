@@ -13,6 +13,7 @@ import com.coffee.model.domain.Item;
 import com.coffee.model.domain.Member;
 import com.coffee.model.domain.Product;
 import com.coffee.model.service.CouponService;
+import com.coffee.model.service.MemberService;
 import com.coffee.model.service.ProductService;
 
 @RestController
@@ -30,11 +31,10 @@ public class ClientCouponController {
 		coupon.setProduct(product);
 		coupon.setEa(ea);
 		Item item = new Item();
-		
-
 		Member member = (Member)request.getSession().getAttribute("client");
 		item.setMember(member);
 		couponService.insert(coupon, item, member);
+		
 		return "{\"resultCode\":1, \"msg\":\"등록 성공\"}";
 	}
 	

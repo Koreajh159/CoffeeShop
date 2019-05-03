@@ -25,18 +25,22 @@ public class ClientFranchiseeController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="/client/franchisee/goRegist", method=RequestMethod.GET)
-	public String goRegist() {
-		return "client/franchisee/franchisee";
+	@RequestMapping(value="/client/franchisee/goRegist")
+	public ModelAndView goRegist(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("client/franchisee/franchisee");
+		return mav;
 	}
+	
 	@RequestMapping(value="/client/franchisee/regist", method=RequestMethod.POST)
-	public String insert(Franchisee franchisee, int member_id) {
+	public ModelAndView insert(HttpServletRequest request, Franchisee franchisee, int member_id) {
 		Member member = new Member();
 		member.setMember_id(member_id);
 		franchisee.setMember(member);
 		franchiseeService.insert(franchisee);
-		return "index";
+		ModelAndView mav = new ModelAndView("index");
+		return mav;
 	}
+	
 	@RequestMapping(value="/client/franchisee/list", method=RequestMethod.GET)
 	public ModelAndView selectAll() {
 		List franchiseeList = franchiseeService.selectAll();
@@ -44,18 +48,7 @@ public class ClientFranchiseeController {
 		mav.addObject("franchiseeList", franchiseeList);
 		return mav;
 	}
-	@RequestMapping(value="/client/franchisee/search",method=RequestMethod.GET)
-	@ResponseBody
-	public List search(Franchisee franchisee) {
-		List franchiseeSearchList = franchiseeService.search(franchisee);
-		return franchiseeSearchList;
-	}
-	@RequestMapping(value="/client/franchisee/selectAll")
-	@ResponseBody
-	public List searchAll(Franchisee franchisee) {
-		List franchiseeList = franchiseeService.selectAll();
-		return franchiseeList;
-	}
+	
 	@ExceptionHandler(RegistFailException.class)
 	public ModelAndView registFail(RegistFailException e) {
 		ModelAndView mav = new ModelAndView("index");
