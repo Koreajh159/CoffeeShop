@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-   alert("로그인을 해주세요");
-   location.href="/admin/login/login.jsp";
+   alert("접근 권한이 없습니다");
+   location.href="/index.jsp";
 </script>
 </head>
 <%-- <body bgcolor="yellow">

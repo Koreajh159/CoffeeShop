@@ -36,11 +36,11 @@
 }
 
 .board_tr:nth-child(even) {
-  background-color: #ddd;
-  color:white;
+  color: #fff;
+  background-color: #b68834;
   
 }
-input[type=button] {
+/* input[type=button] {
   background-color: #555;
   color: white;
   padding: 12px 20px;
@@ -52,7 +52,7 @@ input[type=button] {
 
 input[type=button]:hover {
   background-color: #777;
-}
+}*/
 .col-lg-77{
 	margin:auto;
 	margin-top : 30px;
@@ -60,7 +60,7 @@ input[type=button]:hover {
 }
 .row{
 	margin:auto;
-}
+} 
 
 </style>
 <script
@@ -72,8 +72,8 @@ input[type=button]:hover {
    });
 
 
-   function getDetail(boardId,board,clientGrade,clientId){// 여기에 board 넣어야함
-	   if(clientGrade==3||clientId==board){	  
+   function getDetail(boardId,board,clientGrade,clientId,askId){// 여기에 board 넣어야함
+	   if(clientGrade==3||clientId==board||clientId==askId){	  
 /* 	   if(client.getGrade().getGrade_id()==3||client.getMember_id()==board.getMember().getMember_id()){	   */
 	   		location.href="/client/board/detail?board_id="+boardId;
 		}else{
@@ -114,7 +114,7 @@ input[type=button]:hover {
 			<%Board board = boardList.get(curPos++);
 				
 			%>
-		  <tr class="board_tr" onClick="getDetail(<%=board.getBoard_id()%>,<%=board.getMember().getMember_id()%>,<%=client.getGrade().getGrade_id()%>,<%=client.getMember_id()%>)">
+		  <tr class="board_tr" onClick="getDetail(<%=board.getBoard_id()%>,<%=board.getMember().getMember_id()%>,<%=client.getGrade().getGrade_id()%>,<%=client.getMember_id()%>,<%=board.getDepth()%>)">
 		    <td class="board_td" style="width:10%; text-align: center"><%=num--%></td>
 		    <td class="board_td" style="width:45%; text-align: left"><%=board.getTitle() %></td>
 		    <td class="board_td" style="width:30%; text-align: center"><%=board.getMember().getName() %></td>
@@ -135,7 +135,8 @@ input[type=button]:hover {
 		  		<%} %>
 		</div>
 <div class="col-lg-77 col-md-8" style="text-align:right">
-<input type="button" value="등록" onClick="regist()"> 
+<!-- <a id="bt-search" class="genric-btn2 primary-border" style="width : 20%;" >등록</a> -->
+<input type="button" class="genric-btn2 primary-border"  value="등록" onClick="regist() "> 
 </div>
 </section>
 <!-- </div> -->

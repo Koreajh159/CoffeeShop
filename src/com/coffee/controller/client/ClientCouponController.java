@@ -22,18 +22,23 @@ public class ClientCouponController {
 	private CouponService couponService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value="/client/coupon/add", method=RequestMethod.POST)
 	public String addNewCoupon(int product_id, int ea, HttpServletRequest request) {
-		Product product = new Product();
-		product.setProduct_id(product_id);
+		Product product = productService.select(product_id);
 		Coupon coupon = new Coupon();
 		coupon.setProduct(product);
 		coupon.setEa(ea);
 		Item item = new Item();
+		
+
 		Member member = (Member)request.getSession().getAttribute("client");
 		item.setMember(member);
 		couponService.insert(coupon, item, member);
+		
+		member = memberService.select(member.getMember_id());
 		
 		return "{\"resultCode\":1, \"msg\":\"등록 성공\"}";
 	}
@@ -41,12 +46,14 @@ public class ClientCouponController {
 	@RequestMapping(value="/client/product/{product_id}", method=RequestMethod.POST)
 	public String isEnoughPt(@PathVariable("product_id") int product_id, int ea, HttpServletRequest request) {
 		Member member = (Member)request.getSession().getAttribute("client");
+		member=memberService.select(member.getMember_id());
+		request.getSession().setAttribute("client", member);
 		Product product = productService.select(product_id);
 		int checkPt = product.getCost()*ea;
 		String result =  "{\"resultCode\":0}";
 		System.out.println(checkPt);
 		if(member.getPoint()>=checkPt) {
-			return "{\"resultCode\":1}";
+			result="{\"resultCode\":1}";
 		}
 		return result;
 	}
