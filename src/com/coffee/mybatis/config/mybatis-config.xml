@@ -9,7 +9,6 @@
   	<typeAlias type="com.coffee.model.domain.Coupon" alias="Coupon"/>
   	<typeAlias type="com.coffee.model.domain.Franchisee" alias="Franchisee"/>
   	<typeAlias type="com.coffee.model.domain.Grade" alias="Grade"/>
-  	<typeAlias type="com.coffee.model.domain.Item" alias="Item"/>
   	<typeAlias type="com.coffee.model.domain.Member" alias="Member"/>
   	<typeAlias type="com.coffee.model.domain.Product" alias="Product"/>
   </typeAliases>
@@ -19,7 +18,6 @@
     <mapper resource="com/coffee/mybatis/mapper/CouponMapper.xml"/>
     <mapper resource="com/coffee/mybatis/mapper/FranchiseeMapper.xml"/>
     <mapper resource="com/coffee/mybatis/mapper/GradeMapper.xml"/>
-    <mapper resource="com/coffee/mybatis/mapper/ItemMapper.xml"/>
     <mapper resource="com/coffee/mybatis/mapper/MemberMapper.xml"/>
     <mapper resource="com/coffee/mybatis/mapper/ProductMapper.xml"/>
   </mappers>

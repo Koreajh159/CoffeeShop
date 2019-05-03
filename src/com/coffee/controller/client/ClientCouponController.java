@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coffee.model.domain.Coupon;
-import com.coffee.model.domain.Item;
 import com.coffee.model.domain.Member;
 import com.coffee.model.domain.Product;
 import com.coffee.model.service.CouponService;
@@ -28,15 +27,12 @@ public class ClientCouponController {
 	@RequestMapping(value="/client/coupon/add", method=RequestMethod.POST)
 	public String addNewCoupon(int product_id, int ea, HttpServletRequest request) {
 		Product product = productService.select(product_id);
+		Member member = (Member)request.getSession().getAttribute("client");
 		Coupon coupon = new Coupon();
 		coupon.setProduct(product);
-		coupon.setEa(ea);
-		Item item = new Item();
-		
-
-		Member member = (Member)request.getSession().getAttribute("client");
-		item.setMember(member);
-		couponService.insert(coupon, item, member);
+		coupon.setEa(ea);		
+		coupon.setMember(member);
+		couponService.insert(coupon, member);
 		
 		member = memberService.select(member.getMember_id());
 		

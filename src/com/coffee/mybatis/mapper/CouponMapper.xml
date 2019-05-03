@@ -8,19 +8,31 @@
 		<result column="regdate" property="regdate"/>
 		<result column="ea" property="ea"/>
 		<association column="product_id" property="product" javaType="Product" select="Product.select"></association>
+		<association column="member_id" property="member" javaType="Member" select="Member.select"></association>
 	</resultMap>
 	
 	<!-- select sql -->
 	<sql id="sql_select">
-		select coupon_id, regdate, ea, product_id from coupon
+		select coupon_id, regdate, ea, product_id, member_id from coupon
 	</sql>
 	
 	<!-- insert문 pointmall에서 쿠폰 추가를 누르면 insert문을 통해 구매목록에 들어간다.-->
 	<insert id="insert" parameterType="Coupon">
-		insert into coupon(coupon_id, regdate, ea, product_id)
-		values(seq_coupon.nextval, default, #{ea}, #{product.product_id})
+		insert into coupon(coupon_id, regdate, ea, product_id, member_id)
+		values(seq_coupon.nextval, default, #{ea}, #{product.product_id}, #{member.member_id})
 		<selectKey resultType="int" keyProperty="coupon_id">
   			select seq_coupon.currval as coupon_id from dual
  	 	</selectKey>
 	</insert>
+	<select id="select" resultMap="Couponmap" parameterType="Coupon">
+		<include refid="sql_select"/> where member_id=#{member.member_id} and product_id=#{product.product_id}
+	</select>
+	
+	<select id="selectByMember" resultMap="Couponmap" parameterType="Member">
+		<include refid="sql_select"/> where member_id=#{member_id} 
+	</select>
+
+	<update id="updateEa" parameterType="Coupon">
+		update coupon set ea=#{ea} where coupon_id=#{coupon_id}
+	</update>
 </mapper>
