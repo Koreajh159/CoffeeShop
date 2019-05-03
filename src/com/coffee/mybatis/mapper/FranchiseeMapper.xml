@@ -31,6 +31,10 @@
 		<include refid="sql_select"/>
 	</select>
 	
+	<select id="searchAll" resultMap="FranchiseeMap">
+		<include refid="sql_select"/> where checked = 1
+	</select>
+	
 	<!-- 관리자 페이지 franchisee 신청상세 정보 -->
 	<select id="select" parameterType="int" resultMap="FranchiseeMap">
 		<include refid="sql_select"/> where franchisee_id = #{franchisee_jd}
@@ -47,6 +51,6 @@
 	</delete>
 	
 	<select id="search" parameterType="Franchisee" resultMap="FranchiseeMap">
-		<include refid="sql_select"/> where local like '%'||#{local}||'%' and f_name like '%'||#{f_name}||'%'
+		<include refid="sql_select"/> where local like '%'||#{local}||'%' and f_name like '%'||#{f_name}||'%' and checked = 1
 	</select>
 </mapper>

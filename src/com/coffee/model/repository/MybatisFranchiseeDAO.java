@@ -30,4 +30,7 @@ public class MybatisFranchiseeDAO implements FranchiseeDAO{
 	public List search(Franchisee franchisee) {
 		return sqlSessionTemplate.selectList("Franchisee.search", franchisee);
 	}
+	public List searchAll() {
+		return sqlSessionTemplate.selectList("Franchisee.searchAll");
+	}
 }

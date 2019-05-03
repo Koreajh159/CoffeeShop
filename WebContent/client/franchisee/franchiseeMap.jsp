@@ -70,14 +70,14 @@ tr:nth-child(even) {
 	var map;
 	var mapProp;
 	$(function(){
-		selectAll();
+		searchAll();
 		$("#bt-search").click(function(){
 			localSearch();
 		});
 	});
-	function selectAll(){
+	function searchAll(){
 		$.ajax({
-			url : "/client/franchisee/selectAll",
+			url : "/client/franchisee/searchAll",
 			type: "get",
 			success:function(result){
 				mapMarker(result);
@@ -179,7 +179,7 @@ tr:nth-child(even) {
 								  	<td colspan=5>
 										<%for(int i = pager.getFirstPage(); i < pager.getLastPage(); i++){ %>
 										<%if(i>pager.getTotalPage())break; %>
-											<a href="/client/franchisee/list?currentPage=<%=i%>">[<%=i %>]</a>
+											<a href="/client/franchisee/mapList?currentPage=<%=i%>">[<%=i %>]</a>
 										<%} %>
 									</td>
 								  </tr>

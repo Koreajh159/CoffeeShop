@@ -55,7 +55,7 @@
 					<li class="menu-has-children"><a href="">Franchisee</a>
 						<ul>
 							<li><a href="/client/franchisee/goRegist">Regist</a></li>
-							<li><a href="/client/franchisee/list">Search</a></li>
+							<li><a href="/client/franchisee/mapList">Search</a></li>
 						</ul>
 					</li>
 

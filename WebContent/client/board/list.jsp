@@ -5,15 +5,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!Pager pager=new Pager();%>
 <%
-	//int currentPage = 1;
-	//if(request.getParameter("currentPage")!=null){ //링크를 눌렀다면 바로 그 링크로 넘어온 숫자를 현재 페이지로 대체!!
-	//	currentPage = Integer.parseInt((String)request.getAttribute("currentPage"));
-	//}
-	List<Board> boardList = (List)request.getAttribute("boardList");	
-	
+	List<Board> boardList = (List)request.getAttribute("boardList");
 	pager.init(request, boardList.size());
-	
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -22,37 +15,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css">
 <style>
-.board_table {
+table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  border: 1px solid #ddd;
+  height : 50%;
+  border: 5px solid #b68834;
 }
 
-.board_th, .board_td {
-  
-  padding: 16px;
-  color:black;
+th, td, tr {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #b68834;
 }
 
-.board_tr:nth-child(even) {
-  color: #fff;
-  background-color: #b68834;
-  
+tr:nth-child(even) {
+  color: #b68834
 }
-/* input[type=button] {
-  background-color: #555;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align:right;
-}
-
-input[type=button]:hover {
-  background-color: #777;
-}*/
 .col-lg-77{
 	margin:auto;
 	margin-top : 30px;
@@ -61,33 +40,27 @@ input[type=button]:hover {
 .row{
 	margin:auto;
 } 
-
+.mb-30{
+	color : #b68834;
+}
 </style>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
    $(function() {
       
    });
-
-
    function getDetail(boardId,board,clientGrade,clientId,askId){// 여기에 board 넣어야함
 	   if(clientGrade==3||clientId==board||clientId==askId){	  
-/* 	   if(client.getGrade().getGrade_id()==3||client.getMember_id()==board.getMember().getMember_id()){	   */
 	   		location.href="/client/board/detail?board_id="+boardId;
 		}else{
 			alert("글을 열람할 수 있는 권한이 없습니다.");
 		}
    }
-   
-
    function regist(member_id){
-      location.href="/client/board/goRegist";
+     
    }
-
    </script>
-
 </head>
 <body>
  <%@ include file="/inc/header.jsp" %>  
@@ -98,48 +71,39 @@ input[type=button]:hover {
 <!-- <div class="section-top-border" > -->
 	<div class="row" >
 		<div class="col-lg-77 col-md-8" >
-		<table class="board_table">
-		  <tr class="board_tr" style="text-align: center">
-		  	 
-		    <th class="board_th" style="width:10%; text-align: center" > No.</th>
-		    <th class="board_th" style="width:45%; text-align: left">제목</th>
-		    <th class="board_th" style="width:30%;text-align: center ">작성자</th>
-		    <th class="board_th" style="width:15%;text-align: center">날짜</th>
-		
-		  </tr>
-		    <%int num=pager.getNum(); %>
-		  <%int curPos=pager.getCurPos(); %>
-		  <%for(int i=0;i<pager.getPageSize();i++){ %>
-			<%if(num<1)break; %>
-			<%Board board = boardList.get(curPos++);
-				
-			%>
-		  <tr class="board_tr" onClick="getDetail(<%=board.getBoard_id()%>,<%=board.getMember().getMember_id()%>,<%=client.getGrade().getGrade_id()%>,<%=client.getMember_id()%>,<%=board.getDepth()%>)">
-		    <td class="board_td" style="width:10%; text-align: center"><%=num--%></td>
-		    <td class="board_td" style="width:45%; text-align: left"><%=board.getTitle() %></td>
-		    <td class="board_td" style="width:30%; text-align: center"><%=board.getMember().getName() %></td>
-		    <td class="board_td" style="width:15%; text-align: center"><%=board.getDate() %></td>
-		
-		  </tr>
-		
-		  <%} %>
-		  
-		</table>
-		</div>
+			<h2 class="mb-30">Q&A 게시판</h2>
+			<table class="board_table">
+			  <tr class="board_tr" style="text-align: center">		  	 
+			    <th style="width:10%; text-align: center"> No.</th>
+			    <th style="width:60%; text-align: left">제목</th>
+			    <th style="width:10%; text-align: center ">작성자</th>
+			    <th style="width:20%; text-align: center">날짜</th>
+			  </tr>
+			    <%int num=pager.getNum(); %>
+			  	<%int curPos=pager.getCurPos(); %>
+			  	<%for(int i=0;i<pager.getPageSize();i++){ %>
+				<%if(num<1)break; %>
+				<%Board board = boardList.get(curPos++);%>
+			  <tr class="board_tr" onClick="getDetail(<%=board.getBoard_id()%>,<%=board.getMember().getMember_id()%>,<%=client.getGrade().getGrade_id()%>,<%=client.getMember_id()%>,<%=board.getDepth()%>)">
+			    <td class="board_td" style="text-align: center"><%=num--%></td>
+			    <td class="board_td" style="text-align: left"><%=board.getTitle() %></td>
+			    <td class="board_td" style="text-align: center"><%=board.getMember().getName() %></td>
+			    <td class="board_td" style="text-align: center"><%=board.getDate() %></td>
+			  </tr>
+			  <%} %>  
+			</table>
+			</div>
 	</div>
 		<div class="col-lg-77 col-md-8" style="text-align:center">
 		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
-		  		<%if(i>pager.getTotalPage())break; %>
-		  		<%-- <a href = "/client/board/list?currentPage=<%=i%>">[<%=i %>]</a> <!-- 내가 누른 페이지 번호를 넘기자 --> --%>
-		  		[<%=i %>]
-		  		<%} %>
+		  	<%if(i>pager.getTotalPage())break; %>
+		  	<a href = "/client/board/list?currentPage=<%=i%>">[<%=i %>]</a> <!-- 내가 누른 페이지 번호를 넘기자 -->
+		<%} %>
 		</div>
-<div class="col-lg-77 col-md-8" style="text-align:right">
-<!-- <a id="bt-search" class="genric-btn2 primary-border" style="width : 20%;" >등록</a> -->
-<input type="button" class="genric-btn2 primary-border"  value="등록" onClick="regist() "> 
+	<div class="col-lg-77 col-md-8" style="text-align:right">
+	<!-- <a id="bt-search" class="genric-btn2 primary-border" style="width : 20%;" >등록</a> -->
+	<a href="/client/board/goRegist" class="genric-btn2 primary-border" style="width : 15%; border : 1px solid #b68834; font-size :20px; font-weight : bold;" >등록</a> 
 </div>
 </section>
-<!-- </div> -->
-
 </body>
 </html>

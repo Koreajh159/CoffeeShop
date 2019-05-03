@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.coffee.model.domain.Franchisee;
 import com.coffee.model.service.FranchiseeService;
@@ -23,9 +24,10 @@ public class ClientRestFranchiseeController {
 		List franchiseeSearchList = franchiseeService.search(franchisee);
 		return franchiseeSearchList;
 	}
-	@RequestMapping(value="/client/franchisee/selectAll")
-	public List searchAll(Franchisee franchisee) {
-		List franchiseeList = franchiseeService.selectAll();
+	@RequestMapping(value="/client/franchisee/searchAll")
+	public List searchAll() {
+		List franchiseeList = franchiseeService.searchAll();
 		return franchiseeList;
 	}
+
 }

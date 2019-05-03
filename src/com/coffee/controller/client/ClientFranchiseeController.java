@@ -49,6 +49,14 @@ public class ClientFranchiseeController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/client/franchisee/mapList", method=RequestMethod.GET)
+	public ModelAndView searchAll() {
+		List franchiseeList = franchiseeService.searchAll();
+		ModelAndView mav = new ModelAndView("client/franchisee/franchiseeMap");
+		mav.addObject("franchiseeList", franchiseeList);
+		return mav;
+	}
+	
 	@ExceptionHandler(RegistFailException.class)
 	public ModelAndView registFail(RegistFailException e) {
 		ModelAndView mav = new ModelAndView("index");
