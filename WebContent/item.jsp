@@ -64,8 +64,8 @@ tr:nth-child(even) {
 	
 </script>
 </head>
-<%@ include file="/inc/header.jsp"%>
 <body>
+<%@ include file="/inc/header.jsp"%>
 	<section class="menu-area section-gap" id="coffee">
 		<div class="section-top-border">
 			<div class="row">
