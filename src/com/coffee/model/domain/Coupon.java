@@ -5,6 +5,7 @@ public class Coupon {
 	private Product product;
 	private String regdate;
 	private int ea;
+	private Member member;
 	public int getCoupon_id() {
 		return coupon_id;
 	}
@@ -28,5 +29,12 @@ public class Coupon {
 	}
 	public void setEa(int ea) {
 		this.ea = ea;
+	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
 	}	
+	
 }

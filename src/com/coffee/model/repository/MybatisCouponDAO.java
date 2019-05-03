@@ -22,7 +22,7 @@ public class MybatisCouponDAO implements CouponDAO{
 	@Override
 	public int update(Coupon coupon) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.update("Coupon.updateEa", coupon);
 	}
 
 	@Override
@@ -30,4 +30,17 @@ public class MybatisCouponDAO implements CouponDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public Coupon select(Coupon coupon) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("Coupon.select", coupon);
+	}
+
+	@Override
+	public List selectByMember(Member member) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("Coupon.selectByMember", member);
+	}
+	
 }

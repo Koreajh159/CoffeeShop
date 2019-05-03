@@ -118,7 +118,9 @@ function addCoupon(ea, product_id){
 </script>
 </head>
 <body>
+<form id="headerForm">
 <%@ include file="/inc/header.jsp" %>
+</form>
 <!-- Start menu Area -->
 			<section class="menu-area section-gap" id="coffee">
 				<div class="container">
