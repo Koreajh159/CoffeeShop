@@ -15,7 +15,7 @@
 					</ul>
 					<%}else if(client.getGrade().getGrade_id()==3){ %>
 						<ul>					
-							<li><%=client.getPoint()%>님 반갑습니다.</li>
+							<li><%=client.getName()%>님 반갑습니다.</li>
 							<li><a href="javascript:logout()">Logout</a></li>
 							<li><a href="/admin/member/list">Admin</a></li>
 							<li><a href="/client/item/getPage"><img src="/img/cart2.png"/ width="30px"></a></li>
@@ -23,7 +23,7 @@
 					<%}else{ %>
 						<%if(client.getGrade().getGrade_id()==3) {%>
 							<ul>
-								<li><%=client.getId()%>님 반갑습니다.</li>
+								<li><%=client.getName()%>님 반갑습니다.</li>
 								<li>Point : <%=client.getPoint() %>점</li>					
 								<li><a href="javascript:logout()">Logout</a></li>
 								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
@@ -31,7 +31,7 @@
 						<%}else{%>
 							<ul>
 								<li><%=client.getId()%>님 반갑습니다.</li>
-								<li><a href=""></a></li>					
+								<li>Point : <%=client.getPoint() %>점</li>			
 								<li><a href="javascript:logout()">Logout</a></li>
 								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
 							</ul>

@@ -52,6 +52,7 @@ public class ClientFranchiseeController {
 	@RequestMapping(value="/client/franchisee/mapList", method=RequestMethod.GET)
 	public ModelAndView searchAll() {
 		List franchiseeList = franchiseeService.searchAll();
+		System.out.println(franchiseeList.size());
 		ModelAndView mav = new ModelAndView("client/franchisee/franchiseeMap");
 		mav.addObject("franchiseeList", franchiseeList);
 		return mav;

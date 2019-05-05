@@ -21,8 +21,8 @@
 	
 	<!-- 회원 가입 insert문-->
 	<insert id="insert" parameterType="Member">
-		insert into member(member_id, id, pass, phone, name, age, grade_id)
-		values(seq_member.nextval, #{id},#{pass},#{phone},#{name},#{age},#{grade.grade_id})
+		insert into member(id, pass, phone, name, age, grade_id)
+		values(#{id},#{pass},#{phone},#{name},#{age},#{grade.grade_id})
 	</insert>
 	
 	<!-- Login select 문 -->

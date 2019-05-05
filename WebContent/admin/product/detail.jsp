@@ -219,6 +219,30 @@ input[type=submit]:hover {
         <input type="text" id="cost" name="cost" placeholder="상품 포인트" value="<%=product.getCost() %>">
       </div>
     </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Product detail</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="cost" name="detail" placeholder="상품 세부사항" value="<%=product.getDetail() %>">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Product IsOnPoint</label>
+      </div>
+      <div class="col-75">
+        <select id="category_id" name="isOnPoint">
+        	<%if(product.getIsOnPoint() == 1) {%>
+	        	<option value="0">미등록</option>
+	        	<option value="1" selected>등록</option>
+	        <%} else {%>
+	        	<option value="0" selected>미등록</option>
+	        	<option value="1" >등록</option>
+	        <%} %>
+        </select>
+      </div>
+    </div>
     
     
     <div class="row">
@@ -240,9 +264,7 @@ input[type=submit]:hover {
         <label for="image">Product Image</label>
         <input type="file" id="input_img" name="myFile" value="사진 찾기" src="/data/<%=product.getFilename() %>">
       </div>
-      
       <div class="col-75">
-      
          <img class="sticky" width="150px" height="200px" id="img" src="/data/<%=product.getFilename() %>">
          <input type="text" id="filename" name="filename" value=<%=product.getFilename() %> >
       </div>

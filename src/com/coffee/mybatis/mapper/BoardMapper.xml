@@ -18,8 +18,8 @@
 	</sql>
 	
 	<insert id="insert" parameterType="Board">
-		insert into board(board_id,title,content,rank,depth,team,member_id)
-		values(seq_board.nextval,#{title},#{content},#{rank},#{depth},seq_board.nextval,#{member.member_id})
+		insert into board(title,content,rank,depth,team,member_id)
+		values(#{title},#{content},#{rank},#{depth},(select ifnull(max(team)+1,0) from board b),#{member.member_id})
 	</insert>
 	
 	<select id="selectAll" resultMap="BoardMap">
@@ -42,7 +42,7 @@
 	</delete>
 	
 	<insert id="reply" parameterType="Board">
-		insert into board(board_id,title,content,rank,depth,team,member_id)
-		values(seq_board.nextval,#{title},#{content},#{rank},#{depth},#{team},#{member.member_id})
+		insert into board(title,content,rank,depth,team,member_id)
+		values(#{title},#{content},#{rank},#{depth},#{team},#{member.member_id})
 	</insert>
 </mapper>

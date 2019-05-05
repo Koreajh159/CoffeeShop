@@ -10,8 +10,8 @@
 
 	<!-- grade 생성 -->
 	<insert id="insert" parameterType="Grade">
-		insert into grade(grade_id, grade_name)
-		values(seq_grade.nextval, #{grade_name})
+		insert into grade(grade_name)
+		values(#{grade_name})
 	</insert>
 
 	<!-- Member를 구분할 때 사용되는 grade를 추출하기 위한 select 문-->

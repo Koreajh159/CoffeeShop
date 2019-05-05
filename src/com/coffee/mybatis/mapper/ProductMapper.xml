@@ -9,6 +9,8 @@
 		<result column="filename" property="filename"/>
 		<result column="price" property="price"/>
 		<result column="cost" property="cost"/>
+		<result column="isOnPoint" property="isOnPoint"/>
+		<result column="detail" property="detail"/>
 		<association column="category_id" property="category" javaType="Category" select="Category.select"></association>
 	</resultMap>
 	
@@ -20,8 +22,8 @@
 	
 	<!-- 관리자 페이지 상품 추가 -->
 	<insert id="insert" parameterType="Product">
-		insert into product(product_id, name, filename, price, cost, category_id, detail)
-		values(seq_product.nextval, #{name},#{filename},#{price},#{cost},#{category.category_id}, #{detail})
+		insert into product(name, filename, price, cost, category_id, detail)
+		values(#{name},#{filename},#{price},#{cost},#{category.category_id}, #{detail})
 	</insert>
 	
 	<!-- 관리자 페이지 상품 목록 + pointmall 페이지 및 메뉴 페이지에서 불러오기-->
@@ -52,7 +54,7 @@
 			
 	<!-- 관리자 페이지 상품 수정 -->
 	<update id="update" parameterType="Product">
-		update product set name = #{name}, filename = #{filename}, price = #{price}, cost = #{cost}, category_id = #{category.category_id}, detail=#{detail}
+		update product set name = #{name}, filename = #{filename}, price = #{price}, cost = #{cost}, category_id = #{category.category_id}, detail=#{detail}, isonpoint = #{isOnPoint}
 		where product_id = #{product_id}
 	</update>
 	

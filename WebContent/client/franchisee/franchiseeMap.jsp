@@ -69,10 +69,12 @@ tr:nth-child(even) {
 <script>
 	var map;
 	var mapProp;
+	var pager;
 	$(function(){
 		searchAll();
 		$("#bt-search").click(function(){
 			localSearch();
+			pagerSearch();
 		});
 	});
 	function searchAll(){
@@ -98,6 +100,20 @@ tr:nth-child(even) {
 			}
 		});
 	}
+	function pagerSearch(){
+		$.ajax({
+			url : "/client/franchisee/searchPager",
+			type: "get",
+			data:{
+				local : $($("form").find("select[name='local']")).val(),
+				f_name : $($("form").find("input[name='f_name']")).val()
+			},
+			success:function(result){
+				alert("총 레코드 수는 : " + result.totalRecord);
+				pager = result;
+			}
+		});
+	}
 	function renderList(jsonArray){
 		$("#franchiseeList").html("");
 		var str = "";
@@ -108,17 +124,25 @@ tr:nth-child(even) {
 		str += "<th width='20%'>점포명</th>";
 		str += "<th width='49%'>주소</th>";
 		str += "</tr>";
-		for(var i = 0 ; i < jsonArray.length; i++){
+		var num = pager.num;
+		var curPos = pager.curPos;
+		for(var i = 0 ; i < pager.pageSize; i++){
+			if(num < 1){break;}
 			var json = jsonArray[i];
 			str += "<tr>";
-			str += "<td>"+(jsonArray.length - i)+"</td>";
+			str += "<td>"+(num--)+"</td>";
 			str += "<td>"+json.local+"</td>";
 			str += "<td>"+json.f_name+"</td>";
 			str += "<td>"+json.addr+"</td>";
 			str += "</tr>";		
 		}
 		str += "<tr>";
-		str += "<td colspan=5>[1]</td>"
+		str += "<td colspan=5>";
+		for(var i = pager.firstPage; i < pager.lastPage; i++){
+			if(i > pager.totalPage)break;
+			str += "'["+i+"]";
+		}
+		str += "</td>";
 		str += "</tr>";
 		$("#franchiseeList").append(str);
 	}
@@ -166,8 +190,8 @@ tr:nth-child(even) {
 								  <%int num =	pager.getNum();%>
 								  <%int curPos = pager.getCurPos(); %>
 								  <%for(int i = 0; i < pager.getPageSize(); i++) {%>
-								  <%Franchisee franchisee = franchiseeList.get(i); %>
 								  <%if(num < 1) break; %>
+								  <%Franchisee franchisee = franchiseeList.get(curPos++); %>
 								  <tr>
 								    <td><%=num-- %></td>
 								    <td><%=franchisee.getLocal() %></td>

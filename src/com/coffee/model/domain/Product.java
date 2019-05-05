@@ -12,7 +12,7 @@ public class Product {
 	private int price;
 	private int cost;
 	private String detail;
-	private boolean isOnPoint;
+	private int isOnPoint;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -61,10 +61,11 @@ public class Product {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public boolean isOnPoint() {
+	public int getIsOnPoint() {
 		return isOnPoint;
 	}
-	public void setOnPoint(boolean isOnPoint) {
+	public void setIsOnPoint(int isOnPoint) {
 		this.isOnPoint = isOnPoint;
 	}
+	
 }

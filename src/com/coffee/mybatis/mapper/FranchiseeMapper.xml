@@ -22,8 +22,8 @@
 	
 	<!-- Franchisee 신청서 작성 후 신청 -->
 	<insert id="insert" parameterType="Franchisee">
-		insert into franchisee(franchisee_id, addr, message, member_id)
-		values(seq_franchisee.nextval, #{addr},#{message},#{member.member_id})
+		insert into franchisee(addr, message, member_id)
+		values(#{addr},#{message},#{member.member_id})
 	</insert>
 	
 	<!-- 관리자 페이지 franchisee 신청목록 -->
@@ -51,6 +51,6 @@
 	</delete>
 	
 	<select id="search" parameterType="Franchisee" resultMap="FranchiseeMap">
-		<include refid="sql_select"/> where local like '%'||#{local}||'%' and f_name like '%'||#{f_name}||'%' and checked = 1
+		<include refid="sql_select"/> where local like concat('%',#{local},'%') and f_name like concat('%',#{f_name},'%') and checked = 1 
 	</select>
 </mapper>

@@ -92,8 +92,8 @@ function regist() {
 			   	<textarea name="content" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea> <!-- /textarea를 엔터쳐서 내리면 안되 무조건 한줄!! -->
 			</div>
 			<div class="col-lg-77 col-md-8">
+			<a id="bt-regist" class="genric-btn primary-border circle">작성하기</a>
 		    <a id="bt-list" class="genric-btn primary-border circle">목록보기</a>
-			<a id="bt-edit" class="genric-btn primary-border circle">수정하기</a>
 			</div>
 		 </form>
   	</div>
