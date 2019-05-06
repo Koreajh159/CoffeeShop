@@ -17,7 +17,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
 	</context:component-scan>
 
-	<jee:jndi-lookup jndi-name="jdbc/project/oracle" id="dataSource" resource-ref="true"/>
+	<jee:jndi-lookup jndi-name="jdbc/mariadb" id="dataSource" resource-ref="true"/>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 	p:dataSource-ref="dataSource"/>
