@@ -101,7 +101,7 @@ function renderList(jsonArray){
 									</p>
 								</div>
 								<div class="menu-img col-lg-4">
-									<img src="/data/<%=product.getFilename()%>" width="100p%" height="162px">
+									<img src="/data/<%=product.getFilename()%>" width="100%" height="162px">
 								</div>
 								
 								<div class="menu-content col-lg-7">

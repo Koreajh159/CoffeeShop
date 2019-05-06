@@ -2891,3 +2891,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 .qnt_btn:hover{
 	cursor:pointer;
 }
+.coupon-border{
+	color: #b68834;
+	border: 1px solid #b68834;
+	background: #fff;
+	border-radius: 20px;
+}

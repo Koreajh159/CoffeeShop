@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="com.coffee.model.domain.Coupon"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
@@ -26,12 +27,39 @@
 	margin-top : 30px;
 }
 .genric-btn{
-	width:45%;
 	text-align: center;
 }
 .genric-btn3{
 	width:30%;
 	text-align: center;
+}
+.coupon-detail div{
+	display:inline-block;
+	align:left;
+}
+#coupon_id{
+	padding : 0px 20px;
+}
+#coupon_img{
+	padding : 10px 20px;
+}
+#coupon_detail{
+	width : 40%;
+}
+#coupon_ea{
+	padding : 0px 20px;
+}
+.coupon-detail{
+	width : 70%;
+	display:inline-block;
+	align:left;
+}
+.coupon-control{
+	width:25%;
+	display:inline-block;
+}
+.refund-ea{
+	width : 30%;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -48,6 +76,23 @@
 					<form>
 						<div class="mt-10">
 							<%for(int i = 0 ; i<couponList.size();i++){ %>
+							<%Coupon coupon = couponList.get(i); %>
+							<%String date = coupon.getRegdate();
+								date = date.substring(0,10);
+							%>
+								<div class="col-lg-12 coupon-border flex-left text-left">
+									<div class="coupon-detail">
+										<div id="coupon_id"><%=coupon.getCoupon_id() %></div>
+										<div id="coupon_img"><img src="/data/<%=coupon.getProduct().getFilename() %>" width="70px"/></div>
+										<div id="coupon_detail"><%=coupon.getProduct().getDetail() %></div>
+										<div id="coupon_regdate"><%=date %></div>
+										<div id="coupon_ea"><%=coupon.getEa() %>개</div>
+									</div>
+									<div class="coupon-control">
+										<input type="text" class="refund-ea"/>
+										<a class="genric-btn primary-border circle">환불하기</a>
+									</div>
+								</div>
 							<%} %>
 						</div>
 					</form>

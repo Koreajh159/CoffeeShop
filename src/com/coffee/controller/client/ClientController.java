@@ -45,6 +45,7 @@ public class ClientController {
 	public ModelAndView getItemPage(HttpServletRequest request) {
 		Member member = (Member)request.getSession().getAttribute("client");
 		List couponList = couponService.selectByMember(member);
+		System.out.println(couponList.size());
 		ModelAndView mav = new ModelAndView("/client/member/inventory");
 		mav.addObject("couponList", couponList);
 		return mav;
