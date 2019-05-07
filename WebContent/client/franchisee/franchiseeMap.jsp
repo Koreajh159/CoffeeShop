@@ -73,8 +73,8 @@ tr:nth-child(even) {
 	$(function(){
 		searchAll();
 		$("#bt-search").click(function(){
-			localSearch();
 			pagerSearch();
+			localSearch();
 		});
 	});
 	function searchAll(){
@@ -110,6 +110,7 @@ tr:nth-child(even) {
 			},
 			success:function(result){
 				alert("총 레코드 수는 : " + result.totalRecord);
+				alert("num : " + result.num);
 				pager = result;
 			}
 		});
