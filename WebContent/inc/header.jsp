@@ -49,7 +49,6 @@
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
 					<li><a href="/client/menu/getPage">CoffeeMenu</a></li>
 					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li class="menu-has-children"><a href="">Franchisee</a>
@@ -58,9 +57,7 @@
 							<li><a href="/client/franchisee/mapList">Search</a></li>
 						</ul>
 					</li>
-
-							<li><a href="/client/board/list">Q&A</a></li>
-							
+					<li><a href="/client/board/list">Q&A</a></li>		
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->

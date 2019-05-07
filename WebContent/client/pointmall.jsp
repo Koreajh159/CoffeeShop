@@ -182,5 +182,6 @@ function addCoupon(ea, product_id){
 			</section>
 			<!-- End menu Area -->
 <script src="${pageContext.request.contextPath}/js/qnt.js"></script>
+<%@ include file="/inc/footer.jsp" %>
 </body>
 </html>

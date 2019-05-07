@@ -119,4 +119,5 @@ function renderList(jsonArray){
 			</section>
 			<!-- End menu Area -->
 </body>
+<%@ include file="/inc/footer.jsp" %>
 </html>

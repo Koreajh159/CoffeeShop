@@ -154,5 +154,6 @@ function reply(){
 		 </div> 
 	</div>
 </section>
+<%@ include file="/inc/footer.jsp" %>
 </body>
 </html>
