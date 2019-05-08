@@ -88,7 +88,7 @@ tr:nth-child(even) {
 			    <td class="board_td" style="text-align: center"><%=num--%></td>
 			    <td class="board_td" style="text-align: left"><%=board.getTitle() %></td>
 			    <td class="board_td" style="text-align: center"><%=board.getMember().getName() %></td>
-			    <td class="board_td" style="text-align: center"><%=board.getDate() %></td>
+			    <td class="board_td" style="text-align: center"><%=(board.getDate()).substring(0, 10)%></td>
 			  </tr>
 			  <%} %>  
 			</table>

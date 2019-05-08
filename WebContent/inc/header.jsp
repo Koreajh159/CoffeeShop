@@ -11,7 +11,7 @@
 					<%if(client == null) {%>
 					<ul>					
 						<li><a href="/client/member/login.jsp">Login</li>
-						<li><a href="/client/franchisee/goRegist">Regist</a></li>
+						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
 					<%}else if(client.getGrade().getGrade_id()==3){ %>
 						<ul>					
@@ -26,14 +26,14 @@
 								<li><%=client.getName()%>님 반갑습니다.</li>
 								<li>Point : <%=client.getPoint() %>점</li>					
 								<li><a href="javascript:logout()">Logout</a></li>
-								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
+								<li><a href="/client/item/getPage"><img src="/img/cart2.png"/ width="30px"></a></li>
 							</ul>
 						<%}else{%>
 							<ul>
 								<li><%=client.getId()%>님 반갑습니다.</li>
 								<li>Point : <%=client.getPoint() %>점</li>			
 								<li><a href="javascript:logout()">Logout</a></li>
-								<li><a href="/item.jsp"><img src="/img/cart2.png"/ width="30px"></a></li>
+								<li><a href="/client/item/getPage"><img src="/img/cart2.png"/ width="30px"></a></li>
 							</ul>
 						<%} %>
 					<%} %>
@@ -48,13 +48,18 @@
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="#home">Home</a></li>
+					<li class="menu-active"><a href="/index.jsp">Home</a></li>
 					<li><a href="/client/menu/getPage">CoffeeMenu</a></li>
 					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li class="menu-has-children"><a href="">Franchisee</a>
 						<ul>
-							<li><a href="/client/franchisee/goRegist">Regist</a></li>
+							<%if (client != null) {%>
+							<form><input type="hidden" name="member_id" value="<%=client.getMember_id()%>"></form>
+							<li><a href="javascript:goRegist()">Regist</a></li>
 							<li><a href="/client/franchisee/mapList">Search</a></li>
+							<%} else {%>
+							<li><a href="/client/franchisee/mapList">Search</a></li>
+							<%} %>
 						</ul>
 					</li>
 					<li><a href="/client/board/list">Q&A</a></li>		
@@ -65,11 +70,19 @@
 	</div>
 </header>
 <!-- #header -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){
 			location.href="/ctest/member/logout";
 		}
+	}
+	function goRegist(){
+		$("form").attr({
+			method : "post",
+			action : "/client/franchisee/goRegist"
+		});
+		$("form").submit();
 	}
 </script>
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-2.2.4.min.js"></script>

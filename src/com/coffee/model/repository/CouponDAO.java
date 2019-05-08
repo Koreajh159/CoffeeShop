@@ -11,4 +11,5 @@ public interface CouponDAO {
 	public Coupon select(Coupon coupon);
 	public List selectByMember(Member member);
 	public int delete(int coupon_id);
+	public Coupon selectByPk(int coupon_id);
 }

@@ -32,7 +32,17 @@
 		<include refid="sql_select"/> where member_id=#{member_id} 
 	</select>
 
+	<select id="selectByPk" resultMap="Couponmap" parameterType="int">
+		<include refid="sql_select"/> where coupon_id=#{coupon_id}
+	</select>
+
 	<update id="updateEa" parameterType="Coupon">
 		update coupon set ea=#{ea} where coupon_id=#{coupon_id}
+		<selectKey>
+			select ea from coupon where coupon_id=last_insert_id()
+		</selectKey>
 	</update>
+	<delete id="delete" parameterType="int">
+		delete from coupon where coupon_id=#{coupon_id}
+	</delete>
 </mapper>

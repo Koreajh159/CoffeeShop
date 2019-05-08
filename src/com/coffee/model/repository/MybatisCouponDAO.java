@@ -28,7 +28,7 @@ public class MybatisCouponDAO implements CouponDAO{
 	@Override
 	public int delete(int coupon_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.delete("Coupon.delete", coupon_id);
 	}
 
 	@Override
@@ -41,6 +41,12 @@ public class MybatisCouponDAO implements CouponDAO{
 	public List selectByMember(Member member) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("Coupon.selectByMember", member);
+	}
+
+	@Override
+	public Coupon selectByPk(int coupon_id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("Coupon.selectByPk", coupon_id);
 	}
 	
 }

@@ -25,9 +25,15 @@ public class ClientFranchiseeController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="/client/franchisee/goRegist")
-	public ModelAndView goRegist(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("client/franchisee/franchisee");
+	@RequestMapping(value="/client/franchisee/goRegist", method=RequestMethod.POST)
+	public ModelAndView goRegist(HttpServletRequest request, int member_id) {
+		Member member = memberService.select(member_id);
+		ModelAndView mav = null;
+		if(member.getGrade().getGrade_id() == 2) {
+			mav = new ModelAndView("client/franchisee/franchiseeRegist");
+		}else {
+			mav = new ModelAndView("client/franchisee/error");
+		}
 		return mav;
 	}
 	
