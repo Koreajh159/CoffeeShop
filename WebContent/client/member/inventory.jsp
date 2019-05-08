@@ -72,12 +72,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 function refund(i, ea){
-	if($($("input[name=refund_ea]")[i]).val()<=ea && $($("input[name=refund_ea]")[i]).val()>0){
-		$($("form")[i]).attr({
+	if($($("input[name=refund_ea]")[i]).val()<=ea && $($("input[name='refund_ea']")[i]).val()>0){
+		$($("form[name='coupon_form']")[i]).attr({
 			method:"post",
 			action:"/client/item/refund"
 		});
-		$($("form")[i]).submit();
+		$($("form[name='coupon_form']")[i]).submit();
 	}else{
 		alert("올바르지 않은 요청입니다.");
 	}
@@ -98,7 +98,7 @@ function refund(i, ea){
 							<%String date = coupon.getRegdate();
 								date = date.substring(0,10);
 							%>
-							<form>
+							<form name="coupon_form">
 								<div class="col-lg-12 coupon-border flex-left text-left">
 									<div class="coupon-detail">
 										<div id="coupon_id"><%=coupon.getCoupon_id() %></div>
