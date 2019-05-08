@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="col-lg-77 col-md-8">
-				<a id="bt-login" class="genric-btn primary-border circle">Login</a>
+				<div id="bt-login" class="genric-btn primary-border circle">Login</div>
 				<a href="/client/member/index.jsp" class="genric-btn primary-border circle">Cancel</a>
 			</div>
 			<div class="col-lg-77 col-md-8">

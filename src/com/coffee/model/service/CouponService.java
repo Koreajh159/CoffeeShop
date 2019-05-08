@@ -10,4 +10,5 @@ public interface CouponService {
 	public void delete(int coupon_id);
 	public void update(Coupon coupon);
 	public List selectByMember(Member member);
+	public Coupon select(int coupon_id);
 }
