@@ -48,13 +48,14 @@
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="#home">Home</a></li>
+					<li class="menu-active"><a href="/index.jsp">Home</a></li>
 					<li><a href="/client/menu/getPage">CoffeeMenu</a></li>
 					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li class="menu-has-children"><a href="">Franchisee</a>
 						<ul>
 							<%if (client != null) {%>
-							<li><a href="/client/franchisee/goRegist?member_id=<%=client.getMember_id()%>">Regist</a></li>
+							<form><input type="hidden" name="member_id" value="<%=client.getMember_id()%>"></form>
+							<li><a href="javascript:goRegist()">Regist</a></li>
 							<li><a href="/client/franchisee/mapList">Search</a></li>
 							<%} else {%>
 							<li><a href="/client/franchisee/mapList">Search</a></li>
@@ -69,11 +70,19 @@
 	</div>
 </header>
 <!-- #header -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){
 			location.href="/ctest/member/logout";
 		}
+	}
+	function goRegist(){
+		$("form").attr({
+			method : "post",
+			action : "/client/franchisee/goRegist"
+		});
+		$("form").submit();
 	}
 </script>
 <script src="${pageContext.request.contextPath}/js/vendor/jquery-2.2.4.min.js"></script>

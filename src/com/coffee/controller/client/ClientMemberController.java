@@ -82,7 +82,8 @@ public class ClientMemberController {
 	@ResponseBody
 	public String changepw(Member member, String pass) {
 		System.out.println("id´Â " + member.getId());
-		member.setPass(pass);
+		String hashpass = sb.textToHash(pass);
+		member.setPass(hashpass);
 		memberService.changePass(member);
 		JSONObject json = new JSONObject();
 		json.put("result",1);

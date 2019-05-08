@@ -20,7 +20,7 @@
 								Start your day with <br>
 								a black Coffee				
 							</h1>
-							<a href="#" class="primary-btn text-uppercase">Buy Now</a>
+							<a href="/client/point/getPage" class="primary-btn text-uppercase">Buy Now</a>
 						</div>											
 					</div>
 				</div>
