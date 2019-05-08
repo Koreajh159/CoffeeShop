@@ -104,5 +104,6 @@
 				<a href="/index.jsp" class="genric-btn primary-border circle">Cancel</a>
 			</div>
 		</div>
+		<%@ include file="/inc/footer.jsp" %>
 </body>
 </html>

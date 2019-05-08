@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.coffee.auth.SecurityBean;
 import com.coffee.common.exception.EditFailException;
 import com.coffee.common.exception.LoginFailException;
 import com.coffee.model.domain.Grade;
@@ -25,6 +26,7 @@ public class ClientMemberController {
 	private MemberService memberService;
 	@Autowired
 	private GradeService gradeService;
+	SecurityBean sb = new SecurityBean();
 	
 	@RequestMapping(value="/ctest/member/logout", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request){
@@ -42,6 +44,7 @@ public class ClientMemberController {
 	
 	@RequestMapping(value="/ctest/member/regist", method=RequestMethod.POST)
 	public String regist(Member member, int grade_id) {
+		member.setPass(sb.textToHash(member.getPass()));
 		Grade grade = new Grade();
 		grade.setGrade_id(grade_id);
 		member.setGrade(grade);
@@ -51,6 +54,7 @@ public class ClientMemberController {
 	
 	@RequestMapping(value="/ctest/member/login", method=RequestMethod.POST)
 	public String login(HttpServletRequest request,Member member) {
+		member.setPass(sb.textToHash(member.getPass()));
 		Member m = memberService.logIn(member);
 		request.getSession().setAttribute("client", m);
 		if(m.getGrade().getGrade_id()==3) {

@@ -258,9 +258,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</footer>	
 			<!-- End footer Area -->	
-
-		
 	</body>
+	<%@ include file="/inc/footer.jsp" %>
 </html>
 
 

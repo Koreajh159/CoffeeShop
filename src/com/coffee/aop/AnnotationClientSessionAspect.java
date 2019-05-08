@@ -21,7 +21,8 @@ public class AnnotationClientSessionAspect {
    String[] exceptList= {
 		"/admin/login",   
 		"/admin/logout",
-		"/client/franchisee/list"
+		"/client/franchisee/list",
+		"/ctest/member/goRegist"
    };
    
    @Around("asyncCheck()")

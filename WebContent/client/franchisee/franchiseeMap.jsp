@@ -73,8 +73,8 @@ tr:nth-child(even) {
 	$(function(){
 		searchAll();
 		$("#bt-search").click(function(){
-			localSearch();
 			pagerSearch();
+			localSearch();
 		});
 	});
 	function searchAll(){
@@ -109,7 +109,6 @@ tr:nth-child(even) {
 				f_name : $($("form").find("input[name='f_name']")).val()
 			},
 			success:function(result){
-				alert("총 레코드 수는 : " + result.totalRecord);
 				pager = result;
 			}
 		});
@@ -140,7 +139,7 @@ tr:nth-child(even) {
 		str += "<td colspan=5>";
 		for(var i = pager.firstPage; i < pager.lastPage; i++){
 			if(i > pager.totalPage)break;
-			str += "'["+i+"]";
+			str += "<a href='/client/franchisee/'>["+i+"]";
 		}
 		str += "</td>";
 		str += "</tr>";
@@ -233,6 +232,7 @@ tr:nth-child(even) {
 			</div>
 		</div>
 </body>
+<%@ include file="/inc/footer.jsp" %>
 <script>
 	function myMap(jsonLati, jsonLongi) {
 		mapProp= {

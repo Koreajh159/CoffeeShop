@@ -105,5 +105,6 @@ tr:nth-child(even) {
 	<a href="/client/board/goRegist" class="genric-btn2 primary-border" style="width : 15%; border : 1px solid #b68834; font-size :20px; font-weight : bold;" >등록</a> 
 </div>
 </section>
+<%@ include file="/inc/footer.jsp" %>
 </body>
 </html>

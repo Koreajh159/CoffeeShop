@@ -120,4 +120,5 @@ function refund(i, ea){
 			</div>
 		</div>
 </body>
+<%@ include file="/inc/footer.jsp" %>
 </html>
