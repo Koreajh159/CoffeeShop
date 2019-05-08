@@ -59,7 +59,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="/client/item/refund", method=RequestMethod.POST)
-	public String refundItem(Coupon coupon, HttpServletRequest request) {
+	public ModelAndView refundItem(Coupon coupon, HttpServletRequest request) {
 		int refund_ea = Integer.parseInt(request.getParameter("refund_ea"));
 		coupon = couponService.select(coupon.getCoupon_id());
 		coupon.setEa(coupon.getEa()-refund_ea);
@@ -68,7 +68,8 @@ public class ClientController {
 		member.setPoint(member.getPoint()+(coupon.getProduct().getCost()*refund_ea));
 		System.out.println(member.getPoint());
 		memberService.updatePoint(member);
-		return "redirect:/client/item/getPage";
+		ModelAndView mav = new ModelAndView("redirect:/client/item/getPage");
+		return mav;
 	}
 	@ExceptionHandler(EditFailException.class)
 	public ModelAndView editExceptionHandler(EditFailException e) {
