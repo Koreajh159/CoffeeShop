@@ -54,7 +54,7 @@
 				var json = JSON.parse(result);
 				if(json.result == 1){
 					if(confirm("정상적으로 변경되었습니다.")){
-						location.href="client/franchisee/login.jsp";
+						location.href="/client/member/login.jsp";
 					}
 				}else{
 					alert("변경에 실패했습니다. 입력 정보를 확인해주세요");
