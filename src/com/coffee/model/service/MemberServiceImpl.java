@@ -45,9 +45,12 @@ public class MemberServiceImpl implements MemberService{
    }
 
    @Override
-   public void updatePoint(Member member) {
+   public void updatePoint(Member member) throws EditFailException{
       // TODO Auto-generated method stub
-      
+      int result = memberDAO.updatePoint(member);
+      if(result==0) {
+    	  throw new EditFailException("포인트 수정 오류");
+      }
    }
 
    @Override
