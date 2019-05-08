@@ -94,8 +94,7 @@
   		<td colspan="5" style="text-align:center">
   		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
   		<%if(i>pager.getTotalPage())break; %>
-  		<%-- <a href = "/admin/member/list?currentPage=<%=i%>">[<%=i %>]</a> <!-- 내가 누른 페이지 번호를 넘기자 --> --%>
-  		
+  			<a href = "/admin/member/list?currentPage=<%=i%>">[<%=i%>]</a>
   		<%} %>
   		</td>
   </tr>
