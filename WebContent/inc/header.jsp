@@ -11,7 +11,7 @@
 					<%if(client == null) {%>
 					<ul>					
 						<li><a href="/client/member/login.jsp">Login</li>
-						<li><a href="/client/franchisee/goRegist">Regist</a></li>
+						<li><a href="/ctest/member/goRegist">Regist</a></li>
 					</ul>
 					<%}else if(client.getGrade().getGrade_id()==3){ %>
 						<ul>					
@@ -53,8 +53,12 @@
 					<li><a href="/client/point/getPage">PointMall</a></li>
 					<li class="menu-has-children"><a href="">Franchisee</a>
 						<ul>
-							<li><a href="/client/franchisee/goRegist">Regist</a></li>
+							<%if (client != null) {%>
+							<li><a href="/client/franchisee/goRegist?member_id=<%=client.getMember_id()%>">Regist</a></li>
 							<li><a href="/client/franchisee/mapList">Search</a></li>
+							<%} else {%>
+							<li><a href="/client/franchisee/mapList">Search</a></li>
+							<%} %>
 						</ul>
 					</li>
 					<li><a href="/client/board/list">Q&A</a></li>		
