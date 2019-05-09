@@ -18,19 +18,26 @@
 	margin:auto;
 }
 .mt-10{
-	margin-top : 30px;
+	max-width : 540px;
+	margin : auto;
+	padding : 10px 0px;
 }
 .genric-btn{
 	width:45%;
 	text-align: center;
+	max-width:240px;
+	margin-left :30px;
 }
 .genric-btn3{
 	width:30%;
 	text-align: center;
+	max-width:150px;
+	margin-left :30px;
 }
 .input-border{
 	border : 1px solid rgb(182, 136, 52);
 }
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

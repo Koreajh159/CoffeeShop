@@ -110,18 +110,18 @@
   <tr>
   		<td colspan="5" style="text-align:center">
   		<%if(pager.getCurrentPage() -1 > 0) {%>
-				<a href="/admin/member/list?currentPage=<%=pager.getCurrentPage()-1%>">←</a>
+				<a href="/admin/member/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
 			<%}else{ %>
-				<a href="javascript:alert('처음 페이지입니다');">←</a>
+				<a href="javascript:alert('처음 페이지입니다');">◀</a>
 		<%} %>
   		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
   		<%if(i>pager.getTotalPage())break; %>
   			<a href = "/admin/member/list?currentPage=<%=i%>">[<%=i%>]</a>
   		<%} %>
   		<%if(pager.getCurrentPage() < pager.getTotalPage()) {%>
-				<a href="/admin/member/list?currentPage=<%=pager.getCurrentPage()+1%>">→</a>
+				<a href="/admin/member/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
 		<%}else{ %>
-				<a href="javascript:alert('마지막 페이지입니다');">→</a>
+				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
 		<%} %>
   		</td>
   </tr>
