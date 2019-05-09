@@ -85,7 +85,7 @@
   </tr>
   <%int num = pager.getNum();
      int curPos = pager.getCurPos();%>
-   <%for(int i=0;i<productList.size();i++){ %>
+   <%for(int i=0;i<pager.getPageSize();i++){ %>
    <%Product product = productList.get(i); %>
    <%if(num<1) break; %>
       <tr class="product_tr" onClick="showDetail(<%=product.getProduct_id() %>)">
