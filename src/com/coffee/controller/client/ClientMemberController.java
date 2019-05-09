@@ -56,11 +56,16 @@ public class ClientMemberController {
 	public String login(HttpServletRequest request,Member member) {
 		member.setPass(sb.textToHash(member.getPass()));
 		Member m = memberService.logIn(member);
-		request.getSession().setAttribute("client", m);
-		if(m.getGrade().getGrade_id()==3) {
-			   request.getSession().setAttribute("admin",m);
+		System.out.println("member : " + m);
+		if(m != null) {
+			request.getSession().setAttribute("client", m);
+			if(m.getGrade().getGrade_id()==3) {
+				   request.getSession().setAttribute("admin",m);
+			}
+			return "index";
+		}else {
+			return "client/login/loginerror";
 		}
-		return "index";
 	}
 	
 	@RequestMapping(value="/ctest/member/findid", method=RequestMethod.POST)

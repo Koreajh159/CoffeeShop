@@ -51,6 +51,6 @@
 	</delete>
 	
 	<select id="search" parameterType="Franchisee" resultMap="FranchiseeMap">
-		<include refid="sql_select"/> where local like concat('%',#{local},'%') and f_name like concat('%',#{f_name},'%') and checked = 1 
+		<include refid="sql_select"/> where local like concat('%',#{local},'%') or f_name like concat('%',#{f_name},'%') and checked = 1 
 	</select>
 </mapper>

@@ -4,9 +4,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	List<Coupon> couponList = (List<Coupon>)request.getAttribute("couponList");
-	if(request.getSession().getAttribute("client")==null){
+	/*if(request.getSession().getAttribute("client")==null){
 		response.getWriter().print("<script>location.href='/client/login/error.jsp'</script>");
-	}
+	}*/
 %>
 <!DOCTYPE html>
 <html>

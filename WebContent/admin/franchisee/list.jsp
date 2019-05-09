@@ -3,7 +3,9 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!Pager pager=new Pager();%>
-<%List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");%>
+<%List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");
+	pager.init(request, franchiseeList.size());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,10 +62,11 @@
     <th class="member_th">주소</th>
     <th class="member_th">승인여부</th>
   </tr>
-    <%int num=pager.getNum(); %>
+  <%int num=pager.getNum(); %>
   <%int curPos=pager.getCurPos(); %>
-  <%for(int i=0;i<franchiseeList.size();i++){ %>
-	<%Franchisee franchisee = franchiseeList.get(i); %>
+  <%for(int i=0;i<pager.getPageSize();i++){ %>
+  <%if(num < 1) break; %>
+  <%Franchisee franchisee = franchiseeList.get(i); %>
   <tr class="member_tr" onClick="getDetail(<%=franchisee.getFranchisee_id()%>)"> <!-- i대신 member 넣어야함 -->
     <td class="member_td"><%=num--%></td>
     <td class="member_td"><%=franchisee.getMember().getName()%></td>
@@ -80,9 +83,9 @@
   		<td colspan="5" style="text-align:center">
   		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
   		<%if(i>pager.getTotalPage())break; %>
-  		[<%=i %>]
+  			<a href = "/admin/franchisee/list?currentPage=<%=i%>">[<%=i%>]</a>
   		<%} %>
-  </td>
+  		</td>
   </tr>
 </table>
 </body>

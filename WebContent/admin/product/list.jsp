@@ -102,7 +102,7 @@
       <td colspan="5" style="text-align:center">
         <%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
         <%if(i>pager.getTotalPage())break; %>
-        [<%=i %>]
+       		<a href = "/admin/product/list?currentPage=<%=i%>">[<%=i%>]</a>
         <%} %>
         </td>
    </tr>
