@@ -51,7 +51,8 @@
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
-<h2>MEMBER</h2>
+<hr>
+<h2 style="text-align:center">FRANCHISEE</h2>
 <p></p>
 
 <table class="member_table">
