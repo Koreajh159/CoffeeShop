@@ -39,5 +39,17 @@
 		</init-param>
 	</servlet>
 	
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/common/error.jsp</location>
+	</error-page>
 	<!-- Platform 상관없이 데이터 교환을 가능하게 하는 웹서비스로 지도 서비스를 제공해주자 그것도 REST하게!! -->
 </web-app>

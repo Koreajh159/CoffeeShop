@@ -61,11 +61,11 @@ $(function() {
 	});
 });
 function regist() {
-    $("form").attr({
+    $("form[name='regist-form']").attr({
        method : "post",
        action : "/client/board/doRegist"
     });
-    $("form").submit();
+    $("form[name='regist-form']").submit();
  }
 
 </script>
@@ -79,7 +79,7 @@ function regist() {
 <section class="menu-area section-gap" id="coffee" >
 	<div class="row" >
 		<div class="col-lg-77 col-md-8" >
-		  <form>
+		  <form name="regist-form">
 		    <input type="hidden" name="member_id" value="<%=client.getMember_id()%>">
 		    <input type="hidden" name="rank" value="1">
 		    <input type="hidden" name="depth" value="0"> 

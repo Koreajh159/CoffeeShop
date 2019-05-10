@@ -72,31 +72,31 @@ function del() {
 	if (!confirm("삭제하시겠어요?")) {
 		return;
 	}
-	$("form").attr({
+	$("form[name='edit-form']").attr({
 		action : "/client/board/delete",
 		method : "post"
 	});
-	$("form").submit();
+	$("form[name='edit-form']").submit();
 }
 function edit() {
 	if (!confirm("수정하시겠어요?")) {
 		return;
 	}
-	$("form").attr({
+	$("form[name='edit-form']").attr({
 		action : "/client/board/edit",
 		method : "post"
 	});
-	$("form").submit();
+	$("form[name='edit-form']").submit();
 }
 function reply(){
 	if (!confirm("답변하시겠어요?")) {
 		return;
 	}
-	$("form").attr({
+	$("form[name='edit-form']").attr({
 		action : "/client/board/goReply",
 		method : "post"
 	});
-	$("form").submit();
+	$("form[name='edit-form']").submit();
 	
 }
 
@@ -109,7 +109,7 @@ function reply(){
 <section class="menu-area section-gap" id="coffee" >
 	<div class="row" >
 		<div class="col-lg-77 col-md-8" >
-			<form>
+			<form name="edit-form">
 			    <input type="hidden" name="board_id" value="<%=board.getBoard_id()%>">
 			    <input type="hidden" name="member_id" value="<%=board.getMember().getMember_id()%>">
 			    <input type="hidden" name="reply_id" value="<%=client.getMember_id()%>">
