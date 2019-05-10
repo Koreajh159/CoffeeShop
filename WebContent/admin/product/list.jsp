@@ -25,8 +25,11 @@
   text-align: left;
   padding: 20px;
   color:black;
+  cursor:pointer;
 }
-
+.button_td{
+	padding: 20px;
+}
 .button {
   background-color: #555;
   color: white;
@@ -122,11 +125,11 @@
 		<%} %>
         </td>
    </tr>
-  <tr class="product_tr">
-     <td colspan="2" class="product_td" style="text-align:left">
+  <tr>
+     <td colspan="2" class="button_td" style="text-align:left">
         <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">     	
      </td>
-     <td colspan="3" class="product_td" style="text-align:right">
+     <td colspan="3" class="button_td" style="text-align:right">
         <input type="text"   name="name"  placeholder="상품 이름 검색" style="text-align: center" class="search"> 
         <input class ="button" type="button" value="검색">
      </td>

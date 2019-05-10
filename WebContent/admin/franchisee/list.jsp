@@ -23,6 +23,7 @@
   text-align: left;
   padding: 16px;
   color:black;
+  cursor:pointer;
 }
 
 .member_tr:nth-child(even) {

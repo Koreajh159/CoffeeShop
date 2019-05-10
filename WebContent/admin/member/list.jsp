@@ -29,6 +29,12 @@
   text-align: left;
   padding: 20px;
   color:black;
+    cursor: pointer;
+}
+.button_th, .button_td {
+  text-align: left;
+  padding: 20px;
+  color:black;
 }
 
 
@@ -125,8 +131,8 @@
 		<%} %>
   		</td>
   </tr>
-  <tr class="member_tr">
-  	<td colspan="5" style="text-align:left" class="member_td">
+  <tr class="button_tr">
+  	<td colspan="5" style="text-align:left" class="button_td">
 		<input class="button" type="button" value="등록"> 
   	</td>
   </tr>
