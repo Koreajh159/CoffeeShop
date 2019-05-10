@@ -75,4 +75,9 @@ public class MybatisMemberDAO implements MemberDAO {
 		return sessionTemplate.update("Member.changepass", member);
 	}
 
+	@Override
+	public Member checkPhone(Member member) {
+		return sessionTemplate.selectOne("Member.checkphone", member);
+	}
+
 }

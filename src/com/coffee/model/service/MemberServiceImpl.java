@@ -91,5 +91,9 @@ public class MemberServiceImpl implements MemberService{
 			throw new EditFailException("비밀번호 변경 실패...");
 		}
 	}
+	@Override
+	public Member checkphone(Member member) {
+		return memberDAO.checkPhone(member);
+	}
  
 }

@@ -16,4 +16,5 @@ public interface MemberService {
 	public Member findPass(Member member);
 	public Member checkInfo(Member member);
 	public void changePass(Member member);
+	public Member checkphone(Member member);
 }

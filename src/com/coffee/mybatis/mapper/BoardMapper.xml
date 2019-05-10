@@ -45,4 +45,5 @@
 		insert into board(title,content,rank,depth,team,member_id)
 		values(#{title},#{content},#{rank},#{depth},#{team},#{member.member_id})
 	</insert>
+	
 </mapper>

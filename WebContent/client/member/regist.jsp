@@ -37,6 +37,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	var json;
+	var json2;
 	$(function(){
 		$("#bt-regist").click(function(){
 			regist();
@@ -44,22 +45,35 @@
 		$("#bt-check").click(function(){
 			checkinfo();
 		});
+		$("#bt-checkphone").click(function(){
+			checkphone();
+		});
 	})
 	function regist(){
 		if($($("form").find("input[name='id']")).val() == ""){
 			alert("아이디를 입력해주세요!!");
-		}else if(json == null){
-			alert("중복 체크 해주세요!!");
+			return;
+		}else if(json.result == 0){
+			alert("아이디 중복 체크 해주세요!!");
+			return;
 		}else if($($("form").find("input[name='pass']")).val() == ""){
 			alert("비밀번호를 입력해주세요!!");
+			return;
 		}else if($($("form").find("input[name='phone']")).val() == ""){
 			alert("전화번호를 입력해주세요!!");
+			return;
+		}else if(json2.result == 0){
+			alert("전화번호 중복 체크 해주세요!!");
+			return;
 		}else if($($("form").find("input[name='name']")).val() == ""){
 			alert("이름을 입력해주세요!!");
+			return;
 		}else if($($("form").find("input[name='age']")).val() == ""){
 			alert("나이를 입력해주세요!!");
+			return;
 		}else if($($("form").find("select[name='grade_id']")).val() == ""){
 			alert("등급을 선택해주세요!!");
+			return;
 		}
 		$("form").attr({
 			"action" : "/ctest/member/regist",
@@ -85,6 +99,23 @@
 			}
 		});
 	}
+	function checkphone(){
+		$.ajax({
+			url:"/client/member/checkphone",
+			type:"get",
+			data:{
+				phone : $($("form").find("input[name='phone']")).val()
+			},
+			success:function(result){
+				json2 = JSON.parse(result);
+				if(json2.result == 1){
+					alert("사용 가능한 전화번호 입니다.");
+				}else{
+					alert("중복된 전화번호 입니다.");
+				}
+			}
+		});
+	}
 </script>
 </head>
 <%@ include file="/inc/header.jsp"%>
@@ -106,7 +137,8 @@
 							<input type="password" name="pass" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
 						</div>
 						<div class="mt-10">
-							<input type="text" name="phone" placeholder="PhoneNumber" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PhoneNumber'" required class="single-input">
+							<input type="text" name="phone" placeholder="PhoneNumber" onfocus="this.placeholder = ''" onblur="this.placeholder = 'PhoneNumber'" required class="single-input" style="width:70%;float:left">
+							<a id="bt-checkphone" class="genric-btn2 primary-border" style="width : 30%" >Check</a>
 						</div>
 						<div class="mt-10">
 							<input type="text" name="name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input">

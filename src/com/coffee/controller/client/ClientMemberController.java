@@ -95,6 +95,19 @@ public class ClientMemberController {
 		return json.toString();
 	}
 	
+	@RequestMapping(value="/client/member/checkphone",method=RequestMethod.GET)
+	@ResponseBody
+	public String checkPhone(Member member) {
+		Member m = memberService.checkphone(member);
+		JSONObject json = new JSONObject();
+		if(m == null) {
+			json.put("result",1);
+		}else {
+			json.put("result",0);
+		}
+		return json.toString();
+	}
+	
 	@RequestMapping(value="/ctest/member/checkinfo", method=RequestMethod.GET)
 	@ResponseBody
 	public String checkinfo(Member member) {
