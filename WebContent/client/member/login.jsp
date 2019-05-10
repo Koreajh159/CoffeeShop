@@ -37,7 +37,6 @@
 .input-border{
 	border : 1px solid rgb(182, 136, 52);
 }
-
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
