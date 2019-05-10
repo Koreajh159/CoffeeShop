@@ -23,7 +23,7 @@
 
 .product_th, .product_td {
   text-align: left;
-  padding: 16px;
+  padding: 20px;
   color:black;
 }
 
@@ -44,6 +44,11 @@
 .product_tr:nth-child(even) {
   background-color: pink;
   color:white;
+}
+.search{
+	padding: 13px 16px;
+	font-size: 14px;
+	width:300px;
 }
 </style>
 <script
@@ -72,12 +77,13 @@
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
-<h2>상품 목록</h2>
+<hr>
+<h2 style="text-align:center">PRODUCT</h2>
 <p></p>
 
 <table  class="product_table">
   <tr  class="product_tr">
-    <th class="product_th">상품 번호</th>
+    <th class="product_th">No.</th>
     <th class="product_th">상품 사진</th>
     <th class="product_th">상품 종류</th>
     <th class="product_th">상품 이름</th>
@@ -85,13 +91,13 @@
   </tr>
   <%int num = pager.getNum();
      int curPos = pager.getCurPos();%>
-   <%for(int i=0;i<productList.size();i++){ %>
-   <%Product product = productList.get(i); %>
+   <%for(int i=0;i<pager.getPageSize();i++){ %>
    <%if(num<1) break; %>
+   <%Product product = productList.get(curPos++); %>
       <tr class="product_tr" onClick="showDetail(<%=product.getProduct_id() %>)">
          
          <td class="product_td"><%=num-- %></td>
-         <td class="product_td"><img src="/data/<%=product.getFilename() %>" widht="50px" height="50px" ></td>
+         <td class="product_td"><img src="/data/<%=product.getFilename() %>" widht="100px" height="100px" ></td>
          <td class="product_td"><%=product.getCategory().getCategory_name() %></td>
          <td class="product_td"><%=product.getName() %></td>
          <td class="product_td"><%=product.getPrice() %></td>
@@ -100,16 +106,28 @@
    <%} %>
    <tr>
       <td colspan="5" style="text-align:center">
+        <%if(pager.getCurrentPage() -1 > 0) {%>
+				<a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
+			<%}else{ %>
+				<a href="javascript:alert('처음 페이지입니다');">◀</a>
+		<%} %>
         <%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
         <%if(i>pager.getTotalPage())break; %>
        		<a href = "/admin/product/list?currentPage=<%=i%>">[<%=i%>]</a>
         <%} %>
+        <%if(pager.getCurrentPage() < pager.getTotalPage()) {%>
+				<a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
+		<%}else{ %>
+				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
+		<%} %>
         </td>
    </tr>
   <tr class="product_tr">
-     <td colspan="4" class="product_td">
-        <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">
-        <input type="text"   name="name"          placeholder="상품 이름 검색"> 
+     <td colspan="2" class="product_td" style="text-align:left">
+        <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">     	
+     </td>
+     <td colspan="3" class="product_td" style="text-align:right">
+        <input type="text"   name="name"  placeholder="상품 이름 검색" style="text-align: center" class="search"> 
         <input class ="button" type="button" value="검색">
      </td>
   </tr>

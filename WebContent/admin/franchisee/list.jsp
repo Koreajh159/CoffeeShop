@@ -51,7 +51,8 @@
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
-<h2>MEMBER</h2>
+<hr>
+<h2 style="text-align:center">FRANCHISEE</h2>
 <p></p>
 
 <table class="member_table">
@@ -81,10 +82,20 @@
   <%} %>
   <tr>
   		<td colspan="5" style="text-align:center">
+  		<%if(pager.getCurrentPage() -1 > 0) {%>
+				<a href="/admin/franchisee/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
+			<%}else{ %>
+				<a href="javascript:alert('처음 페이지입니다');">◀</a>
+		<%} %>
   		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
   		<%if(i>pager.getTotalPage())break; %>
   			<a href = "/admin/franchisee/list?currentPage=<%=i%>">[<%=i%>]</a>
   		<%} %>
+  		<%if(pager.getCurrentPage() < pager.getTotalPage()) {%>
+				<a href="/admin/franchisee/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
+		<%}else{ %>
+				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
+		<%} %>
   		</td>
   </tr>
 </table>
