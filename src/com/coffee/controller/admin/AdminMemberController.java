@@ -26,28 +26,13 @@ import com.coffee.model.service.MemberService;
 public class AdminMemberController {
    @Autowired
    private MemberService memberService;
-   
-   //로그인
-	/*
-	 * @RequestMapping(value="/member/login",method=RequestMethod.POST) public
-	 * String loginCheck(HttpServletRequest request,Member member) { String
-	 * viewName=null; System.out.println("로그인 요청"); Member admin=null; admin =
-	 * memberService.logIn(member);
-	 * 
-	 * 
-	 * if(admin!=null) { // viewName="/admin/login/login_ok";
-	 * viewName="redirect:/admin/member/list"; }else {
-	 * viewName="/admin/login/error2"; } return viewName; }
-	 */
    //로그인
    @RequestMapping(value="/login",method=RequestMethod.POST)
    public ModelAndView loginCheck(HttpServletRequest request,Member member) {
 	   System.out.println("로그인 요청");
-	
 	   Member admin =null;
 	  admin = memberService.logIn(member);
 	   ModelAndView mav =null;
-
 	   if(admin!=null) {
 		   mav= new ModelAndView("redirect:/admin/member/list");
 		   request.getSession().setAttribute("admin",admin);
@@ -56,9 +41,6 @@ public class AdminMemberController {
 	   }
 	   return mav;
    }
-   
-   
-   
    //목록 가져오기
    @RequestMapping(value="/member/test",method=RequestMethod.GET)
    public String test(HttpServletRequest request) {
@@ -117,9 +99,8 @@ public class AdminMemberController {
       member.setGrade(grade);
       memberService.update(member);
       ModelAndView mav=new ModelAndView("redirect:/admin/member/list");
-
       return mav;
-      }
+   }
    
 
    @ExceptionHandler(AccountNotFoundException.class)
@@ -127,11 +108,16 @@ public class AdminMemberController {
       ModelAndView mav = new ModelAndView();
       mav.setViewName("admin/error/errorpage");
       mav.addObject("err", e);
-
       return mav;
-
    }
-
+   @RequestMapping(value="/member/search")
+   public ModelAndView search(Member member) {
+	   List<Member> memberList = memberService.search(member);
+	   ModelAndView mav = new ModelAndView("admin/member/list");
+	   mav.addObject("memberList",memberList);
+	   return mav;
+   }
+   
    @ExceptionHandler(RegistFailException.class)
    public String registException(RegistFailException e) {
       StringBuffer sb=new StringBuffer();

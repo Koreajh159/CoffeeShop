@@ -1,11 +1,12 @@
+<%@page import="com.coffee.model.domain.Category"%>
 <%@page import="com.coffee.common.board.Pager"%>
 <%@page import="java.util.List"%>
 <%@page import="com.coffee.model.domain.Product"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!Pager pager = new Pager();%>
 <%
-   
    List<Product> productList = (List)request.getAttribute("productList");
+   List<Category> categoryList = (List)request.getAttribute("categoryList");
    pager.init(request, productList.size());
 %>
 <!DOCTYPE html>
@@ -20,7 +21,6 @@
   width: 100%;
   border: 1px solid #ddd;
 }
-
 .product_th, .product_td {
   text-align: left;
   padding: 20px;
@@ -48,6 +48,16 @@
   background-color: pink;
   color:white;
 }
+select {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  width: 150px;
+}
 .search{
 	padding: 13px 16px;
 	font-size: 14px;
@@ -57,26 +67,25 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-/* $(function(){
-   $($("input[type='button']")[0]).click(function(){
-      regist();
+   $(function(){
+		$("#bt-search").click(function(){
+			search();
+		});
    });
-}); */
-
-
    function regist(){
-      location.href="/admin/product/regist.jsp";
-      
+      location.href="/admin/product/regist.jsp"; 
    }
-
-   
    function showDetail(product_id){
-      
       location.href="/admin/product/detail?product_id="+product_id;
    }
-   
-
-   </script>
+   function search(){
+	   $("form").attr({
+			action:"/admin/product/search",
+			method:"get"
+		});
+		$("form").submit();
+   }
+</script>
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
@@ -98,13 +107,11 @@
    <%if(num<1) break; %>
    <%Product product = productList.get(curPos++); %>
       <tr class="product_tr" onClick="showDetail(<%=product.getProduct_id() %>)">
-         
          <td class="product_td"><%=num-- %></td>
          <td class="product_td"><img src="/data/<%=product.getFilename() %>" widht="100px" height="100px" ></td>
          <td class="product_td"><%=product.getCategory().getCategory_name() %></td>
          <td class="product_td"><%=product.getName() %></td>
          <td class="product_td"><%=product.getPrice() %></td>
-         
       </tr>
    <%} %>
    <tr>
@@ -130,8 +137,17 @@
         <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">     	
      </td>
      <td colspan="3" class="button_td" style="text-align:right">
-        <input type="text"   name="name"  placeholder="상품 이름 검색" style="text-align: center" class="search"> 
-        <input class ="button" type="button" value="검색">
+     	<form>
+	    <select name="category_id">
+	     	<option value="">카테고리 선택</option>
+	     	<%for(int i = 0; i < categoryList.size(); i++) {%>
+	     		<%Category category = categoryList.get(i); %>
+	     		<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
+	     	<%} %>
+	  	</select>
+        <input type="text" name="name"  placeholder="상품 이름 검색" style="text-align: center" class="search"> 
+        <input class ="button" type="button" value="검색" id="bt-search">
+        </form>
      </td>
   </tr>
 </table>

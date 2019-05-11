@@ -163,10 +163,8 @@ tr:nth-child(even) {
 		google.maps.event.addListener(marker, 'click', function() {
 			  map.setCenter(marker.getPosition());
 			  infowindow.open(map,marker);
-		});
-		
+		});	
 	}
-		
 </script>
 </head>
 <%@ include file="/inc/header.jsp"%>

@@ -63,4 +63,7 @@
 		delete from product where product_id = #{product_id}
 	</delete>
 	
+	<select id="search" parameterType="Product" resultMap="ProductMap">
+		<include refid="sql_select"/> where name like concat('%',#{name},'%') and category_id = #{category.category_id}
+	</select>
 </mapper>

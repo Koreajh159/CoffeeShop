@@ -14,8 +14,7 @@
 		insert into category(category_name)
 		values(#{category_name})
 	</insert>
-
-
+	
 	<!-- pointmall에서 검색할 때 카테고리 별로 보기 위해 사용되는 select 문 -->
 	<select id="select" parameterType="int" resultType="Category">
 		<include refid="sql_select" /> where category_id = #{category_id}

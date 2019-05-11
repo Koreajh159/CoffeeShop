@@ -28,6 +28,7 @@ public class ClientRestFranchiseeController {
 		List franchiseeSearchList = franchiseeService.search(franchisee);
 		return franchiseeSearchList;
 	}
+	
 	@RequestMapping(value="/client/franchisee/searchAll")
 	public List searchAll() {
 		List franchiseeList = franchiseeService.searchAll();
@@ -41,5 +42,5 @@ public class ClientRestFranchiseeController {
 		pager.init(request, franchiseeList.size());
 		return pager;
 	}
-
+	
 }

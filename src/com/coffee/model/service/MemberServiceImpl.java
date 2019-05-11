@@ -95,5 +95,10 @@ public class MemberServiceImpl implements MemberService{
 	public Member checkphone(Member member) {
 		return memberDAO.checkPhone(member);
 	}
+
+	@Override
+	public List search(Member member) {
+		return memberDAO.search(member);
+	}
  
 }

@@ -66,4 +66,9 @@ public class ProductServiceImpl implements ProductService {
 		 productDAO.delete(product_id);
 	}
 
+	@Override
+	public List search(Product product) {
+		return productDAO.search(product);
+	}
+
 }

@@ -3,7 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!Pager pager=new Pager();%>
-<%List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");
+<%
+	List<Franchisee> franchiseeList = (List)request.getAttribute("franchiseeList");
 	pager.init(request, franchiseeList.size());
 %>
 <!DOCTYPE html>
@@ -25,27 +26,60 @@
   color:black;
   cursor:pointer;
 }
-
 .member_tr:nth-child(even) {
   background-color: #ddd;
   color:white;
   
 }
-
+select {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  width: 150px;
+}
+.button_td{
+	padding: 20px;
+}
+.button {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  width: 150px;
+}
+.button:hover {
+  background-color: #777;
+}
+.search{
+	padding: 13px 16px;
+	font-size: 14px;
+	width:300px;
+}
 </style>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
    $(function() {
-      $($("input[type='button']")[0]).click(function() {
-        regist();
-        });
+      $("#bt-search").click(function(){
+		search();
+      });
    });
-
-
    function getDetail(franchisee_id){// 여기에 member 넣어야함
 	   location.href="/admin/franchisee/detail?franchisee_id="+franchisee_id;
+   }
+   function search(){
+		$("form").attr({
+			action:"/admin/franchisee/search",
+			method:"get"
+		});
+		$("form").submit();
    }
 </script>
 
@@ -59,8 +93,8 @@
 <table class="member_table">
   <tr class="member_tr">
     <th class="member_th">No.</th>
-    <th class="member_th">점주명</th>
     <th class="member_th">지역</th>
+    <th class="member_th">지점명</th>
     <th class="member_th">주소</th>
     <th class="member_th">승인여부</th>
   </tr>
@@ -71,8 +105,8 @@
   <%Franchisee franchisee = franchiseeList.get(i); %>
   <tr class="member_tr" onClick="getDetail(<%=franchisee.getFranchisee_id()%>)"> <!-- i대신 member 넣어야함 -->
     <td class="member_td"><%=num--%></td>
-    <td class="member_td"><%=franchisee.getMember().getName()%></td>
-    <td class="member_td"><%=franchisee.getF_name() %></td>
+    <td class="member_td"><%=franchisee.getLocal() %></td>
+    <td class="member_td"><%=franchisee.getF_name()%></td>
     <td class="member_td"><%=franchisee.getAddr()%></td>
     <%if(franchisee.getChecked() == 0){%>
     	<td class="member_td">거부</td>
@@ -98,6 +132,27 @@
 				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
 		<%} %>
   		</td>
+  </tr>
+  <tr>	
+  	<td colspan="5" class="button_td" style="text-align:center">
+  		<form>
+  		<select name="local">
+  			<option value="">지역 분류</option>
+			<option value="경기">경기</option>
+			<option value="서울">서울</option>
+			<option value="강원">강원</option>
+			<option value="충남">충남</option>
+			<option value="충북">충북</option>
+			<option value="전남">전남</option>
+			<option value="전북">전북</option>
+			<option value="경남">경남</option>
+			<option value="경북">경북</option>	
+			<option value="제주">제주</option>
+  		</select>
+        <input type="text" name="f_name"  placeholder="지점명 검색" style="text-align: center" class="search"> 
+        <input class ="button" type="button" value="검색" id="bt-search">
+        </form>
+     </td>
   </tr>
 </table>
 </body>

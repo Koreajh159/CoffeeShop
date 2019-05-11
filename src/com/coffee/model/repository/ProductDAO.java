@@ -13,4 +13,5 @@ public interface ProductDAO {
 	public List selectPtByCategory(int category_id);
 	public int update(Product product);
 	public int delete(int product_id);
+	public List search(Product product);
 }

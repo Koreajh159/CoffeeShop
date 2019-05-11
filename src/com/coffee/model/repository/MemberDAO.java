@@ -17,4 +17,5 @@ public interface MemberDAO {
 	public Member checkInfo(Member member);
 	public int changePass(Member member);
 	public Member checkPhone(Member member);
+	public List search(Member member);
 }

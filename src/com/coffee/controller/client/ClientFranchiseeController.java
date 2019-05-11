@@ -63,7 +63,6 @@ public class ClientFranchiseeController {
 		mav.addObject("franchiseeList", franchiseeList);
 		return mav;
 	}
-	
 	@ExceptionHandler(RegistFailException.class)
 	public ModelAndView registFail(RegistFailException e) {
 		ModelAndView mav = new ModelAndView("index");

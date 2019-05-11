@@ -75,4 +75,8 @@
 	<select id="checkphone" parameterType="Member" resultMap="MemberMap">
 		<include refid="sql_select"/> where phone=#{phone}
 	</select>
+	
+	<select id="search" parameterType="Member" resultMap="MemberMap">
+		<include refid="sql_select"/> where id = #{id}
+	</select>
 </mapper>

@@ -80,4 +80,9 @@ public class MybatisMemberDAO implements MemberDAO {
 		return sessionTemplate.selectOne("Member.checkphone", member);
 	}
 
+	@Override
+	public List search(Member member) {
+		return sessionTemplate.selectList("Member.search", member);
+	}
+
 }

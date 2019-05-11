@@ -95,9 +95,19 @@ tr:nth-child(even) {
 			</div>
 	</div>
 		<div class="col-lg-77 col-md-8" style="text-align:center">
+		<%if(pager.getCurrentPage() -1 > 0) {%>
+				<a href="/client/board/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
+			<%}else{ %>
+				<a href="javascript:alert('처음 페이지입니다');">◀</a>
+		<%} %>
 		<%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
 		  	<%if(i>pager.getTotalPage())break; %>
 		  	<a href = "/client/board/list?currentPage=<%=i%>">[<%=i %>]</a> <!-- 내가 누른 페이지 번호를 넘기자 -->
+		<%} %>
+		<%if(pager.getCurrentPage() < pager.getTotalPage()) {%>
+				<a href="/client/board/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
+		<%}else{ %>
+				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
 		<%} %>
 		</div>
 	<div class="col-lg-77 col-md-8" style="text-align:right">

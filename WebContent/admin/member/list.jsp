@@ -24,7 +24,6 @@
   width: 100%;
   border: 1px solid #ddd;
 }
-
 .member_th, .member_td {
   text-align: left;
   padding: 20px;
@@ -36,9 +35,6 @@
   padding: 20px;
   color:black;
 }
-
-
-
 .member_tr:nth-child(even) {
   background-color: #ddd;
   color:white;
@@ -58,31 +54,31 @@
 .button:hover {
   background-color: #777;
 }
-
+.search{
+	padding: 13px 16px;
+	font-size: 14px;
+	width:300px;
+}
 </style>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
    $(function() {
-      $($("input[type='button']")[0]).click(function() {
-        regist();
-        });
+  		$("#bt-search").click(function(){
+			search();
+  	  	});
    });
-
-
    function getDetail(member_id){// 여기에 member 넣어야함
-	  
 	   location.href="/admin/member/detail?member_id="+member_id;
    }
-   
-
-   function regist(){
-      location.href="/admin/member/regist.jsp";
+   function search(){
+		$("form").attr({
+			action:"/admin/member/search",
+			method:"get"
+		});
+		$("form").submit();
    }
-
-   </script>
-
+</script>
 </head>
 <body>
 <%@include file="/inc/top_navi.jsp" %>
@@ -111,7 +107,6 @@
     <td class="member_td"><%=member.getPhone() %></td>
     <td class="member_td"><%=member.getGrade().getGrade_name() %></td>
   </tr>
-
   <%} %>
   <tr>
   		<td colspan="5" style="text-align:center">
@@ -132,14 +127,13 @@
   		</td>
   </tr>
   <tr class="button_tr">
-  	<td colspan="5" style="text-align:left" class="button_td">
-		<input class="button" type="button" value="등록"> 
-  	</td>
+  	<td colspan="5" class="button_td" style="text-align:right">
+     	<form>
+        	<input type="text" name="id"  placeholder="아이디 검색" style="text-align: center" class="search"> 
+        	<input class ="button" type="button" value="검색" id="bt-search">
+        </form>
+     </td>
   </tr>
-  
- 
 </table>
-<div style="text-align:right">
-</div>
 </body>
 </html>

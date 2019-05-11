@@ -44,8 +44,10 @@ public class AdminProductController {
    public ModelAndView selectAll() {
       System.out.println("목록을 원하는군");
       List<Product> productList = productService.selectAll();
+      List<Category> categoryList = categoryService.selectAll();
       ModelAndView mav = new ModelAndView("admin/product/list");
       mav.addObject("productList", productList);
+      mav.addObject("categoryList", categoryList);
       return mav;
    }
 
@@ -151,15 +153,26 @@ public class AdminProductController {
       ModelAndView mav = new ModelAndView("redirect:/admin/product/list");
       return mav;
    }
-
+   @RequestMapping(value="/product/search")
+   public ModelAndView search(Product product, int category_id) {
+	   System.out.println("되긴되냐?");
+	   Category category = new Category();
+	   category.setCategory_id(category_id);
+	   product.setCategory(category);
+	   List<Product> productList = productService.search(product);
+	   List<Category> categoryList = categoryService.selectAll();
+	   ModelAndView mav = new ModelAndView("admin/product/list");
+	   mav.addObject("productList", productList);
+	   mav.addObject("categoryList", categoryList);
+	   return mav;
+   }
+  
    @ExceptionHandler(AccountNotFoundException.class)
    public ModelAndView handleException(AccountNotFoundException e) {
       ModelAndView mav = new ModelAndView();
       mav.setViewName("admin/error/errorpage");
       mav.addObject("err", e);
-
       return mav;
-
    }
 
    @ExceptionHandler(RegistFailException.class)

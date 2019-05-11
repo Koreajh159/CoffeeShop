@@ -20,7 +20,6 @@ public class AdminFranchiseeController {
 	private FranchiseeService franchiseeService;
 	@RequestMapping(value="/admin/franchisee/list",method=RequestMethod.GET)
 	public ModelAndView selectAll() {
-		System.out.println("§æ§∑");
 		List franchiseeList=franchiseeService.selectAll();
 		ModelAndView mav = new ModelAndView("admin/franchisee/list");
 		mav.addObject("franchiseeList", franchiseeList);
@@ -54,4 +53,12 @@ public class AdminFranchiseeController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/admin/franchisee/search")
+	public ModelAndView search(Franchisee franchisee) {
+		List franchiseeList = franchiseeService.search(franchisee);
+		System.out.println("ªÁ¿Ã¡Ó " + franchiseeList.size());
+		ModelAndView mav = new ModelAndView("admin/franchisee/list");
+		mav.addObject("franchiseeList",franchiseeList);
+		return mav;
+	}
 }

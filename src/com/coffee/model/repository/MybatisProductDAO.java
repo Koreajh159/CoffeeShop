@@ -61,4 +61,9 @@ public class MybatisProductDAO implements ProductDAO {
 		return sessionTemplate.selectList("Product.ptSelectByCat", category_id);
 	}
 
+	@Override
+	public List search(Product product) {
+		return sessionTemplate.selectList("Product.search", product);
+	}
+
 }

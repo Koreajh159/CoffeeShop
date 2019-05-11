@@ -85,11 +85,11 @@ function regist() {
 		    <input type="hidden" name="depth" value="0"> 
 		    <h4 class="mb-20">Title</h4>
 			<div class="mt-10">
-			   	<input type="text" name="title" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input">
+			   	<input type="text" name="title" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title...'" required class="single-input">
 			</div>
 		    <h4 class="mb-20">Content</h4>
 			<div class="mt-10">
-			   	<textarea name="content" class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required></textarea> <!-- /textarea를 엔터쳐서 내리면 안되 무조건 한줄!! -->
+			   	<textarea name="content" class="single-textarea" placeholder="Content" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Content'" required></textarea> <!-- /textarea를 엔터쳐서 내리면 안되 무조건 한줄!! -->
 			</div>
 			<div class="col-lg-77 col-md-8">
 			<a id="bt-regist" class="genric-btn primary-border circle">작성하기</a>
