@@ -155,7 +155,6 @@ public class AdminProductController {
    }
    @RequestMapping(value="/product/search")
    public ModelAndView search(Product product, int category_id) {
-	   System.out.println("되긴되냐?");
 	   Category category = new Category();
 	   category.setCategory_id(category_id);
 	   product.setCategory(category);
