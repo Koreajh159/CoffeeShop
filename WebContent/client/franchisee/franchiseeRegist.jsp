@@ -58,11 +58,11 @@
 		}
 	}
 	function regist(){
-		$("form").attr({
+		$("form[name='franchisee-form']").attr({
 			"method" : "post",
 			"action" : "/client/franchisee/regist"
 		});
-		$("form").submit();
+		$("form[name='franchisee-form']").submit();
 	}
 </script>
 </head>
@@ -73,7 +73,7 @@
 			<div class="row">
 				<div class="col-lg-77 col-md-8">
 					<h2 class="mb-30">Franchisee Regist</h2>
-					<form>
+					<form name="franchisee-form">
 						<input type="hidden" name="member_id" value="<%=client.getMember_id() %>">
 						<div class="mt-10">
 							<input type="text" name="name" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" required class="single-input"

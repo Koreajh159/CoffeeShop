@@ -39,6 +39,7 @@ public class ClientFranchiseeController {
 	
 	@RequestMapping(value="/client/franchisee/regist", method=RequestMethod.POST)
 	public ModelAndView insert(HttpServletRequest request, Franchisee franchisee, int member_id) {
+		System.out.println(franchisee.getMessage());
 		Member member = new Member();
 		member.setMember_id(member_id);
 		franchisee.setMember(member);

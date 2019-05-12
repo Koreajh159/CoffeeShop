@@ -73,7 +73,7 @@
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<div id="bt-login" class="genric-btn primary-border circle">Login</div>
-				<a href="/client/member/index.jsp" class="genric-btn primary-border circle">Cancel</a>
+				<a href="/index.jsp" class="genric-btn primary-border circle">Cancel</a>
 			</div>
 			<div class="col-lg-77 col-md-8">
 				<a href="/ctest/member/goRegist" class="genric-btn3 primary-border circle">Regist</a>

@@ -95,19 +95,19 @@ select {
     <th class="member_th">No.</th>
     <th class="member_th">지역</th>
     <th class="member_th">지점명</th>
-    <th class="member_th">주소</th>
+    <th class="member_th">지점장</th>
     <th class="member_th">승인여부</th>
   </tr>
   <%int num=pager.getNum(); %>
   <%int curPos=pager.getCurPos(); %>
   <%for(int i=0;i<pager.getPageSize();i++){ %>
   <%if(num < 1) break; %>
-  <%Franchisee franchisee = franchiseeList.get(i); %>
+  <%Franchisee franchisee = franchiseeList.get(curPos++); %>
   <tr class="member_tr" onClick="getDetail(<%=franchisee.getFranchisee_id()%>)"> <!-- i대신 member 넣어야함 -->
     <td class="member_td"><%=num--%></td>
     <td class="member_td"><%=franchisee.getLocal() %></td>
     <td class="member_td"><%=franchisee.getF_name()%></td>
-    <td class="member_td"><%=franchisee.getAddr()%></td>
+    <td class="member_td"><%=franchisee.getMember().getName()%></td>
     <%if(franchisee.getChecked() == 0){%>
     	<td class="member_td">거부</td>
     <%} else{ %>
