@@ -114,6 +114,7 @@ public class AdminProductController {
    public ModelAndView update(Product product, int category_id, HttpServletRequest request) {
       Category category = new Category();
       category.setCategory_id(category_id);
+      System.out.println("카테고리 네임" + category.getCategory_name());
       product.setCategory(category);
 
       System.out.println("파일 : " + product.getMyFile());

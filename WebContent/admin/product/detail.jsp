@@ -196,7 +196,6 @@ input[type=submit]:hover {
 <div class="container">
   <form name="form1" enctype="multipart/form-data">
   <input type="hidden" id="product_id" name="product_id" value="<%=product.getProduct_id() %>">
-  <input type="hidden" id="category_id" name="category_id" value="<%=product.getCategory().getCategory_id() %>">
     <div class="row">
       <div class="col-25">
         <label for="fname">Product Name</label>

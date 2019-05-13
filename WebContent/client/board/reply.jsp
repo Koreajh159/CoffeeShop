@@ -64,11 +64,11 @@ $(function() {
 });
 
 function reply() {
-    $("form").attr({
+    $("form[name='board-form']").attr({
        method : "post",
        action : "/client/board/reply"
     });
-    $("form").submit();
+    $("form[name='board-form']").submit();
  }
 
 </script>
@@ -81,7 +81,7 @@ function reply() {
 <section class="menu-area section-gap" id="coffee" >
 	<div class="row" >
 		<div class="col-lg-77 col-md-8" >
-			<form>
+			<form name="board-form">
 			    <input type="hidden" name="member_id" value="<%=client.getMember_id()%>">
 			    <input type="hidden" name="ask_id" value="<%=board.getMember().getMember_id()%>">
 			    <input type="hidden" name="rank" value="<%=board.getRank()+1%>">
