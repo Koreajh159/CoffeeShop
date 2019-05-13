@@ -79,6 +79,7 @@ input[type=submit]:hover {
 
 /* Clear floats after the columns */
 .bt{
+   padding-top: 12px;
     float:right;
    width: 100%;
     margin-top: 0;

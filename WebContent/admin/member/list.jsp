@@ -24,6 +24,7 @@
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+  font-size: 20px;
 }
 .member_th, .member_td {
   text-align: left;

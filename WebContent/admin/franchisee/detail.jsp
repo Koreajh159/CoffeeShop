@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -37,7 +38,7 @@ input[type=button]:hover {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 20px;
 }
 </style>
@@ -97,9 +98,9 @@ function regist(){
     <label for="subject">Message</label>
     <textarea id="subject" name="message" placeholder="Write something.." style="height:200px"><%=franchisee.getMessage() %></textarea>
   </form>
-    <input type="button" value="수정" id="bt-edit">
-    <input type="button" value="삭제" onClick="del(<%=franchisee.getFranchisee_id() %>)">
-    <input type="button" value="목록" onClick="location.href='/admin/franchisee/list'">
+    <input class="button genric-btn3 primary-border circle" type="button" value="수정" id="bt-edit">
+    <input class="button genric-btn3 primary-border circle" type="button" value="삭제" onClick="del(<%=franchisee.getFranchisee_id() %>)">
+    <input class="button genric-btn3 primary-border circle" type="button" value="목록" onClick="location.href='/admin/franchisee/list'">
 </div>
 <script>
 	var placeSearch, autocomplete;
