@@ -10,11 +10,13 @@ Category cate = new Category();
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css" />
 <style>
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 input[type=text], select, textarea {
@@ -60,7 +62,7 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 20px;
 }
 
@@ -83,7 +85,7 @@ input[type=submit]:hover {
 }
 
 /* Clear floats after the columns */
-.row:after {
+.bt:after {
   content: "";
   display: table;
   clear: both;
@@ -233,19 +235,28 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
         <select id="category_id" name="isOnPoint">
-        	<%if(product.getIsOnPoint() == 1) {%>
-	        	<option value="0">미등록</option>
-	        	<option value="1" selected>등록</option>
-	        <%} else {%>
-	        	<option value="0" selected>미등록</option>
-	        	<option value="1" >등록</option>
-	        <%} %>
+           <%if(product.getIsOnPoint() == 1) {%>
+              <option value="0">미등록</option>
+              <option value="1" selected>등록</option>
+           <%} else {%>
+              <option value="0" selected>미등록</option>
+              <option value="1" >등록</option>
+           <%} %>
         </select>
       </div>
     </div>
     
-    
     <div class="row">
+      <div class="col-25">
+        <label for="fname">Product Detail</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="detail" name="detail" placeholder="상품 설명" value="<%=product.getDetail() %>">
+      </div>
+    </div>
+    
+    
+    <div class="bt">
       <div class="col-25">
         <label for="ca">Product Category</label>
       </div>
@@ -258,7 +269,7 @@ input[type=submit]:hover {
         </select>
       </div>
     </div>
-    <div class="row">
+    <div class="bt">
     <form name ="file_form" action="UploadService">
       <div class="col-25">
         <label for="image">Product Image</label>
@@ -270,9 +281,9 @@ input[type=submit]:hover {
       </div>
       </form>
     <div class="col-bt">
-      <input class="button" type="button" value="수정"><!--
-      --><input class="button" type="button" value="삭제"><!--
-      --><input class="button" type="button" value="목록">
+      <input class="button genric-btn3 primary-border circle" type="button" value="수정"><!--
+      --><input class="button genric-btn3 primary-border circle" type="button" value="삭제"><!--
+      --><input class="button genric-btn3 primary-border circle" type="button" value="목록">
       
     </div>
     </div>

@@ -7,6 +7,7 @@ Member member=(Member)request.getAttribute("member");
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css">
 <style>
@@ -46,7 +47,7 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 20px;
 }
 
@@ -225,9 +226,9 @@ function edit() {
     <div class="row"><hr></div>
     
     <div class="row">
-      <input type="button" value="수정">
-      <input type="button" value="삭제">
-      <input type="button" value="목록">
+      <input class ="button genric-btn3 primary-border circle" type="button" value="수정">
+      <input class ="button genric-btn3 primary-border circle" type="button" value="삭제">
+      <input class ="button genric-btn3 primary-border circle" type="button" value="목록">
     
     </div>
   </form>

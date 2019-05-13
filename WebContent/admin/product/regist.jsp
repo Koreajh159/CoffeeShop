@@ -10,17 +10,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css" />
 <style>
 * {
-  box-sizing: border-box;
+   box-sizing: border-box;
+     text-align: center;
 }
 
 input[type=text], select, textarea {
   width: 100%;
-  padding: 12px;
+  padding: 16px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
@@ -46,9 +49,20 @@ input[type=submit]:hover {
 }
 
 .container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
+   border-radius: 5px;
+  background-color: white;
   padding: 20px;
+}
+
+.button {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  width: 150px;
 }
 
 .col-25 {
@@ -64,19 +78,25 @@ input[type=submit]:hover {
 }
 
 /* Clear floats after the columns */
-.row:after {
+.bt{
+    float:right;
+   width: 100%;
+    margin-top: 0;
+}
+.bt:after {
   content: "";
   display: table;
   clear: both;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .col-25, .col-75, input[type=submit] {
     width: 100%;
     margin-top: 0;
   }
 }
+
 </style>
 
 <script
@@ -164,7 +184,7 @@ input[type=submit]:hover {
 
 
 <div class="container">
-  <form name="form1" enctype="multipart/form-data">
+  <form name="form1" enctype="multipart/form-data" class="form1">
     <div class="row">
       <div class="col-25">
         <label for="fname">Product Name</label>
@@ -189,12 +209,13 @@ input[type=submit]:hover {
         <input type="text" id="cost" name="cost" placeholder="상품 포인트" >
       </div>
     </div>
+    
     <div class="row">
       <div class="col-25">
-        <label for="fname">Product detail</label>
+        <label for="fname">Product Detail</label>
       </div>
       <div class="col-75">
-        <input type="text" id="d" name="detail" placeholder="상품 세부사항" >
+        <input type="text" id="detail" name="detail" placeholder="상품 설명" >
       </div>
     </div>
     
@@ -224,10 +245,9 @@ input[type=submit]:hover {
       </div>
       </form>
     </div>
-         <div class="row">
-            <input type="button" value="등록"> 
-            <input type="button" value="목록">
-
+         <div class="bt">
+            <input type="button" class="button genric-btn3 primary-border circle" value="등록"> 
+            <input type="button" class="button genric-btn3 primary-border circle" value="목록">
          </div>
       </form>
 </div>

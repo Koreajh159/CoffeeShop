@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css">
 <style>
@@ -36,7 +37,7 @@
   color:black;
 }
 .member_tr:nth-child(even) {
-  background-color: #ddd;
+  background-color: #b68834;
   color:white;
 
 }
@@ -130,7 +131,7 @@
   	<td colspan="5" class="button_td" style="text-align:right">
      	<form>
         	<input type="text" name="id"  placeholder="아이디 검색" style="text-align: center" class="search"> 
-        	<input class ="button" type="button" value="검색" id="bt-search">
+        	<input class ="button genric-btn3 primary-border circle" type="button" value="검색" id="bt-search">
         </form>
      </td>
   </tr>

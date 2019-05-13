@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css" />
 <style>
@@ -20,6 +21,7 @@
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+  font-size: 20px;
 }
 .product_th, .product_td {
   text-align: left;
@@ -28,7 +30,7 @@
   cursor:pointer;
 }
 .button_td{
-	padding: 20px;
+   padding: 20px;
 }
 .button {
   background-color: #555;
@@ -45,7 +47,7 @@
 }
 
 .product_tr:nth-child(even) {
-  background-color: pink;
+  background-color: #b68834;
   color:white;
 }
 select {
@@ -59,18 +61,18 @@ select {
   width: 150px;
 }
 .search{
-	padding: 13px 16px;
-	font-size: 14px;
-	width:300px;
+   padding: 13px 16px;
+   font-size: 14px;
+   width:300px;
 }
 </style>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
    $(function(){
-		$("#bt-search").click(function(){
-			search();
-		});
+      $("#bt-search").click(function(){
+         search();
+      });
    });
    function regist(){
       location.href="/admin/product/regist.jsp"; 
@@ -79,11 +81,11 @@ select {
       location.href="/admin/product/detail?product_id="+product_id;
    }
    function search(){
-	   $("form").attr({
-			action:"/admin/product/search",
-			method:"get"
-		});
-		$("form").submit();
+      $("form").attr({
+         action:"/admin/product/search",
+         method:"get"
+      });
+      $("form").submit();
    }
 </script>
 </head>
@@ -117,36 +119,36 @@ select {
    <tr>
       <td colspan="5" style="text-align:center">
         <%if(pager.getCurrentPage() -1 > 0) {%>
-				<a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
-			<%}else{ %>
-				<a href="javascript:alert('처음 페이지입니다');">◀</a>
-		<%} %>
+            <a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()-1%>">◀</a>
+         <%}else{ %>
+            <a href="javascript:alert('처음 페이지입니다');">◀</a>
+      <%} %>
         <%for(int i=pager.getFirstPage();i<pager.getLastPage();i++){ %>
         <%if(i>pager.getTotalPage())break; %>
-       		<a href = "/admin/product/list?currentPage=<%=i%>">[<%=i%>]</a>
+             <a href = "/admin/product/list?currentPage=<%=i%>">[<%=i%>]</a>
         <%} %>
         <%if(pager.getCurrentPage() < pager.getTotalPage()) {%>
-				<a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
-		<%}else{ %>
-				<a href="javascript:alert('마지막 페이지입니다');">▶</a>
-		<%} %>
+            <a href="/admin/product/list?currentPage=<%=pager.getCurrentPage()+1%>">▶</a>
+      <%}else{ %>
+            <a href="javascript:alert('마지막 페이지입니다');">▶</a>
+      <%} %>
         </td>
    </tr>
   <tr>
      <td colspan="2" class="button_td" style="text-align:left">
-        <input class="button" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">     	
+        <input class="button genric-btn3 primary-border circle" type="button" value="등록" onClick="location.href='/admin/product/goRegist'">        
      </td>
      <td colspan="3" class="button_td" style="text-align:right">
-     	<form>
-	    <select name="category_id">
-	     	<option value="">카테고리 선택</option>
-	     	<%for(int i = 0; i < categoryList.size(); i++) {%>
-	     		<%Category category = categoryList.get(i); %>
-	     		<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
-	     	<%} %>
-	  	</select>
+        <form>
+       <select class="button genric-btn3 primary-border circle" name="category_id">
+           <option value="">카테고리 선택</option>
+           <%for(int i = 0; i < categoryList.size(); i++) {%>
+              <%Category category = categoryList.get(i); %>
+              <option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
+           <%} %>
+        </select>
         <input type="text" name="name"  placeholder="상품 이름 검색" style="text-align: center" class="search"> 
-        <input class ="button" type="button" value="검색" id="bt-search">
+        <input class ="button genric-btn3 primary-border circle" type="button" value="검색" id="bt-search">
         </form>
      </td>
   </tr>

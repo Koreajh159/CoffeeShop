@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="/inc/css-head.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/top_navi.css">
 <style>
@@ -136,7 +137,7 @@ select {
   <tr>	
   	<td colspan="5" class="button_td" style="text-align:center">
   		<form>
-  		<select name="local">
+  		<select class ="button genric-btn3 primary-border circle" name="local">
   			<option value="">지역 분류</option>
 			<option value="경기">경기</option>
 			<option value="서울">서울</option>
@@ -150,7 +151,7 @@ select {
 			<option value="제주">제주</option>
   		</select>
         <input type="text" name="f_name"  placeholder="지점명 검색" style="text-align: center" class="search"> 
-        <input class ="button" type="button" value="검색" id="bt-search">
+        <input class ="button genric-btn3 primary-border circle" type="button" value="검색" id="bt-search">
         </form>
      </td>
   </tr>
