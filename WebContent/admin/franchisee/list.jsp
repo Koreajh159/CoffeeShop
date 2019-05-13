@@ -19,6 +19,7 @@
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+  font-size: 20px;
 }
 
 .member_th, .member_td {
@@ -28,7 +29,7 @@
   cursor:pointer;
 }
 .member_tr:nth-child(even) {
-  background-color: #ddd;
+  background-color: #b68834;
   color:white;
   
 }
